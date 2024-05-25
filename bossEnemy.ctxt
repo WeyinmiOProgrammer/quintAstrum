@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=bossEnemy
+comment1.params=h\ m\ a\ d\ s\ mh\ mm\ i\ p\ im\ de
+comment1.target=bossEnemy(int,\ int,\ int,\ int,\ int,\ int,\ int,\ int,\ Player,\ InventoryMenu,\ Display)
+comment2.params=
+comment2.target=void\ nextTurn()
+numComments=3

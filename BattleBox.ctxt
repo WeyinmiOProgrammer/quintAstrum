@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=BattleBox
+comment1.params=p\ e\ i\ di
+comment1.target=BattleBox(Player,\ Enemy,\ InventoryMenu,\ Display)
+comment2.params=lv
+comment2.target=void\ skillSetup1(int)
+comment3.params=
+comment3.target=void\ enemyIconSetup()
+comment4.params=
+comment4.target=void\ enemyTurn()
+numComments=5
