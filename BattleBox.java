@@ -363,7 +363,19 @@ public class BattleBox extends JFrame
                             player.setXP(player.getXP()+50);
                             d.editArea(7);
                             break;
-                        
+                        case 9:
+                            bossEnemy d2 = new bossEnemy(120,17,12,4,6,120,17,10,player,items,d);
+                            b2 = new BattleBox(player,d2,items,d);
+                            b2.setSize(900,720);
+                            b2.setLocationRelativeTo(null);
+                            nextPhase = 1;
+                            dispose();
+                            break;
+                        case 10:
+                            d.editArea(8);
+                            DialogueA da = new DialogueA(8,"Leave me! I'd rather be gone with this planet than betray the emperor!",7,items,player,d);
+                            da.pack();
+                            da.setLocationRelativeTo(null);
 
                 }
                 
@@ -1064,7 +1076,12 @@ public class BattleBox extends JFrame
                         enemy.setAT(enemy.getAT()-2);
                     }
                     break;
-                
+                case 9:
+                    enemy.nextTurn();
+                    break;
+                case 10:
+                    enemy.nextTurn();
+                    break;
         }
         if (player.getHP() > 0)
         {
@@ -1202,6 +1219,12 @@ public class BattleBox extends JFrame
             break;
         case 8:
             defeatMsg = new DialogueB(0,"<HTML>(Start charging it. My situation's compromised).<BR>Suffer, fools. Perish and suffer. </HTML>",0,items,player,d);
+            break;
+        case 9:
+            defeatMsg = new DialogueB(8,"It is foolish to persist",0,items,player,d);
+            break;
+        case 10:
+            defeatMsg = new DialogueB(1,"It's not too late for us to escape",0,items,player,d);
             break;
     }
     defeatMsg.pack();
