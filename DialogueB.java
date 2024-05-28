@@ -81,6 +81,10 @@ public class DialogueB extends JFrame
                name.setText("Koldec");
                 iconLabel.setIcon(charIcon);
                 break;
+            case 8:
+                charIcon = new ImageIcon(getClass().getResource("DBoss.png"));
+                name.setText("Uandar");
+                iconLabel.setIcon(charIcon);
         }
     }
     public class event implements ActionListener
@@ -99,7 +103,12 @@ public class DialogueB extends JFrame
                          d2.setLocationRelativeTo(null);
                          break;
                          
-                     
+                     case 4:
+                         DialogueA d3 = new DialogueA(8,"Leave this place immediately.",6,in,p,d);
+                         d3.setVisible(true);
+                         d3.pack();
+                         d3.setLocationRelativeTo(null);
+                         break;
                     
                     
                     case 2:

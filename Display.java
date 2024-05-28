@@ -870,6 +870,13 @@ public static int[][] xvi = {{15,17},
                         
                     
                     }
+                    else if (currentSection == 16)
+                    {
+                        DialogueB d = new DialogueB(8,"HALT! This shuttle will NOT be leaving this planet!",4,I,myChar,this);
+                        d.setVisible(true);
+                        d.pack();
+                        d.setLocationRelativeTo(null);
+                    }
                     else if (currentSection == 13)
                     {
                         bossEnemy ed = new bossEnemy(60,10,8,2,3,60,10, 7,myChar,I,this);

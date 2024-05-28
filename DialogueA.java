@@ -180,6 +180,16 @@ public class DialogueA extends JFrame
                          d2.pack();
                          d2.setLocationRelativeTo(null);
                          break;
+                         
+                         case 6:
+                             bossEnemy e5 = new bossEnemy(120,42,10,6,5,120,42,9,p,in,d);
+                             e5.diffSpike(d.getDif());
+                             BattleBox b5 = new BattleBox(p,e5,in,d);
+                             b5.setVisible(true);
+                             b5.setSize(900,720);
+                             b5.setLocationRelativeTo(null);
+                             
+                             break;
                     }
                     
                     dispose();
