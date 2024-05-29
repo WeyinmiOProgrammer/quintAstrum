@@ -274,10 +274,20 @@ public class BattleBox extends JFrame
                 break;
             case 8:
                 ene = new ImageIcon(getClass().getResource("gen.png"));
-           
-                ypunch = new ImageIcon(getClass().getResource("genA.png"));
+                anger = new ImageIcon(getClass().getResource("genA.png"));
+                ypunch = new ImageIcon(getClass().getResource("acid.png"));
                 econ.setIcon(ene);
-                break; 
+                break;
+            case 9:
+                ene = new ImageIcon(getClass().getResource("DBossph1.png"));
+                ypunch = new ImageIcon(getClass().getResource("hugepuff.png"));
+                econ.setIcon(ene);
+                break;
+            case 10:
+                ene = new ImageIcon(getClass().getResource("DBoss.png"));
+                ypunch = new ImageIcon(getClass().getResource("hugepuff.png"));
+                econ.setIcon(ene);
+                break;
         }
     }
     public class event implements ActionListener
@@ -366,6 +376,7 @@ public class BattleBox extends JFrame
                         case 9:
                             bossEnemy d2 = new bossEnemy(120,17,12,4,6,120,17,10,player,items,d);
                             b2 = new BattleBox(player,d2,items,d);
+                            b2.setVisible(true);
                             b2.setSize(900,720);
                             b2.setLocationRelativeTo(null);
                             nextPhase = 1;
@@ -376,6 +387,7 @@ public class BattleBox extends JFrame
                             DialogueA da = new DialogueA(8,"Leave me! I'd rather be gone with this planet than betray the emperor!",7,items,player,d);
                             da.pack();
                             da.setLocationRelativeTo(null);
+                            break;
 
                 }
                 
@@ -559,6 +571,7 @@ public class BattleBox extends JFrame
                             {
                                 items.removeFromInv(itemToUse);
                                 //to prevent really stupid glitches
+                                //this did not prevent those stupid glitches - keep looking
                                 playerRepeats = 0;
                                 //System.out.println("item id:"+itemToUse);
                                 if (player.getID() == 5)
@@ -659,6 +672,7 @@ public class BattleBox extends JFrame
                                         break;
                                         //needs to be at the end of this set
                                     default:
+                                        items.addToInv(itemToUse);
                                         break;
                                 }
                                 //additional code if player tags out
@@ -1070,7 +1084,7 @@ public class BattleBox extends JFrame
                         enemy.attack(player);
                         player.recover(-1);
                         econ.setIcon(anger);
-                        econ.setIcon(ypunch);
+                        blank2.setIcon(ypunch);
                         hp.setText((player.getHP())+"/" + (player.getmHP()));
                         mp.setText((player.getMP())+"/" + (player.getmMP()));
                         enemy.setAT(enemy.getAT()-2);
@@ -1078,9 +1092,56 @@ public class BattleBox extends JFrame
                     break;
                 case 9:
                     enemy.nextTurn();
+                    if (move < 2)
+                    {
+                        blank2.setIcon(null);
+                        enemy.recover(2);
+                    }
+                    else if (enemy.getMP() > 0)
+                    {
+                        enemy.attack(player);
+                        hp.setText((player.getHP())+"/"+(player.getmHP()));
+                        blank2.setIcon(gHit);
+                        enemy.recover(-4);
+                        
+                    }
+                    else
+                    {
+                        blank2.setIcon(ypunch);
+                        enemy.recover(enemy.getmHP());
+                        enemy.setSD(enemy.getSD()-1);
+                        enemy.setAT(enemy.getAT()-1);
+                        enemy.heal(-2);
+                        //cause drugs are bad
+                        player.recover(-4);
+                        mp.setText((player.getMP())+"/"+(player.getmMP()));
+                    }
                     break;
                 case 10:
                     enemy.nextTurn();
+                    if (move < 3)
+                    {
+                        enemy.attack(player);
+                        hp.setText((player.getHP())+"/"+(player.getmHP()));
+                        blank2.setIcon(gHit);
+                        enemy.recover(-2);
+                    }
+                    else if (enemy.getMP() > 0)
+                    {
+                        enemy.recover(-1);
+                        enemy.setSD(enemy.getSD() + 1);
+                    }
+                    else
+                    {
+                        enemy.recover(enemy.getmMP());
+                         
+                        
+                        enemy.setAT(enemy.getAT()-1);
+                        enemy.heal(-2);
+                        //cause drugs are bad
+                        player.recover(-4);
+                        mp.setText((player.getMP())+"/"+(player.getmMP()));
+                    }
                     break;
         }
         if (player.getHP() > 0)
@@ -1224,7 +1285,7 @@ public class BattleBox extends JFrame
             defeatMsg = new DialogueB(8,"It is foolish to persist",0,items,player,d);
             break;
         case 10:
-            defeatMsg = new DialogueB(1,"It's not too late for us to escape",0,items,player,d);
+            defeatMsg = new DialogueB(1,"It's... not too late for you to escape",0,items,player,d);
             break;
     }
     defeatMsg.pack();
