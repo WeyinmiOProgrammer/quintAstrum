@@ -281,11 +281,13 @@ public class BattleBox extends JFrame
             case 9:
                 ene = new ImageIcon(getClass().getResource("DBossph1.png"));
                 ypunch = new ImageIcon(getClass().getResource("hugepuff.png"));
+                
                 econ.setIcon(ene);
                 break;
             case 10:
                 ene = new ImageIcon(getClass().getResource("DBoss.png"));
                 ypunch = new ImageIcon(getClass().getResource("hugepuff.png"));
+                enemyDefeat1 = new ImageIcon(getClass().getResource("DBossDown.png"));
                 econ.setIcon(ene);
                 break;
         }
@@ -573,6 +575,7 @@ public class BattleBox extends JFrame
                                 //to prevent really stupid glitches
                                 //this did not prevent those stupid glitches - keep looking
                                 playerRepeats = 0;
+                                System.out.println("Test 1 - item correct");
                                 //System.out.println("item id:"+itemToUse);
                                 if (player.getID() == 5)
                                 {
@@ -650,6 +653,9 @@ public class BattleBox extends JFrame
                                     case 35:
                                         p2 = new Player(88,0,9,6,3,88,5,5,0,32,3);
                                         break;
+                                    case 36:
+                                        p2 = new Player(94,0,11,8,3,94,6,6,0,64,3);
+                                        break;
                                     //Geruo
                                     case 40:
                                         p2 = new Player(50,10,7,2,2,50,10,1,0,4,4);
@@ -670,6 +676,9 @@ public class BattleBox extends JFrame
                                     case 51:
                                         p2 = new Player(47,0,5,2,8,47,0,2,0,8,5);
                                         break;
+                                    case 52:
+                                        p2 = new Player(50,0,7,4,10,50,0,3,0,32,5);
+                                        break;
                                         //needs to be at the end of this set
                                     default:
                                         items.addToInv(itemToUse);
@@ -679,7 +688,8 @@ public class BattleBox extends JFrame
                                 if (itemToUse > 29)
                                 {
                                     //stores player details, so that they can be rebooted as required
-                                    
+                                    System.out.println(itemToUse);
+                                    System.out.println("Test 2 - tagged in");
                                     b2 = new BattleBox(p2, enemy, items, d);
                                     b2.setVisible(true);
                                     b2.setSize(900,720);
