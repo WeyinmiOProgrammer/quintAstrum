@@ -389,6 +389,7 @@ public class BattleBox extends JFrame
                             DialogueA da = new DialogueA(8,"Leave me! I'd rather be gone with this planet than betray the emperor!",7,items,player,d);
                             da.pack();
                             da.setLocationRelativeTo(null);
+                            da.setVisible(true);
                             break;
 
                 }
@@ -643,17 +644,17 @@ public class BattleBox extends JFrame
                                     case 31:
                                         p2 = new Player(72,0,7,6,2,72,2,2,0,4,3);
                                         break;
-                                    case 33:
+                                    case 32:
                                         p2 = new Player(76,0,9,8,2,76,3,3,0,8,3);
                                         break;
                                         
-                                    case 34:
+                                    case 33:
                                         p2 = new Player(82,0,7,6,2,82,4,4,0,16,3);
                                         break;
-                                    case 35:
+                                    case 34:
                                         p2 = new Player(88,0,9,6,3,88,5,5,0,32,3);
                                         break;
-                                    case 36:
+                                    case 35:
                                         p2 = new Player(94,0,11,8,3,94,6,6,0,64,3);
                                         break;
                                     //Geruo
@@ -1107,7 +1108,7 @@ public class BattleBox extends JFrame
                         blank2.setIcon(null);
                         enemy.recover(2);
                     }
-                    else if (enemy.getMP() > 0)
+                    else if (enemy.getMP() > 3)
                     {
                         enemy.attack(player);
                         hp.setText((player.getHP())+"/"+(player.getmHP()));
@@ -1129,7 +1130,7 @@ public class BattleBox extends JFrame
                     break;
                 case 10:
                     enemy.nextTurn();
-                    if (move < 3)
+                    if (move < 3 && enemy.getMP() > 1)
                     {
                         enemy.attack(player);
                         hp.setText((player.getHP())+"/"+(player.getmHP()));
@@ -1144,7 +1145,7 @@ public class BattleBox extends JFrame
                     else
                     {
                         enemy.recover(enemy.getmMP());
-                         
+                        blank2.setIcon(ypunch); 
                         
                         enemy.setAT(enemy.getAT()-1);
                         enemy.heal(-2);
@@ -1204,15 +1205,18 @@ public class BattleBox extends JFrame
                                     case 31:
                                         p2 = new Player(72,0,7,6,2,72,2,2,0,4,3);
                                         break;
-                                    case 33:
+                                    case 32:
                                         p2 = new Player(76,0,9,8,2,76,3,3,0,8,3);
                                         break;
                                         
-                                    case 34:
+                                    case 33:
                                         p2 = new Player(82,0,7,6,2,82,4,4,0,16,3);
                                         break;
-                                    case 35:
+                                    case 34:
                                         p2 = new Player(88,0,9,6,3,88,5,5,0,32,3);
+                                        break;
+                                    case 35:
+                                        p2 = new Player(94,0,11,8,3,94,6,6,0,64,3);
                                         break;
                                     //Geruo
                                     case 40:
@@ -1231,7 +1235,12 @@ public class BattleBox extends JFrame
                                     case 50:
                                         p2 = new Player(45,0,3,1,6,45,0,1,0,4,5);
                                         break;
-                                        
+                                    case 51:
+                                        p2 = new Player(47,0,5,2,8,47,0,2,0,8,5);
+                                        break;
+                                    case 52:
+                                        p2 = new Player(50,0,7,4,10,50,0,3,0,32,5);
+                                        break;        
                 }
                 //needs to be at the end of this set
                                         b2 = new BattleBox(p2, enemy, items, d);
@@ -1295,7 +1304,7 @@ public class BattleBox extends JFrame
             defeatMsg = new DialogueB(8,"It is foolish to persist",0,items,player,d);
             break;
         case 10:
-            defeatMsg = new DialogueB(1,"It's... not too late for you to escape",0,items,player,d);
+            defeatMsg = new DialogueB(8,"It's... not too late for you to escape",0,items,player,d);
             break;
     }
     defeatMsg.pack();

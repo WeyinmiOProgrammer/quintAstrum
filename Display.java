@@ -501,12 +501,37 @@ public static int[][] xvi = {{15,17},
             {
                 for (int x = 0; x < gx; x++)
                 {
+
                     if (xiii[y][x] == 6)
                     {
                         xiii[y][x] = 0;
                         repaint();
                     }
                 }}
+            
+        }
+        
+        else if (g == 8)
+        {
+            gx = xvi[1].length;
+            gy = xvi.length;
+            for (int y = 1; y < gy ; y++)
+           
+            {
+                for (int x = 0; x < gx; x++)
+                {
+                    if (xvi[y][x] == 7)
+                    {
+                        xvi[y][x] = 0;
+                        repaint();
+                    }
+                    if (xvi[y][x] == 6)
+                    {
+                        xvi[y][x] = 7;
+                        repaint();
+                    }
+                }
+            }
             
         }
     }
