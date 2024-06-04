@@ -77,6 +77,16 @@ public class DialogueA extends JFrame
                name.setText("Enroga");
                 iconLabel.setIcon(charIcon);
                 break;
+            case 5: 
+                charIcon = new ImageIcon(getClass().getResource("Koldec.png"));
+               name.setText("Koldec");
+                iconLabel.setIcon(charIcon);
+                break;
+            case 8:
+                charIcon = new ImageIcon(getClass().getResource("DBoss.png"));
+                name.setText("Uandar");
+                iconLabel.setIcon(charIcon);
+            
         }
     }
     public int getResult()
@@ -190,6 +200,10 @@ public class DialogueA extends JFrame
                              b5.setLocationRelativeTo(null);
                              
                              break;
+                        
+                        case 7:
+                            in.addToInv(60);
+                            break;
                     }
                     
                     dispose();

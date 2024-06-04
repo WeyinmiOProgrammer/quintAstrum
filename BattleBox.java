@@ -336,6 +336,10 @@ public class BattleBox extends JFrame
                               collect = items.addToInv(2);
                     
                         }
+                        if (enemy.getMP() > 4)
+                        {
+                            collect = items.addToInv(16);
+                        }
                         player.setXP(player.getXP()+18);
                         break;
                         
@@ -399,7 +403,14 @@ public class BattleBox extends JFrame
                 {
                     
                     player.setXP(player.getXP()-player.getmXP());
+                    if (player.getmXP() < 256 && player.getID() == 4)
+                    {
                     player.setmXP(player.getmXP() * player.getmXP());
+                }
+                else
+                {
+                    player.setmXP(player.getmXP()*2);
+                }
                     player.setmHP(player.getmHP()+player.getLv());
                     player.setmMP(player.getmMP()+player.getLv());
                     player.setAT(player.getAT()+player.getLv());
@@ -635,7 +646,13 @@ public class BattleBox extends JFrame
                                     {
                                         enemy.setSD(enemy.getSD()-2);
                                     }
-                                        break;    
+                                        break;   
+                                    case 16:
+                                        player.setMP(player.getmMP());
+                                        //this is permanent for Geruo
+                                        player.setSD(player.getSD()-rd.nextInt(1));
+                                        player.heal(-1*rd.nextInt(2));
+                                        
                                     //Dleg
                                     case 30:
                                         p2 = new Player(70,0,4,3,1,70,1,1,0,2,3);

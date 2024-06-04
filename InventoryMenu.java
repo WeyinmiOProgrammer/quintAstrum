@@ -18,14 +18,19 @@ public class InventoryMenu extends JFrame
     //and the amount of that item that the player has (e.g. 10 health potions)
     int[][] items = new int[20][2];
     //this array contains the actual item names
-    String[] itemNames = {"Empty","🍶Health potion", "🍵Magic potion", "📏Stick", "⚙Scrap metal", "Sword",
-                          "⚙Engine", "Axe", "Fire powder", "Coffee", "", "Spaceship", "Jetpack","Oil","Key","",
-                        "","","","","",
-                    "","","","","",
+    String[] itemNames = {"Empty","🍶Health potion", "🍵Magic potion", "📏Stick", "⚙Scrap metal", "⚔Sword",
+                          "⛽Engine", "⚒Axe", "🔥Fire powder", "☕Coffee", "❧Bullet", "🚀Spaceship", "⛽Jetpack","🛢Oil","🔑Key","🔑Key piece",
+                        "🐡Porcpuff","❥Boomerang","💔Broken boomerang","🗡Dark sword","🗡Jetsword",
+                    "💵Imperial Currency","💵Delgg","","","",
                 "","","","",
             "👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg",
             "👽Geruo","👽Geruo","👽Geruo","👽Geruo","👽Geruo","👽Geruo","👽Geruo","👽Geruo","👽Geruo","👽Geruo",
-            "👽Koldec","👽?Koldec","👽Koldec","👽?Koldec","👽Koldec","👽Koldec","👽Koldec","👽Koldec","👽Koldec","👽Koldec"};
+            "👽Koldec","👽Koldec","👽Koldec","👽?Koldec","👽Koldec","👽Koldec","👽Koldec","👽Koldec","👽Koldec","👽Koldec",
+            "👽Uandar","👽Uandar","👽Uandar","👽Uandar","👽Uandar","👽Uandar","👽Uandar","👽Uandar","👽Uandar","👽Uandar",
+            "Oriinmi","Oriinmi","Oriinmi","Oriinmi","Oriinmi","Oriinmi","Oriinmi","Oriinmi","Oriinmi","Oriinmi",
+            "👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg",
+            "👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg"
+        };
    
     //5 labels will be used to display 5 items at a time
     JLabel one;
