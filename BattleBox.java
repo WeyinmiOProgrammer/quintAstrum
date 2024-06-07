@@ -407,6 +407,11 @@ public class BattleBox extends JFrame
                             da.pack();
                             da.setLocationRelativeTo(null);
                             da.setVisible(true);
+                            for (int j = 0; j < 20; j++)
+                            {
+                              collect = items.addToInv(16);
+                    
+                        }
                             break;
                         case 11:
                             d.editArea(10);
