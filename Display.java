@@ -43,9 +43,10 @@ public class Display extends JPanel implements KeyListener
     // 10 - chest? becomes free space after interaction - contains potions
     // 11 - more background
     // 12 - oil
-    // 13 - spaceship
+    // 13 - spaceship place
     // 14 - key - becomes free space after interaction
     // 15 - key door - becomes free space after interaction
+    // 16 - key shard - becomes free space after interaction - can be crafted into key
    
     /*
      The maximum size of any map should be 30x30
@@ -197,7 +198,7 @@ public static int[][] xii = {{10,13},
 
 public static int[][] xi = {{9,13},
              {01,04,01,01,01,01,01},
-             {01,00,00,00,00,00,01},
+             {01,00,00,00,00,16,01},
              {01,01,01,06,01,01,01},
              {01,00,00,00,00,00,01},
              {8,07,00,00,00,00,01},
@@ -232,18 +233,39 @@ public static int[][] xv = {{14,16,-1},
                 {01,00,01,00,01,00,00,01,00,01},
                 {01,00,00,00,00,00,00,00,00,01},
                 {01,01,00,01,00,01,00,01,00,01},
-                {01,04,00,01,15,01,00,01,14,01},
+                {01,04,00,01,15,01,00,01,16,01},
                 {01,01,01,01,05,01,01,01,01,01}};
+                
+public static int[][] minusone = {{15,17},
+               {01,01,01,01,8,01,01,01,01},
+               {01,00,00,00,00,00,00,00,01},
+               {01,00,00,00,00,00,00,00,01},
+               {01,00,00,00,13,00,00,00,01},
+               {01,00,00,00,00,00,00,00,01},
+               {01,01,01,01,8,01,01,01,01}};
                 
 public static int[][] xvi = {{15,17},
                {01,01,01,01,01,01,01,01,01},
                {11,01,00,00,00,00,00,01,01},
                {11,11,01,01,01,01,01,11,11},
-               {11,11,04,06,00,00,00,07,8},
+               {11,11,04,06,00,16,00,07,8},
                {11,11,01,01,01,01,01,11,11},
                {11,01,00,00,00,00,00,01,01},
                {01,01,01,01,01,01,01,01,01}
 };
+
+public static int[][] xvii = {{16,18},
+              {01,01,01,01,01,01,01,01},
+              {01,00,00,00,00,00,06,01},
+              {01,04,01,07,8,00,00,01},
+              {01,00,00,00,00,00,00,01},
+              {01,01,01,01,01,01,01,01}};
+              
+public static int[][] xviii = {{17,19},
+            {01,01,01,01,01,01,01,01},
+            {01,00,00,07,8,01,01,01},
+            {01,00,00,00,00,01,01,01},
+            {01,01,01,01,01,01,01,01}};
     //variables relating to movement
     int charX = 7;
     int charY = 5;
@@ -296,6 +318,9 @@ public static int[][] xvi = {{15,17},
     {
         switch(curr)
         {
+            case -1:
+                return minusone;
+                
             case 0:
                 return zero;
                 
@@ -344,6 +369,11 @@ public static int[][] xvi = {{15,17},
                 return xv;
              case 16:
                 return xvi;
+            case 17:
+                return xvii;
+            case 18:
+                return xviii;
+            
         }
         return zero;
     }
@@ -403,16 +433,16 @@ public static int[][] xvi = {{15,17},
         }
         else if (g == 2)
         {
-            gx = v[1].length;
-            gy = v.length;
+            gx = findMap(currentSection)[1].length;
+            gy = findMap(currentSection).length;
             for (int y = 1; y < gy ; y++)
            
             {
                 for (int x = 0; x < gx; x++)
                 {
-                    if (v[y][x] == 13)
+                    if (findMap(currentSection)[y][x] == 13)
                     {
-                        v[y][x] = 4;
+                        findMap(currentSection)[y][x] = 4;
                         repaint();
                     }
                 }}
@@ -534,7 +564,78 @@ public static int[][] xvi = {{15,17},
             }
             
         }
-    }
+        else if (g == 9)
+        //destroying blue planet or green planet
+        {
+            boolean defeatedLaser = true;
+            gx = xvii[1].length;
+            gy = xvii.length;
+            for (int y = 1; y < gy ; y++)
+           
+            {
+                for (int x = 0; x < gx; x++)
+                {
+
+                    if (xvii[y][x] == 6)
+                    {
+                        defeatedLaser = false;
+                    }
+                }}
+            if (!defeatedLaser)
+            {
+            for (int y = 1; y < gy ; y++)
+           
+            {
+                for (int x = 0; x < gx; x++)
+                {
+
+                    if (xvii[y][x] == 8)
+                    {
+                        xvii[y][x] = 0;
+                        repaint();
+                    }
+                }}
+            }
+            else
+            {
+                gx = xi[1].length;
+                gy = xi.length;
+                for (int y = 1; y < gy ; y++)
+           
+            {
+                for (int x = 0; x < gx; x++)
+                {
+
+                    if (xi[y][x] == 8)
+                    {
+                        xi[y][x] = 0;
+                        repaint();
+                    }
+                }}
+            }
+            }
+            
+            else if (g == 10)
+            {
+                //general "get rid of character onscreen command
+                gx = findMap(currentSection)[1].length;
+                gy = findMap(currentSection).length;
+                for (int y = 1; y < gy ; y++)
+           
+            {
+                for (int x = 0; x < gx; x++)
+                {
+
+                    if (findMap(currentSection)[y][x] == 6)
+                    {
+                        findMap(currentSection)[y][x] = 0;
+                        repaint();
+                    }
+                }}
+            }
+            
+        }
+    
    
     public void calculatePosition(int c)
     {
@@ -794,6 +895,15 @@ public static int[][] xvi = {{15,17},
                         arr[charY][charX] = 7;
                     }
                 }
+                //interacting with key shard
+                else if (arr[charY][charX] == 16)
+                {
+                    boolean collect = I.addToInv(15);
+                    if (collect == true)
+                    {
+                        arr[charY][charX] = 7;
+                    }
+                }
                 //interacting with keydoor
                 else if (arr[charY][charX] == 15)
                 {
@@ -811,6 +921,7 @@ public static int[][] xvi = {{15,17},
                          d4.setLocationRelativeTo(null);
                           charX = tX;
                           charY = tY;
+                           arr[charY][charX] = 7;
                     }
                 }
                 //interacting with health kit
@@ -905,6 +1016,15 @@ public static int[][] xvi = {{15,17},
                     else if (currentSection == 13)
                     {
                         bossEnemy ed = new bossEnemy(60,10,8,2,3,60,10, 7,myChar,I,this);
+                        ed.diffSpike(Dif);
+                        BattleBox b = new BattleBox(myChar, ed, I, this);
+                        b.setVisible(true);
+                        b.setSize(900,720);
+                        b.setLocationRelativeTo(null);
+                    }
+                    else if (currentSection == 17)
+                    {
+                        bossEnemy ed = new bossEnemy(100,0,8,2,4,100,0, 11,myChar,I,this);
                         ed.diffSpike(Dif);
                         BattleBox b = new BattleBox(myChar, ed, I, this);
                         b.setVisible(true);
@@ -1040,11 +1160,15 @@ public static int[][] xvi = {{15,17},
                             {
                             g.setColor(Color.BLUE);
                             }
-                             if (currentSection > 6 && currentSection < 20)
+                             if (currentSection > 6 && currentSection < 17)
                             {
                             g.setColor(Color.CYAN.darker());
                             }
-                            if (currentSection == 5 || currentSection == 16)
+                            if (currentSection == 17)
+                            {
+                            g.setColor(Color.PINK);
+                            }
+                            if (currentSection == 5 || currentSection == 16 || currentSection == -1)
                             {
                                 g.setColor(Color.WHITE);
                             }
@@ -1098,7 +1222,7 @@ public static int[][] xvi = {{15,17},
                             }
                             if (currentSection == 11)
                             {
-                            g.setColor(Color.PINK.darker().darker());
+                            g.setColor(Color.MAGENTA);
                             }
                             if (currentSection == 13)
                             {
@@ -1107,6 +1231,10 @@ public static int[][] xvi = {{15,17},
                             if (currentSection == 16)
                             {
                             g.setColor(Color.GREEN.brighter().brighter().brighter());
+                            }
+                            if (currentSection == 17)
+                            {
+                            g.setColor(Color.CYAN.darker());
                             }
                         
                             break;
@@ -1123,7 +1251,10 @@ public static int[][] xvi = {{15,17},
                             g.setColor(Color.YELLOW);
                             break;
                         case 15:
-                            g.setColor(Color.ORANGE);
+                            g.setColor(Color.GRAY);
+                            break;
+                        case 16:
+                            g.setColor(Color.YELLOW.darker());
                             break;
                         case 10:
                             //changed block colour

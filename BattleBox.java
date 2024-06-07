@@ -237,6 +237,15 @@ public class BattleBox extends JFrame
         pcon.setIcon(pla);
         hit = new ImageIcon(getClass().getResource("dpunch.png"));;
     }
+    if (player.getID() == 6)
+    {
+        skills.setText("BAD HABITS");
+        pla = new ImageIcon(getClass().getResource("Yic.png"));
+        shield = new ImageIcon(getClass().getResource("ydef.png"));
+        playerDefeat = new ImageIcon(getClass().getResource("yangry.png"));
+        pcon.setIcon(pla);
+        hit = new ImageIcon(getClass().getResource("gHit.png"));;
+    }
     }
     
     public void enemyIconSetup()
@@ -288,6 +297,10 @@ public class BattleBox extends JFrame
                 ene = new ImageIcon(getClass().getResource("DBoss.png"));
                 ypunch = new ImageIcon(getClass().getResource("hugepuff.png"));
                 enemyDefeat1 = new ImageIcon(getClass().getResource("DBossDown.png"));
+                econ.setIcon(ene);
+                break;
+            case 11:
+                ene = new ImageIcon(getClass().getResource("deathLaser.png"));
                 econ.setIcon(ene);
                 break;
         }
@@ -390,10 +403,15 @@ public class BattleBox extends JFrame
                             break;
                         case 10:
                             d.editArea(8);
-                            DialogueA da = new DialogueA(8,"Leave me! I'd rather be gone with this planet than betray the emperor!",7,items,player,d);
+                            DialogueA da = new DialogueA(8,"<HTML>Leave me! <BR>I'd rather be gone with this planet<BR> than betray the emperor!</HTML>",7,items,player,d);
                             da.pack();
                             da.setLocationRelativeTo(null);
                             da.setVisible(true);
+                            break;
+                        case 11:
+                            d.editArea(10);
+                            //that took guts...aliens have those, right?
+                            player.setXP(player.getXP()+80);
                             break;
 
                 }
@@ -1169,6 +1187,13 @@ public class BattleBox extends JFrame
                         //cause drugs are bad
                         player.recover(-4);
                         mp.setText((player.getMP())+"/"+(player.getmMP()));
+                    }
+                    break;
+                case 11:
+                    enemy.nextTurn();
+                    if (turns >= 10)
+                    {
+                        d.editArea(9);
                     }
                     break;
         }

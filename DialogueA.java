@@ -173,6 +173,14 @@ public class DialogueA extends JFrame
                              b2.setLocationRelativeTo(null);
                          
                          break;
+                         
+                         case 7:
+                             DialogueB d4 = new DialogueB(8,"<HTML>Take this money<BR>You'll need it where you're going <BR> NOW HURRY!</HTML>", 0,in,p,d);
+                         d4.setVisible(true);
+                         d4.pack();
+                         d4.setLocationRelativeTo(null);
+                         in.addToInv(21);
+                             break;
                     }
                     dispose();
                     

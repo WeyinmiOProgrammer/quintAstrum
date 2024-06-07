@@ -20,7 +20,7 @@ public class quickCraft extends JFrame
     public quickCraft(InventoryMenu i)
     {
         setLayout(new GridLayout(4,1, 2, 1));
-        recipes = new JLabel("<HTML>sword = 1 wood + 2 metal<BR>axe = 1 wood + 1 metal<BR>engine = 2 wood + 1 oil<BR>Spaceship = 1 engine + 5 metal<BR>jetpack = 1 engine + 1 magic potion</HTML>");
+        recipes = new JLabel("<HTML>sword = 1 wood + 2 metal<BR>axe = 1 wood + 1 metal<BR>engine = 2 wood + 1 oil<BR>spaceship = 1 engine + 5 metal<BR>jetpack = 1 engine + 1 magic potion<BR>key = 3 key shard</HTML>");
         add(recipes);
         im = i;
         enter = new JTextField(20);
@@ -163,6 +163,24 @@ case "jetpack":
    else
    {
       enter.setText("No engine");
+   }
+break;
+case "key":
+   x  = im.howMuch(15);
+   if (x >= 3)
+   {
+      
+               
+         im.removeFromInv(15);
+         im.removeFromInv(15);
+         im.removeFromInv(15);
+         im.addToInv(14);
+         dispose();
+      
+   }
+   else
+   {
+      enter.setText("Not enough key shards");
    }
 break;
             }}
