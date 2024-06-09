@@ -99,6 +99,22 @@ public class Display extends JPanel implements KeyListener
                    {1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1},
                    {1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1},
                    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
+    public static int[][] minustwo = {{2,5,-3},
+                   {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                   {1,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1},
+                   {1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1},
+                   {1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,1,1},
+                   {1,1,0,0,0,0,0,0,0,1,5,1,0,0,0,0,0,1,1,1},
+                   {1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,1,1},
+                   {1,1,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,1,1,1},
+                   {1,1,0,1,1,1,0,1,1,1,4,1,1,1,1,0,0,1,1,1},
+                   {1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1},
+                   {1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1},
+                   {1,1,0,1,1,1,10,0,0,0,0,0,0,0,0,0,0,1,1,1},
+                   {1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1},
+                   {1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1},
+                   {1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1},
+                   {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
                    
     public static int[][] iv = {{2,0},
                   {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -318,6 +334,9 @@ public static int[][] xviii = {{17,19},
     {
         switch(curr)
         {
+            case -2:
+                return minustwo;
+                
             case -1:
                 return minusone;
                 
@@ -581,6 +600,7 @@ public static int[][] xviii = {{17,19},
                         defeatedLaser = false;
                     }
                 }}
+            //blue planet destruction    
             if (!defeatedLaser)
             {
             for (int y = 1; y < gy ; y++)
@@ -595,23 +615,20 @@ public static int[][] xviii = {{17,19},
                         repaint();
                     }
                 }}
+                DialogueB destMsg = new DialogueB(0,"Podiatris has been destroyed",0,I,myChar,this);
+                destMsg.pack();
+                destMsg.setVisible(true);
+                destMsg.setLocationRelativeTo(null);
             }
             else
+            //green planet modification - map 3 replaced by map -2
             {
-                gx = xi[1].length;
-                gy = xi.length;
-                for (int y = 1; y < gy ; y++)
-           
-            {
-                for (int x = 0; x < gx; x++)
-                {
-
-                    if (xi[y][x] == 8)
-                    {
-                        xi[y][x] = 0;
-                        repaint();
-                    }
-                }}
+                v[0][0] = -2;
+                DialogueB destMsg = new DialogueB(0,"The weapon was redirected in time",0,I,myChar,this);
+                destMsg.pack();
+                destMsg.setVisible(true);
+                destMsg.setLocationRelativeTo(null);
+                
             }
             }
             
@@ -648,6 +665,14 @@ public static int[][] xviii = {{17,19},
         if (c == 11)
         {
             xiii[0][0] = 11;
+        }
+        if (c == -1)
+        {
+            xvii[0][0] = -1;
+        }
+        if (c == 16)
+        {
+            xvii[0][0] = 16;
         }
 
        
