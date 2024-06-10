@@ -318,6 +318,24 @@ public static int[][] xviii = {{17,19},
         I.setSize(1020,1020);
         I.setLocationRelativeTo(null);
         Dif = diff;
+        startMessage();
+    }
+    public void startMessage()
+    {
+       DialogueB w = new DialogueB(3,"<HTML>You...crash landed. <BR>"+
+                                      "You'll need to find a way out of...<BR>"+
+                                      "Wherever this place is<BR>"+
+                                      "===========================<BR>"+
+                                      "Use the arrow keys to move Geruo<BR>"+
+                                      "Collect items by walking into them<BR>"+
+                                      "Press Q to see your items<BR>"+
+                                      "Press W to craft new ones<BR>"+
+                                      "Press E to inspect yourself<BR>"+
+                                      "Expect the unexpected"+
+                                      "</HTML>",0,I,myChar,this); 
+       w.pack();
+       w.setLocationRelativeTo(null);
+       w.setVisible(true);
     }
     public void revivePlayer()
     {
@@ -940,7 +958,7 @@ public static int[][] xviii = {{17,19},
                     }
                     else
                     {
-                        DialogueB d4 = new DialogueB(1,"I need a key to open this door", 0,I,myChar,this);
+                        DialogueB d4 = new DialogueB(3,"I need a key to open this door", 0,I,myChar,this);
                          d4.setVisible(true);
                          d4.pack();
                          d4.setLocationRelativeTo(null);
@@ -1125,12 +1143,14 @@ public static int[][] xviii = {{17,19},
                             if (currentSection < 6)
                             {
                             g.setColor(Color.GREEN);
+                            if (currentSection <-1)
+                            {g.setColor(Color.GREEN.darker().darker());}
                             }
-                            if (currentSection == 6)
+                            if (currentSection == 6 || currentSection == 17)
                             {
                             g.setColor(Color.BLACK);
                             }
-                            if (currentSection > 6 && currentSection < 20)
+                            if ((currentSection > 6 && currentSection < 17) || currentSection == -1)
                             {
                             g.setColor(Color.CYAN);
                             }
@@ -1144,7 +1164,7 @@ public static int[][] xviii = {{17,19},
                             {
                             g.setColor(Color.BLACK);
                             }
-                            if (currentSection > 6 && currentSection < 17)
+                            if ((currentSection > 6 && currentSection < 17) || currentSection == -1)
                             {
                             g.setColor(Color.BLUE);
                             }
@@ -1162,7 +1182,7 @@ public static int[][] xviii = {{17,19},
                             {
                             g.setColor(Color.GREEN);
                             }
-                             if (currentSection > 6 && currentSection < 17)
+                             if ((currentSection > 6 && currentSection < 17)||currentSection == -1)
                             {
                             g.setColor(Color.CYAN.darker());
                             }
@@ -1209,7 +1229,7 @@ public static int[][] xviii = {{17,19},
                             {
                             g.setColor(Color.GREEN);
                             }
-                             if (currentSection > 6 && currentSection < 20)
+                             if (currentSection > 6 && currentSection < 17)
                             {
                             g.setColor(Color.CYAN.darker());
                             }
@@ -1282,7 +1302,7 @@ public static int[][] xviii = {{17,19},
                             g.setColor(Color.YELLOW.darker());
                             break;
                         case 10:
-                            //changed block colour
+                            
                             g.setColor(HKIT);
                             break;
                    

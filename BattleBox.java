@@ -70,6 +70,7 @@ public class BattleBox extends JFrame
     //also needed for tag team
     BattleBox b2;
     DialogueB defeatMsg;
+    DialogueB lvlUpMsg;
     Player p2;
     
     //needed to make speed an important stat
@@ -1199,6 +1200,8 @@ public class BattleBox extends JFrame
                     if (turns >= 10)
                     {
                         d.editArea(9);
+                        d.editArea(10);
+                        dispose();
                     }
                     break;
         }
@@ -1352,6 +1355,9 @@ public class BattleBox extends JFrame
             break;
         case 10:
             defeatMsg = new DialogueB(8,"It's... not too late for you to escape",0,items,player,d);
+            break;
+        case 11:
+            defeatMsg = new DialogueB(0,"You just made a big mistake",0,items,player,d);
             break;
     }
     defeatMsg.pack();
