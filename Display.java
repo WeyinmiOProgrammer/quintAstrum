@@ -1154,6 +1154,10 @@ public static int[][] xviii = {{17,19},
                             {
                             g.setColor(Color.CYAN);
                             }
+                            if (currentSection > 17 && currentSection < 25)
+                            {
+                            g.setColor(Color.PINK);
+                            }
                             break;
                         case 1:
                             if (currentSection < 6)
@@ -1167,6 +1171,10 @@ public static int[][] xviii = {{17,19},
                             if ((currentSection > 6 && currentSection < 17) || currentSection == -1)
                             {
                             g.setColor(Color.BLUE);
+                            }
+                            if (currentSection > 17 && currentSection < 25)
+                            {
+                            g.setColor(Color.MAGENTA.darker());
                             }
                             break;
                         case 2:
@@ -1194,6 +1202,10 @@ public static int[][] xviii = {{17,19},
                             {
                                 g.setColor(Color.WHITE);
                             }
+                            if (currentSection > 18 && currentSection < 25)
+                            {
+                            g.setColor(Color.PINK.darker());
+                            }
 
                             break;
                         case 4:
@@ -1217,6 +1229,10 @@ public static int[][] xviii = {{17,19},
                             {
                                 g.setColor(Color.WHITE);
                             }
+                             if (currentSection > 17 && currentSection < 25)
+                            {
+                            g.setColor(Color.PINK.darker());
+                            }
 
                             break;
                         
@@ -1232,6 +1248,10 @@ public static int[][] xviii = {{17,19},
                              if (currentSection > 6 && currentSection < 17)
                             {
                             g.setColor(Color.CYAN.darker());
+                            }
+                            if (currentSection > 17 && currentSection < 25)
+                            {
+                            g.setColor(Color.PINK.darker());
                             }
                             break;
                         case 7:

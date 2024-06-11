@@ -28,7 +28,7 @@ public class InventoryMenu extends JFrame
             "👽Koldec","👽Koldec","👽Koldec","👽?Koldec","👽Koldec","👽Koldec","👽Koldec","👽Koldec","👽Koldec","👽Koldec",
             "👽Uandar","👽Uandar","👽Uandar","👽Uandar","👽Uandar","👽Uandar","👽Uandar","👽Uandar","👽Uandar","👽Uandar",
             "Oriinmi","Oriinmi","Oriinmi","Oriinmi","Oriinmi","Oriinmi","Oriinmi","Oriinmi","Oriinmi","Oriinmi",
-            "👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg",
+            "?🌹Parmesian","🥀?Permas","?🥀Permasi","🌹Permasio","?🌷Permasionne","🌸Permanne","💮Permanen","?💮Permanente","🏵️Impermanente","?⚜️Impare",
             "👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg"
         };
    
