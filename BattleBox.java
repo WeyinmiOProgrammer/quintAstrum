@@ -55,13 +55,19 @@ public class BattleBox extends JFrame
     JTextField enterChoice;
     JButton submit, exit;
     
-    //represents skills numerically - (id of skill, MP cost, type of skill [offensive?, healing? etc.], numerical data)
+    //represents skills numerically - for normal party members (Geruo, Parmesian,Secreco)
+    //(id of skill, MP cost, type of skill [offensive?, healing? etc.], numerical data)
    int[][] skillsList = {{1,5,1,14},{2,2,2,8},{3,8,1,20},{4,0,3,8},{5,5,4,4},{6},{7},{8},{9},{10,8,1,24},
    {11,10,1,40},{12,2,5,0},{13,5,1,40} };
    String[] skillNames = {"","Forceful thrust","Self-care","Ten-tackle","Energy drain","Weaken",
-    "","","","","Lethal chop","Sword song","Parry","Exhaust flame"};
+    "","","","","Lethal chop","Sword song","Parry","Exhaust flame","Talk it out","Demoralise",
+    "Tough love","Encourage"};
     ArrayList <Integer> availableSkills = new ArrayList<Integer>();
-    
+    //for party members with item based skills, there is a different list (Keldoc,Uuander)
+    //(id of skill, required item, item num,type of skill [offensive, healing,buffing etc.], numerical data)
+    int[][] techList = {{1,16,5,6,2},{2,16,1,6,3},{3,13,1,1,10},{4,13,1,7,1}};
+    String[] techNames = {"Big one","Small touch","Inferno","Phoenix's rebirth"};
+    //if you're wondering, Dleg doesn't learn any cool new skills
     //needed for tag team
     int turns = 0; 
    
@@ -233,7 +239,7 @@ public class BattleBox extends JFrame
         skills.setText("TECHNIQUE");
         attack.setVisible(false);
         pla = new ImageIcon(getClass().getResource("Koldec.png"));
-        shield = new ImageIcon(getClass().getResource("ydef.png"));
+        shield = new ImageIcon(getClass().getResource("hide.png"));
         playerDefeat = new ImageIcon(getClass().getResource("oilFire.png"));
         pcon.setIcon(pla);
         hit = new ImageIcon(getClass().getResource("dpunch.png"));;
@@ -241,8 +247,8 @@ public class BattleBox extends JFrame
     if (player.getID() == 6)
     {
         skills.setText("BAD HABITS");
-        pla = new ImageIcon(getClass().getResource("Yic.png"));
-        shield = new ImageIcon(getClass().getResource("ydef.png"));
+        pla = new ImageIcon(getClass().getResource("Dbossshamed.png"));
+        shield = new ImageIcon(getClass().getResource("hide.png"));
         playerDefeat = new ImageIcon(getClass().getResource("yangry.png"));
         pcon.setIcon(pla);
         hit = new ImageIcon(getClass().getResource("gHit.png"));;
@@ -530,6 +536,45 @@ public class BattleBox extends JFrame
                        for (int z = 1; z < leng; z++)
                        {
                            tempString = skillsList[availableSkills.get(z)][0] + ":" + skillNames[(skillsList[availableSkills.get(z)][0])] + " - " + skillsList[availableSkills.get(z)][1] +"MP";
+                           skillsDisplay = skillsDisplay+" <BR> "+tempString;
+                        }
+                       skillsDisplay = skillsDisplay +" </HTML>";
+                   
+                       blank.setText(skillsDisplay);
+                       choosing = 2;
+                       enterChoice.setVisible(true);
+                       submit.setVisible(true);
+                       
+                    }
+                
+                break;
+                case "BAD HABITS":
+                case "TECHNIQUE":
+                   
+                   if (turn == 1 && choosing == 0)
+                   {
+                       //add weapon specific skills
+                       if (items.searchInvFor(7))
+                       {
+                           availableSkills.add(9);
+                        }
+                        if (items.searchInvFor(5))
+                       {
+                           availableSkills.add(10);
+                           availableSkills.add(11);
+                        }
+                        if (items.searchInvFor(12))
+                       {
+                           availableSkills.add(12);
+                        }
+                       blank.setIcon(null);
+                       String skillsDisplay = "<HTML> ";
+                       int leng = availableSkills.size();
+                       leng = leng;
+                       String tempString = "";
+                       for (int z = 0; z < leng; z++)
+                       {
+                           tempString = techList[availableSkills.get(z)][0] + ":" + techNames[(skillsList[availableSkills.get(z)][0])] + " - " + techList[availableSkills.get(z)][0]+" " +items.valToItem(techList[availableSkills.get(z)][1]) ;
                            skillsDisplay = skillsDisplay+" <BR> "+tempString;
                         }
                        skillsDisplay = skillsDisplay +" </HTML>";
@@ -852,6 +897,15 @@ public class BattleBox extends JFrame
                                                 mp.setText((player.getMP())+"/"+(player.getmMP()));
                                                 
                                                 break;
+                                                //weaken
+                                            case 4:
+                                                enemy.setAT(enemy.getAT()-2);
+                                                break;
+                                                //parrying attacks
+                                            case 5:
+                                                playerRepeats = 0;
+                                                enemyRepeats = enemyRepeats - 1;
+                                                enemy.attack(enemy);
                                                 
                                         }
                                         submit.setVisible(false);
