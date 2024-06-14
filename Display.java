@@ -288,6 +288,8 @@ public static int[][] xviii = {{17,19},
     //int inventoryOpen = 0;
     InventoryMenu I = new InventoryMenu();
     
+    //progress monitoring
+    int laserCheck = 0;
      
     //extra color constants
     Color WOOD = new Color(66,41,1);
@@ -627,13 +629,13 @@ public static int[][] xviii = {{17,19},
                 for (int x = 0; x < gx; x++)
                 {
 
-                    if (xvii[y][x] == 8)
+                    if (xvii[y][x] == 8 || xvii[y][x] == 6)
                     {
                         xvii[y][x] = 0;
                         repaint();
                     }
                 }}
-                DialogueB destMsg = new DialogueB(0,"Podiatris has been destroyed",0,I,myChar,this);
+                DialogueB destMsg = new DialogueB(0,"Poditris has been destroyed",0,I,myChar,this);
                 destMsg.pack();
                 destMsg.setVisible(true);
                 destMsg.setLocationRelativeTo(null);
@@ -648,6 +650,7 @@ public static int[][] xviii = {{17,19},
                 destMsg.setLocationRelativeTo(null);
                 
             }
+            laserCheck = 1;
             }
             
             else if (g == 10)
@@ -692,6 +695,11 @@ public static int[][] xviii = {{17,19},
         {
             xvii[0][0] = 16;
         }
+        if (c == 18 && laserCheck == 0)
+        {
+            editArea(9);
+        }
+    
 
        
     }
@@ -1051,10 +1059,20 @@ public static int[][] xviii = {{17,19},
                     }
                     else if (currentSection == 16)
                     {
+                        if (laserCheck == 0)
+                        {
                         DialogueB d = new DialogueB(8,"HALT! This shuttle will NOT be leaving this planet!",4,I,myChar,this);
                         d.setVisible(true);
                         d.pack();
                         d.setLocationRelativeTo(null);
+                    }
+                    else
+                    {
+                        DialogueB d = new DialogueB(8,"<HTML>You found another takeoff zone?<BR>And destroyed the laser?<BR>HOW?</HTML>",0,I,myChar,this);
+                        d.setVisible(true);
+                        d.pack();
+                        d.setLocationRelativeTo(null);
+                    }
                     }
                     else if (currentSection == 13)
                     {
