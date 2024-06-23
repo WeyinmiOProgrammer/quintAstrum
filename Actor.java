@@ -87,7 +87,26 @@ public class Actor
         
         maxHP += d;
         maxMP += d;
-        
+        if (HP < 1)
+        {
+            HP = 1;
+        }
+        if (MP < 1)
+        {
+            MP = 1;
+        }
+        if (SPD < 1)
+        {
+            SPD = 1;
+        }
+        if (maxHP < 1)
+        {
+            maxHP = 1;
+        }
+        if (maxHP < 1)
+        {
+            maxHP = 1;
+        }
     }
     public void attack(Actor a)
     {

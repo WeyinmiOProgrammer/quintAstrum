@@ -248,7 +248,7 @@ public class BattleBox extends JFrame
         hit = new ImageIcon(getClass().getResource("dpunch.png"));
          if (lv >= 2)
         {
-            availableSkills.add(22);
+            availableSkills.add(21);
             
         }
     }
@@ -522,7 +522,7 @@ public class BattleBox extends JFrame
                 //handles skill attacks - uses MP
                 case "SKILLS":
                 case "TECHNIQUE":   
-                   if (turn == 1 && choosing == 0)
+                   if (turn == 1 && choosing == 0 && availableSkills.size() != 0)
                    {
                        //add weapon specific skills
                        if (items.searchInvFor(7))
@@ -568,25 +568,14 @@ public class BattleBox extends JFrame
                     }
                 
                 break;
+                case "TRICKS":
                 case "BAD HABITS":
                 
                    
-                   if (turn == 1 && choosing == 0)
+                   if (turn == 1 && choosing == 0 && availableSkills.size() != 0)
                    {
-                       //add weapon specific skills
-                       if (items.searchInvFor(7))
-                       {
-                           availableSkills.add(9);
-                        }
-                        if (items.searchInvFor(5))
-                       {
-                           availableSkills.add(10);
-                           availableSkills.add(11);
-                        }
-                        if (items.searchInvFor(12))
-                       {
-                           availableSkills.add(12);
-                        }
+                       
+                       
                        blank.setIcon(null);
                        String skillsDisplay = "<HTML> ";
                        int leng = availableSkills.size();
@@ -594,13 +583,13 @@ public class BattleBox extends JFrame
                        String tempString = "";
                        for (int z = 0; z < leng; z++)
                        {
-                           tempString = techList[availableSkills.get(z)][0] + ":" + techNames[(skillsList[availableSkills.get(z)][0])] + " - " + techList[availableSkills.get(z)][0]+" " +items.valToItem(techList[availableSkills.get(z)][1]) ;
+                           tempString = techList[availableSkills.get(z)][0] + ":" + techNames[(techList[availableSkills.get(z)][0])] + " - " + techList[availableSkills.get(z)][2]+" " +items.valToItem(techList[availableSkills.get(z)][1]) ;
                            skillsDisplay = skillsDisplay+" <BR> "+tempString;
                         }
                        skillsDisplay = skillsDisplay +" </HTML>";
                    
                        blank.setText(skillsDisplay);
-                       choosing = 2;
+                       choosing = 3;
                        enterChoice.setVisible(true);
                        submit.setVisible(true);
                        
@@ -838,12 +827,12 @@ public class BattleBox extends JFrame
                     }
                     else if (choosing == 2)
                     {
-                       String skillzDisplay = "<HTML> "+skillsList[0][0] + ":" + skillNames[1] + " - " + skillsList[0][1] +"MP";
+                       String skillzDisplay = "<HTML> ";
                        //System.out.println(skillzDisplay);
                        int leng = availableSkills.size();
                        leng = leng;
                        String tempZtring = "";
-                       for (int z = 1; z < leng; z++)
+                       for (int z = 0; z < leng; z++)
                        {
                            tempZtring = skillsList[availableSkills.get(z)][0] + ":" + skillNames[(skillsList[availableSkills.get(z)][0])] + " - " + skillsList[availableSkills.get(z)][1] +"MP";
                            
@@ -862,7 +851,8 @@ public class BattleBox extends JFrame
                                 blank.setText(null);
                                 for (int u = 0; u < availableSkills.size(); u++)
                                 {
-                                    if(availableSkills.get(u)>=9)
+                                    if((availableSkills.get(u)>=9 && availableSkills.get(u)< 13)||(availableSkills.get(u)>=18 && availableSkills.get(u)< 21))
+                                  
                                     {
                                         availableSkills.remove(u);
                                     }
@@ -904,7 +894,7 @@ public class BattleBox extends JFrame
                                                 player.heal(skillsList[availableSkills.get(i)][3]);
                                                 hp.setText((player.getHP())+"/"+(player.getmHP()));
                                                 break;
-                                                //restore
+                                                //drain
                                             case 3:
                                                 for (int q =0; q < (skillsList[availableSkills.get(i)][3]); q++)
                                                 {
@@ -917,15 +907,54 @@ public class BattleBox extends JFrame
                                                 mp.setText((player.getMP())+"/"+(player.getmMP()));
                                                 
                                                 break;
-                                                //weaken
+                                                //weaken aspect
                                             case 4:
+                                                if (skillsList[availableSkills.get(i)][3] == 4)
+                                                {
                                                 enemy.setAT(enemy.getAT()-2);
+                                                if (enemy.getAT() < 1)
+                                                {
+                                                    enemy.setAT(1);
+                                                }
+                                            }
+                                            if (skillsList[availableSkills.get(i)][3] == 3)
+                                                {
+                                                enemy.setDF(enemy.getDF()-2);
+                                                if (enemy.getDF() < 1)
+                                                {
+                                                    enemy.setDF(1);
+                                                }
+                                            }
+                                            
+                                            if (skillsList[availableSkills.get(i)][3] == 2)
+                                                {
+                                                enemy.setMP(enemy.getMP()-2);
+                                                if (enemy.getMP() < 1)
+                                                {
+                                                    enemy.setMP(1);
+                                                }
+                                            }
+                                            if (skillsList[availableSkills.get(i)][3] == 1)
+                                                {
+                                                enemy.setSD(enemy.getSD()-2);
+                                                if (enemy.getSD() < 1)
+                                                {
+                                                    enemy.setSD(1);
+                                                }
+                                            }
+                                            
                                                 break;
                                                 //parrying attacks
                                             case 5:
                                                 playerRepeats = 0;
                                                 enemyRepeats = enemyRepeats - 1;
                                                 enemy.attack(enemy);
+                                                break;
+                                            //random damage/gamble
+                                            case 6:
+                                                enemy.setHP(enemy.getHP()- rd.nextInt(skillsList[availableSkills.get(i)][3]));
+                                                player.setHP(player.getHP()-((rd.nextInt(skillsList[availableSkills.get(i)][3]))/2));
+                                                break;
                                                 
                                         }
                                         submit.setVisible(false);
@@ -937,11 +966,168 @@ public class BattleBox extends JFrame
                                         //to remove weapon specific skills
                                         for (int u = 0; u < availableSkills.size(); u++)
                                 {
-                                    if(availableSkills.get(u)>=9)
+                                    if((availableSkills.get(u)>=9 && availableSkills.get(u)< 13)||(availableSkills.get(u)>=18 && availableSkills.get(u)< 21))
                                     {
                                         availableSkills.remove(u);
                                     }
                                 }
+                                    }else
+                                    {
+                                         String infoText = blank.getText();
+                                        blank.setText("<HTML>not enough MP for that move - select something else<BR>"+skillzDisplay + "</HTML>");
+                                        
+                                    }
+                                    }
+                                    
+                                }
+                                
+                                if (skillFound == false)
+                                {
+                                    String infoText = blank.getText();
+                                    blank.setText("<HTML>it appears the skill you selected isn't in the list<BR>"+skillzDisplay + "</HTML>");
+                                }
+                            }
+                        }
+                        catch(Exception ex)
+                        {
+                            String infoText = blank.getText();
+                            blank.setText("<HTML>Enter a number<BR>"+skillzDisplay + "</HTML>");
+                        }
+                    }
+                    else if (choosing == 3)
+                    {
+                       String skillzDisplay = "<HTML> ";
+                       //System.out.println(skillzDisplay);
+                       int leng = availableSkills.size();
+                       leng = leng;
+                       String tempZtring = "";
+                       for (int z = 0; z < leng; z++)
+                       {
+                           tempZtring = techList[availableSkills.get(z)][0] + ":" + techNames[(techList[availableSkills.get(z)][0])] + " - " + techList[availableSkills.get(z)][2]+" " +items.valToItem(techList[availableSkills.get(z)][1]) ;
+                           skillzDisplay = skillzDisplay+" <BR> "+tempZtring;
+                           //System.out.println(skillzDisplay);
+                        }
+                        skillzDisplay = skillzDisplay +" </HTML>";
+                        try{
+                        int skillNo = (Integer.parseInt(enterChoice.getText()));
+                       
+                        if (skillNo == -1)
+                            {
+                                choosing = 0;
+                                submit.setVisible(false);
+                                enterChoice.setVisible(false);
+                                blank.setText(null);
+                                
+                            }
+                            else if(skillNo < 1)
+                            {
+                                
+                                    blank.setText("<HTML>you entered a number out of range<BR>"+skillzDisplay + "</HTML>");
+                            }
+                            else
+                            {
+                                //checks if the skill is one in the list
+                                boolean skillFound = false;
+                                for (int i = 0; i < availableSkills.size(); i++)
+                                {
+                                    //System.out.println(availableSkills.get(i));
+                                    //System.out.println(skillsList[availableSkills.get(i)][0]);
+                                    if (techList[availableSkills.get(i)][0] == skillNo && skillFound == false)
+                                    {
+                                        skillFound = true;
+                                        //checks if player has enough MP
+                                        if (items.howMuch(techList[availableSkills.get(i)][1]) >= techList[availableSkills.get(i)][2])
+                                        {
+                                           for (int k = 0; k < techList[availableSkills.get(i)][2];k++)
+                                           {
+                                               items.removeFromInv(techList[availableSkills.get(i)][1]);
+                                            }
+                                        switch(techList[availableSkills.get(i)][3])
+                                        {
+                                            //aggressive skills
+                                            case 1:
+                                                int temp = enemy.getHP();
+                                                temp = temp - skillsList[availableSkills.get(i)][4];
+                                                enemy.setHP(temp);
+                                                ehp.setText((enemy.getHP())+"/" + (enemy.getmHP()));
+                                                break;
+                                            
+                                                //healing skills
+                                            case 2:
+                                                player.heal(skillsList[availableSkills.get(i)][4]);
+                                                hp.setText((player.getHP())+"/"+(player.getmHP()));
+                                                break;
+                                                //drain
+                                            case 3:
+                                                for (int q =0; q < (skillsList[availableSkills.get(i)][4]); q++)
+                                                {
+                                                    if (enemy.getMP() > 0)
+                                                    {
+                                                        enemy.recover(-1);
+                                                        player.recover(1);
+                                                    }
+                                                }
+                                                mp.setText((player.getMP())+"/"+(player.getmMP()));
+                                                
+                                                break;
+                                                //weaken aspect
+                                            case 4:
+                                                if (skillsList[availableSkills.get(i)][4] == 4)
+                                                {
+                                                enemy.setAT(enemy.getAT()-2);
+                                                if (enemy.getAT() < 1)
+                                                {
+                                                    enemy.setAT(1);
+                                                }
+                                            }
+                                            if (skillsList[availableSkills.get(i)][4] == 3)
+                                                {
+                                                enemy.setDF(enemy.getDF()-2);
+                                                if (enemy.getDF() < 1)
+                                                {
+                                                    enemy.setDF(1);
+                                                }
+                                            }
+                                            
+                                            if (skillsList[availableSkills.get(i)][4] == 2)
+                                                {
+                                                enemy.setMP(enemy.getMP()-2);
+                                                if (enemy.getMP() < 1)
+                                                {
+                                                    enemy.setMP(1);
+                                                }
+                                            }
+                                            if (skillsList[availableSkills.get(i)][4] == 1)
+                                                {
+                                                enemy.setSD(enemy.getSD()-2);
+                                                if (enemy.getSD() < 1)
+                                                {
+                                                    enemy.setSD(1);
+                                                }
+                                            }
+                                            
+                                                break;
+                                                //parrying attacks
+                                            case 5:
+                                                playerRepeats = 0;
+                                                enemyRepeats = enemyRepeats - 1;
+                                                enemy.attack(enemy);
+                                                break;
+                                            //random damage/gamble
+                                            case 6:
+                                                enemy.setHP(enemy.getHP()- rd.nextInt(skillsList[availableSkills.get(i)][4]));
+                                                player.setHP(player.getHP()-((rd.nextInt(skillsList[availableSkills.get(i)][4]))/2));
+                                                break;
+                                                
+                                        }
+                                        submit.setVisible(false);
+                                        enterChoice.setVisible(false);
+                                        blank.setText(null);
+                                        choosing = 0;
+                                        turn = 2;
+                                        enemyTurn();
+                                        
+                                        
                                     }else
                                     {
                                          String infoText = blank.getText();

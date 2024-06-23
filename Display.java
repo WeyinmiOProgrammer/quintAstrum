@@ -336,7 +336,7 @@ public static int[][] xviii = {{17,19},
                                       "Expect the unexpected"+
                                       "</HTML>",0,I,myChar,this); 
        w.pack();
-       w.setLocationRelativeTo(null);
+       w.setLocationRelativeTo(this);
        w.setVisible(true);
     }
     public void revivePlayer()

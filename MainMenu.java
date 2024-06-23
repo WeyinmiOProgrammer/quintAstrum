@@ -98,6 +98,11 @@ public class MainMenu extends JFrame
             }
             else if (optionCheck.equals("Difficulty: Impossible"))
             {
+                difficulty = -3;
+                setDifficulty.setText("Difficulty: Chill");
+            }
+            else if (optionCheck.equals("Difficulty: Chill"))
+            {
                 difficulty = 0;
                 setDifficulty.setText("Difficulty: Easy");
             }
