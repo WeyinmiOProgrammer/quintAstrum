@@ -1,0 +1,6 @@
+//battle system code
+For skillsList()
+//(id of skill, MP cost, type of skill [offensive?, healing? etc.], numerical data)
+
+For techList()
+//(id of skill, required item, item num,type of skill [offensive, healing,buffing etc.], numerical data)
