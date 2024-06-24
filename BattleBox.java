@@ -1045,7 +1045,7 @@ public class BattleBox extends JFrame
                                     if (techList[availableSkills.get(i)][0] == skillNo && skillFound == false)
                                     {
                                         skillFound = true;
-                                        //checks if player has enough MP
+                                        //checks if player has enough items
                                         if (items.howMuch(techList[availableSkills.get(i)][1]) >= techList[availableSkills.get(i)][2])
                                         {
                                            for (int k = 0; k < techList[availableSkills.get(i)][2];k++)
@@ -1057,19 +1057,19 @@ public class BattleBox extends JFrame
                                             //aggressive skills
                                             case 1:
                                                 int temp = enemy.getHP();
-                                                temp = temp - skillsList[availableSkills.get(i)][4];
+                                                temp = temp - techList[availableSkills.get(i)][4];
                                                 enemy.setHP(temp);
                                                 ehp.setText((enemy.getHP())+"/" + (enemy.getmHP()));
                                                 break;
                                             
                                                 //healing skills
                                             case 2:
-                                                player.heal(skillsList[availableSkills.get(i)][4]);
+                                                player.heal(techList[availableSkills.get(i)][4]);
                                                 hp.setText((player.getHP())+"/"+(player.getmHP()));
                                                 break;
                                                 //drain
                                             case 3:
-                                                for (int q =0; q < (skillsList[availableSkills.get(i)][4]); q++)
+                                                for (int q =0; q < (techList[availableSkills.get(i)][4]); q++)
                                                 {
                                                     if (enemy.getMP() > 0)
                                                     {
@@ -1082,7 +1082,7 @@ public class BattleBox extends JFrame
                                                 break;
                                                 //weaken aspect
                                             case 4:
-                                                if (skillsList[availableSkills.get(i)][4] == 4)
+                                                if (techList[availableSkills.get(i)][4] == 4)
                                                 {
                                                 enemy.setAT(enemy.getAT()-2);
                                                 if (enemy.getAT() < 1)
@@ -1090,7 +1090,7 @@ public class BattleBox extends JFrame
                                                     enemy.setAT(1);
                                                 }
                                             }
-                                            if (skillsList[availableSkills.get(i)][4] == 3)
+                                            if (techList[availableSkills.get(i)][4] == 3)
                                                 {
                                                 enemy.setDF(enemy.getDF()-2);
                                                 if (enemy.getDF() < 1)
@@ -1099,7 +1099,7 @@ public class BattleBox extends JFrame
                                                 }
                                             }
                                             
-                                            if (skillsList[availableSkills.get(i)][4] == 2)
+                                            if (techList[availableSkills.get(i)][4] == 2)
                                                 {
                                                 enemy.setMP(enemy.getMP()-2);
                                                 if (enemy.getMP() < 1)
@@ -1107,7 +1107,7 @@ public class BattleBox extends JFrame
                                                     enemy.setMP(1);
                                                 }
                                             }
-                                            if (skillsList[availableSkills.get(i)][4] == 1)
+                                            if (techList[availableSkills.get(i)][4] == 1)
                                                 {
                                                 enemy.setSD(enemy.getSD()-2);
                                                 if (enemy.getSD() < 1)
@@ -1125,8 +1125,8 @@ public class BattleBox extends JFrame
                                                 break;
                                             //random damage/gamble
                                             case 6:
-                                                enemy.setHP(enemy.getHP()- rd.nextInt(skillsList[availableSkills.get(i)][4]));
-                                                player.setHP(player.getHP()-((rd.nextInt(skillsList[availableSkills.get(i)][4]))/2));
+                                                enemy.setHP(enemy.getHP()- rd.nextInt(techList[availableSkills.get(i)][4]));
+                                                player.setHP(player.getHP()-((rd.nextInt(techList[availableSkills.get(i)][4]))/2));
                                                 break;
                                                 
                                         }
@@ -1141,7 +1141,7 @@ public class BattleBox extends JFrame
                                     }else
                                     {
                                          String infoText = blank.getText();
-                                        blank.setText("<HTML>not enough MP for that move - select something else<BR>"+skillzDisplay + "</HTML>");
+                                        blank.setText("<HTML>not enough"+  items.valToItem(techList[availableSkills.get(i)][1]) +"for that move - select something else<BR>"+skillzDisplay + "</HTML>");
                                         
                                     }
                                     }
