@@ -68,8 +68,8 @@ public class BattleBox extends JFrame
     ArrayList <Integer> availableSkills = new ArrayList<Integer>();
     //for party members with item based skills, there is a different list (Secreco,Uuander)
     //(id of skill, required item, item num,type of skill [offensive, healing,buffing etc.], numerical data)
-    int[][] techList = {{1,16,5,6,2},{2,16,1,6,3},{3,13,1,1,10},{4,13,2,7,1}};
-    String[] techNames = {"","Big one","Small touch","Inferno","Phoenix's rebirth"};
+    int[][] techList = {{1,16,5,9,1},{2,16,1,9,2},{3,13,1,6,10},{4,13,2,7,1}};
+    String[] techNames = {"","Big bakeout","Light reconnaisance ","Inferno","Phoenix's rebirth"};
     //if you're wondering, Dleg doesn't learn any cool new skills
     //needed for tag team
     int turns = 0; 
@@ -255,6 +255,7 @@ public class BattleBox extends JFrame
     if (player.getID() == 6)
     {
         skills.setText("BAD HABITS");
+        attack.setText("HIT - 2MP");
         pla = new ImageIcon(getClass().getResource("Dbossshamed.png"));
         shield = new ImageIcon(getClass().getResource("hide.png"));
         
@@ -508,6 +509,32 @@ public class BattleBox extends JFrame
                 }
                   break;
                 
+                case "HIT - 2MP":
+                     if (turn == 1 && choosing == 0 && player.getMP() > 1)
+                  {
+                      
+                  player.attack(enemy);
+                  player.setMP(player.getMP()-2);
+                  ehp.setText((enemy.getHP())+"/" + (enemy.getmHP()));
+                  mp.setText((player.getMP())+"/"+(player.getmMP()));
+                 
+                try{
+                   blank.setIcon(hit);
+                  Thread.sleep(500);
+                  
+                  
+                }
+                catch(Exception e)
+                {
+                    System.out.println("error");
+                    
+                }
+                //switches to enemy turn
+                turn = 2;
+                enemyTurn();
+                
+                }
+                    break;
                 //handles charging attacks
                 case "REV UP":
                     if (turn == 1 && choosing == 0)
@@ -754,16 +781,19 @@ public class BattleBox extends JFrame
                                         break;
                                     //Geruo
                                     case 40:
-                                        p2 = new Player(50,10,7,2,2,50,10,1,0,4,4);
-                                        break;
+                                        //p2 = new Player(50,10,7,2,2,50,10,1,0,4,4);
+                                        //break;
                                     case 41:
-                                        p2 = new Player(51,11,8,3,3,51,11,2,0,16,4);
-                                        break;
+                                        //p2 = new Player(51,11,8,3,3,51,11,2,0,16,4);
+                                        //break;
                                     case 42:
-                                        p2 = new Player(53,13,10,5,5,53,13,3,0,256,4); 
-                                        break;
+                                        //p2 = new Player(53,13,10,5,5,53,13,3,0,256,4); 
+                                        //break;
                                     case 43:
-                                        p2 = new Player(56,16,13,8,8,56,13,4,0,65536,4);
+                                        //p2 = new Player(56,16,13,8,8,56,13,4,0,65536,4);
+                                        p2 = d.currentGeruo();
+                                        p2.setHP(p2.getmHP());
+                                        p2.setMP(p2.getmMP());
                                         break;
                                     //Keldoc
                                     case 50:
@@ -959,12 +989,28 @@ public class BattleBox extends JFrame
                                                 playerRepeats = 0;
                                                 enemyRepeats = enemyRepeats - 1;
                                                 enemy.attack(enemy);
+                                                ehp.setText((enemy.getHP())+"/" + (enemy.getmHP()));
+   
                                                 break;
                                             //random damage/gamble
                                             case 6:
                                                 enemy.setHP(enemy.getHP()- rd.nextInt(skillsList[availableSkills.get(i)][3]));
                                                 player.setHP(player.getHP()-((rd.nextInt(skillsList[availableSkills.get(i)][3]))/2));
+                                                ehp.setText((enemy.getHP())+"/" + (enemy.getmHP()));
+   
                                                 break;
+                                            //cloning/phoenixing
+                                            case 7:
+                                                items.addToInv((player.getID()*10)+(player.getLv()-1));
+                                                break;
+                                                
+                                            //taunting - angers the enemy (extra attack dmg)
+                                            //gives player a speed boost
+                                            case 8:
+                                                enemy.setAT(enemy.getAT()+2);
+                                                player.setSD(player.getSD()+1);
+                                                break;
+                                                
                                                 
                                         }
                                         submit.setVisible(false);
@@ -1122,11 +1168,44 @@ public class BattleBox extends JFrame
                                                 playerRepeats = 0;
                                                 enemyRepeats = enemyRepeats - 1;
                                                 enemy.attack(enemy);
+                                                ehp.setText((enemy.getHP())+"/" + (enemy.getmHP()));
+   
                                                 break;
                                             //random damage/gamble
                                             case 6:
                                                 enemy.setHP(enemy.getHP()- rd.nextInt(techList[availableSkills.get(i)][4]));
                                                 player.setHP(player.getHP()-((rd.nextInt(techList[availableSkills.get(i)][4]))/2));
+                                                ehp.setText((enemy.getHP())+"/" + (enemy.getmHP()));
+   
+                                                break;
+                                            //cloning/phoenixing
+                                            case 7:
+                                                items.addToInv((player.getID()*10)+(player.getLv()-1));
+                                                break;
+                                                
+                                            //taunting - angers the enemy (extra attack dmg)
+                                            //gives player a speed boost
+                                            case 8:
+                                                enemy.setAT(enemy.getAT()+2);
+                                                player.setSD(player.getSD()+1);
+                                                break;
+                                                
+                                            //Uandar specific skills
+                                            case 9:
+                                                if (techList[availableSkills.get(i)][4] == 3)
+                                                {
+                                                   enemy.recover(rd.nextInt(5));
+                                            }
+                                            
+                                            if (techList[availableSkills.get(i)][4] == 2){
+                                                player.recover(player.getmMP());
+                                                
+                        
+                                                player.setAT(player.getAT()-1);
+                                                player.heal(-2);
+                                                //cause drugs are bad
+                                                 player.recover(-4);
+                                            }
                                                 break;
                                                 
                                         }

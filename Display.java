@@ -349,6 +349,10 @@ public static int[][] xviii = {{17,19},
         super.addNotify();
         requestFocus();
     }
+    public Player currentGeruo()
+    {
+        return myChar;
+    }
     
     public int[][] findMap(int curr)
     {

@@ -4,3 +4,6 @@ For skillsList()
 
 For techList()
 //(id of skill, required item, item num,type of skill [offensive, healing,buffing etc.], numerical data)
+7 - clone 
+8 - taunt
+9 - uandar specific
