@@ -1192,19 +1192,19 @@ public class BattleBox extends JFrame
                                                 
                                             //Uandar specific skills
                                             case 9:
-                                                if (techList[availableSkills.get(i)][4] == 3)
+                                                if (techList[availableSkills.get(i)][4] == 2)
                                                 {
-                                                   enemy.recover(rd.nextInt(5));
+                                                   player.recover(rd.nextInt(5));
                                             }
                                             
-                                            if (techList[availableSkills.get(i)][4] == 2){
+                                            if (techList[availableSkills.get(i)][4] == 1){
                                                 player.recover(player.getmMP());
                                                 
                         
                                                 player.setAT(player.getAT()-1);
                                                 player.heal(-2);
                                                 //cause drugs are bad
-                                                 player.recover(-4);
+                                                 enemy.recover(-4);
                                             }
                                                 break;
                                                 
@@ -1274,6 +1274,8 @@ public class BattleBox extends JFrame
     public void enemyTurn()
     {
         playerRepeats--;
+        ehp.setText((enemy.getHP())+"/" + (enemy.getmHP()));
+        mp.setText((player.getMP())+"/"+(player.getmMP()));
         if (playerRepeats > 0)
         {
             
@@ -1591,7 +1593,7 @@ public class BattleBox extends JFrame
                 count++;
             }
             }
-            if (checkForFriends)
+            if (checkForFriends && count != 60 && count != 61)
             {
                 items.removeFromInv(count);
                 switch(count)
@@ -1640,8 +1642,10 @@ public class BattleBox extends JFrame
                                     case 52:
                                         p2 = new Player(50,0,7,4,10,50,0,3,0,32,5);
                                         break;   
-                                    //Uandar will not help you if the rest of your team dies
-                                    
+                                    // Low lvl Uandar will not help you if the rest of your team dies
+                                    case 62:
+                                        p2 = new Player(100,12,14,4,4,100,12,3,0,128,6);
+                                        break;
                 }
                 //needs to be at the end of this set
                                         b2 = new BattleBox(p2, enemy, items, d);
@@ -1666,6 +1670,13 @@ public class BattleBox extends JFrame
         hp.setText(null);
         ehp.setText(null);
         mp.setText(null);
+        if (count == 60 || count == 61)
+        {
+            defeatMsg = new DialogueB(8,"You aren't worth saving. Neither was I.",0,items, player,d);
+            defeatMsg.pack();
+            defeatMsg.setLocationRelativeTo(null);
+            defeatMsg.setVisible(true);
+        }
     }
        }
     }
