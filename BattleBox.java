@@ -781,16 +781,16 @@ public class BattleBox extends JFrame
                                         break;
                                     //Geruo
                                     case 40:
-                                        //p2 = new Player(50,10,7,2,2,50,10,1,0,4,4);
-                                        //break;
+                                        
                                     case 41:
-                                        //p2 = new Player(51,11,8,3,3,51,11,2,0,16,4);
-                                        //break;
-                                    case 42:
-                                        //p2 = new Player(53,13,10,5,5,53,13,3,0,256,4); 
-                                        //break;
+                                    case 42:   
                                     case 43:
-                                        //p2 = new Player(56,16,13,8,8,56,13,4,0,65536,4);
+                                    case 44:
+                                    case 45:
+                                    case 46:
+                                    case 47:
+                                    case 48:
+                                    case 49:
                                         p2 = d.currentGeruo();
                                         p2.setHP(p2.getmHP());
                                         p2.setMP(p2.getmMP());
@@ -1621,16 +1621,19 @@ public class BattleBox extends JFrame
                                         break;
                                     //Geruo
                                     case 40:
-                                        p2 = new Player(50,10,7,2,2,50,10,1,0,4,4);
-                                        break;
+                                        
                                     case 41:
-                                        p2 = new Player(51,11,8,3,3,51,11,2,0,16,4);
-                                        break;
-                                    case 42:
-                                        p2 = new Player(53,13,10,5,5,53,13,3,0,256,4); 
-                                        break;
+                                    case 42:   
                                     case 43:
-                                        p2 = new Player(56,16,13,8,8,56,13,4,0,65536,4);
+                                    case 44:
+                                    case 45:
+                                    case 46:
+                                    case 47:
+                                    case 48:
+                                    case 49:
+                                        p2 = d.currentGeruo();
+                                        p2.setHP(p2.getmHP());
+                                        p2.setMP(p2.getmMP());
                                         break;
                                     //Keldoc
                                     case 50:
