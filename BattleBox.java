@@ -254,7 +254,7 @@ public class BattleBox extends JFrame
     }
     if (player.getID() == 6)
     {
-        skills.setText("BAD HABITS");
+        skills.setText("ARTS");
         attack.setText("HIT - 2MP");
         pla = new ImageIcon(getClass().getResource("Dbossshamed.png"));
         shield = new ImageIcon(getClass().getResource("hide.png"));
@@ -596,7 +596,7 @@ public class BattleBox extends JFrame
                 
                 break;
                 case "TRICKS":
-                case "BAD HABITS":
+                case "ARTS":
                 
                    
                    if (turn == 1 && choosing == 0 && availableSkills.size() != 0)

@@ -601,6 +601,8 @@ public static int[][] xviii = {{17,19},
                     if (xvi[y][x] == 6)
                     {
                         xvi[y][x] = 7;
+                        charX = x;
+                        charY = y;
                         repaint();
                     }
                 }
