@@ -23,6 +23,7 @@ public class mainGame extends JFrame
        JPanel d  = new Display(dif);  
      
       add(d);
+      
      
      
 
