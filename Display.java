@@ -935,6 +935,24 @@ public static int[][] xviii = {{17,19},
                              b.setLocationRelativeTo(null);
                              stepsLeft = R.nextInt(15)+30;
                             }
+                            if (currentSection == -3)
+                            {
+                                Enemy e1;
+                                if (R.nextInt(3) == 1)
+                                {
+                             e1 = new Enemy(40,0,8,2,8,40,0, 13);
+                            }
+                            else
+                            {
+                                e1 = new Enemy(87,10,15,3,5,87,10, 12);
+                            }
+                             e1.diffSpike(Dif);
+                             BattleBox b = new BattleBox(myChar, e1, I, this);
+                             b.setVisible(true);
+                             b.setSize(900,720);
+                             b.setLocationRelativeTo(null);
+                             stepsLeft = R.nextInt(15)+30;
+                            }
                             
                         }
                         
@@ -1118,6 +1136,15 @@ public static int[][] xviii = {{17,19},
                     else if (currentSection == 17)
                     {
                         bossEnemy ed = new bossEnemy(100,0,8,2,4,100,0, 11,myChar,I,this);
+                        ed.diffSpike(Dif);
+                        BattleBox b = new BattleBox(myChar, ed, I, this);
+                        b.setVisible(true);
+                        b.setSize(900,720);
+                        b.setLocationRelativeTo(null);
+                    }
+                    else if (currentSection == -4)
+                    {
+                        bossEnemy ed = new bossEnemy(1000,0,30,4,4,1000,4, 14,myChar,I,this);
                         ed.diffSpike(Dif);
                         BattleBox b = new BattleBox(myChar, ed, I, this);
                         b.setVisible(true);

@@ -16,7 +16,7 @@ public class BattleBox extends JFrame
     Player player;
     Enemy enemy;
     InventoryMenu items;
-    JButton attack, skills, useItems, defend;
+    JButton attack, skills, useItems, defend, flee;
     //labels for player HP and MP, enemy HP, Player and enemy icons, 2 blank labels used to visually display
     JLabel hp, mp, ehp, pcon, econ, blank, blank2;
     ImageIcon pla, ene;
@@ -198,7 +198,11 @@ public class BattleBox extends JFrame
         
         add(exit, c);
         
-        
+        flee = new JButton("FLEE");
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 3;
+        c.gridy = 4;
+        add(flee, c);
         
         event e2 = new event();
         attack.addActionListener(e2);
@@ -207,6 +211,7 @@ public class BattleBox extends JFrame
         defend.addActionListener(e2);
         submit.addActionListener(e2);
         exit.addActionListener(e2);
+        flee.addActionListener(e2);
         
         enemyIconSetup();
         skillSetup1(player.getLv());
@@ -319,6 +324,26 @@ public class BattleBox extends JFrame
                 break;
             case 11:
                 ene = new ImageIcon(getClass().getResource("deathLaser.png"));
+                econ.setIcon(ene);
+                break;
+            case 12:
+                ene = new ImageIcon(getClass().getResource("surv2.png"));
+                anger = new ImageIcon(getClass().getResource("survivor.png"));
+                ypunch = new ImageIcon(getClass().getResource("strongerfire.png"));
+                enemyDefeat1 = new ImageIcon(getClass().getResource("notsurv.png"));
+                econ.setIcon(ene);
+                break;
+            case 13:
+                ene = new ImageIcon(getClass().getResource("casu.png"));
+                
+                ypunch = new ImageIcon(getClass().getResource("hit.png"));
+                enemyDefeat1 = new ImageIcon(getClass().getResource("casu2.png"));
+                econ.setIcon(ene);
+                break;
+            case 14:
+                ene = new ImageIcon(getClass().getResource("madfrog.png"));
+                ypunch = new ImageIcon(getClass().getResource("hellfire.png"));
+                enemyDefeat1 = new ImageIcon(getClass().getResource("madfrog2.png"));
                 econ.setIcon(ene);
                 break;
         }
@@ -546,6 +571,52 @@ public class BattleBox extends JFrame
                     enemyTurn();
                 }
                     break;
+                    
+                case "FLEE":
+                    if (turn == 1 && choosing == 0)
+                    {
+                        if ((player.getSD()/enemy.getSD()) > 2)
+                        {
+                            if (enemy.getID() == 11)
+                            {
+                                d.editArea(9);
+                                d.editArea(10);
+                           }
+                            dispose();
+                            
+                        }
+                        else if (enemy.getHP()< enemy.getmHP()/4)
+                        {
+                            if (enemy.getID() == 11)
+                            {
+                                d.editArea(9);
+                                d.editArea(10);
+                           }
+                            dispose();
+                        }
+                        else
+                        {
+                            if (rd.nextInt(4)==2)
+                            {
+                                if (enemy.getID() == 11)
+                            {
+                                d.editArea(9);
+                                d.editArea(10);
+                           }
+                                dispose();
+                            }
+                            else
+                            {
+                                turn = 2;
+                                enemyTurn();
+                                DialogueB fail = new DialogueB(0,"Failed to flee",0,items,player,d);
+                                fail.pack();
+                                fail.setLocationRelativeTo(null);
+                                fail.setVisible(true);
+                            }
+                        }
+                    }
+                    break;
                 //handles skill attacks - uses MP
                 case "SKILLS":
                 case "TECHNIQUE":   
@@ -692,7 +763,7 @@ public class BattleBox extends JFrame
                                 //to prevent really stupid glitches
                                 //this did not prevent those stupid glitches - keep looking
                                 playerRepeats = 0;
-                                System.out.println("Test 1 - item correct");
+                                //System.out.println("Test 1 - item correct");
                                 //System.out.println("item id:"+itemToUse);
                                 if (player.getID() == 5)
                                 {
@@ -824,8 +895,8 @@ public class BattleBox extends JFrame
                                 if (itemToUse > 29)
                                 {
                                     //stores player details, so that they can be rebooted as required
-                                    System.out.println(itemToUse);
-                                    System.out.println("Test 2 - tagged in");
+                                    //System.out.println(itemToUse);
+                                    //System.out.println("Test 2 - tagged in");
                                     b2 = new BattleBox(p2, enemy, items, d);
                                     b2.setVisible(true);
                                     b2.setSize(900,720);
@@ -1547,6 +1618,7 @@ public class BattleBox extends JFrame
                     }
                     break;
                 case 11:
+                    enemy.setSD(player.getSD());
                     enemy.nextTurn();
                     if (turns >= 10)
                     {
@@ -1587,13 +1659,16 @@ public class BattleBox extends JFrame
             while (!checkForFriends && count < 99)
             {
                 checkForFriends = items.searchInvFor(count);
-                
+                if (count == 60 || count == 61)
+                {
+                    checkForFriends = false;
+                }
                 if (!checkForFriends)
                 {
                 count++;
             }
             }
-            if (checkForFriends && count != 60 && count != 61)
+            if (checkForFriends )
             {
                 items.removeFromInv(count);
                 switch(count)
@@ -1670,10 +1745,11 @@ public class BattleBox extends JFrame
         skills.setVisible(false);
         useItems.setVisible(false);
         defend.setVisible(false);
+        flee.setVisible(false);
         hp.setText(null);
         ehp.setText(null);
         mp.setText(null);
-        if (count == 60 || count == 61)
+        if (items.searchInvFor(60) || items.searchInvFor(61))
         {
             defeatMsg = new DialogueB(8,"You aren't worth saving. Neither was I.",0,items, player,d);
             defeatMsg.pack();
@@ -1732,6 +1808,7 @@ public class BattleBox extends JFrame
         skills.setVisible(false);
         useItems.setVisible(false);
         defend.setVisible(false);
+        flee.setVisible(false);
         exit.setVisible(true);
     }
 }
