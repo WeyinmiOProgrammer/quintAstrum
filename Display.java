@@ -309,7 +309,11 @@ public static int[][] xviii = {{17,19},
     InventoryMenu I = new InventoryMenu();
     
     //progress monitoring
-    int laserCheck = 0;
+    int laserCheck = 0; //checks if the death cannon has been fired
+    int uanCheckOne = 0; //checks if uandar is in the party --> he leaves
+    int uanCheckTwo = 0; //checks if the player has seen him captured - interaction
+    int warCheck = 0; //checks if the player has encountered the warrior
+    int xpConst = 0; //used to check if player has resorted to violence
      
     //extra color constants
     Color WOOD = new Color(66,41,1);
@@ -667,7 +671,7 @@ public static int[][] xviii = {{17,19},
                         repaint();
                     }
                 }}
-                DialogueB destMsg = new DialogueB(0,"Poditris has been destroyed",0,I,myChar,this);
+                DialogueB destMsg = new DialogueB(0,"Delphini-Porcastella has been destroyed",0,I,myChar,this);
                 destMsg.pack();
                 destMsg.setVisible(true);
                 destMsg.setLocationRelativeTo(null);

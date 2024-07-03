@@ -1369,7 +1369,7 @@ public class BattleBox extends JFrame
                 }
         switch(id)
         {
-            //for 
+            //Dleg
             case 1:
                 if(move < 3 || (move >= 3 && enemyCharged == 1))
                 {
@@ -1394,7 +1394,7 @@ public class BattleBox extends JFrame
                     blank2.setIcon(null);
                 }
                 break;  
-                
+                //froddoger
                  case 2:
                 if(move < 3 || (move >= 3 && enemyCharged == 1))
                 {
@@ -1419,7 +1419,7 @@ public class BattleBox extends JFrame
                     blank2.setIcon(null);
                 }
                 break;  
-                
+                //Podhog - cause a group of dolphins is a pod and they're apperently called sea swine in some places
               case 3:
                 if(move < 3 || (move >= 3 && enemyCharged == 1))
                 {
@@ -1450,7 +1450,7 @@ public class BattleBox extends JFrame
                     
                 }
                 break;  
-               
+                //Enroga
                 case 4:
                 if(move < 3 || (move >= 3 && enemyCharged == 1))
                 {
@@ -1481,7 +1481,7 @@ public class BattleBox extends JFrame
                     econ.setIcon(new ImageIcon(getClass().getResource("Orec.png")));
                 }
                 break;  
-                
+                //Lipsauge
                 case 5:
                 if(enemy.getMP() >= 3)
                 {
@@ -1507,7 +1507,7 @@ public class BattleBox extends JFrame
                     }
                 }
                 break;  
-                
+                //Keldoc
                  case 6:
                 if(move <= 3)
                 {
@@ -1530,7 +1530,7 @@ public class BattleBox extends JFrame
                 }
                 
                 break;  
-                
+                //General Fodriquod
                 case 7:
                     enemy.nextTurn();
                     player.heal(-move);
@@ -1564,6 +1564,7 @@ public class BattleBox extends JFrame
                         enemy.setAT(enemy.getAT()-2);
                     }
                     break;
+                    //General Uandar
                 case 9:
                     enemy.nextTurn();
                     if (move < 2)
@@ -1617,6 +1618,7 @@ public class BattleBox extends JFrame
                         mp.setText((player.getMP())+"/"+(player.getmMP()));
                     }
                     break;
+                    //death cannon
                 case 11:
                     enemy.setSD(player.getSD());
                     enemy.nextTurn();
@@ -1625,6 +1627,58 @@ public class BattleBox extends JFrame
                         d.editArea(9);
                         d.editArea(10);
                         dispose();
+                    }
+                    break;
+                    //survivor
+                    case 12:
+                if(move < 2 || (move >= 2 && enemyCharged == 3))
+                {
+                   //normal attack
+                   enemy.attack(player);
+                   blank2.setIcon(ypunch);
+                   hp.setText((player.getHP())+"/" + (player.getmHP()));
+                   
+                   if (enemyCharged == 1)
+                   {
+                   enemyCharged = 0;
+                   enemy.setAT(enemy.getAT()-3);
+                }
+                   econ.setIcon(anger);
+                    
+                }
+                else if(move >= 4 && enemyCharged != 3)
+                {
+                    //temporary attack boost
+                    
+                    econ.setIcon(ene);
+                    enemyCharged += 1;
+                    blank2.setIcon(null);
+                    if (enemyCharged == 3)
+                    {
+                        econ.setIcon(anger);
+                        enemy.setAT(enemy.getAT()+3);
+                        player.recover(-3);
+                        hp.setText((player.getHP())+"/" + (player.getmHP()));
+                    }
+                }
+                else
+                {
+                    econ.setIcon(ene);
+                    blank2.setIcon(gHit);
+                }
+                break;  
+                //casualty
+                case 13:
+                    if (move > 3)
+                    {
+                        enemy.attack(player);
+                       econ.setIcon(ene);
+                       blank2.setIcon(ypunch);
+                       hp.setText((player.getHP())+"/" + (player.getmHP()));
+                    }
+                    else
+                    {
+                        blank2.setIcon(null);
                     }
                     break;
         }
@@ -1795,10 +1849,19 @@ public class BattleBox extends JFrame
             defeatMsg = new DialogueB(8,"It is foolish to persist",0,items,player,d);
             break;
         case 10:
+            econ.setIcon(enemyDefeat1);
             defeatMsg = new DialogueB(8,"It's... not too late for you to escape",0,items,player,d);
             break;
         case 11:
             defeatMsg = new DialogueB(0,"You just made a big mistake",0,items,player,d);
+            break;
+        case 12:
+            econ.setIcon(enemyDefeat1);
+            defeatMsg = new DialogueB(0,"You. You shouldn't even be here.",0,items,player,d);
+            break;
+        case 13:
+            econ.setIcon(enemyDefeat1);
+            defeatMsg = new DialogueB(0,"...",0,items,player,d);
             break;
     }
     defeatMsg.pack();
