@@ -18,7 +18,7 @@ public class BattleBox extends JFrame
     InventoryMenu items;
     JButton attack, skills, useItems, defend, flee;
     //labels for player HP and MP, enemy HP, Player and enemy icons, 2 blank labels used to visually display
-    JLabel hp, mp, ehp, pcon, econ, blank, blank2;
+    JLabel hp, mp, ehp, emp, pcon, econ, blank, blank2, stat, estat;
     ImageIcon pla, ene;
     int turn = 1;
     int playerDefending = 0;
@@ -173,6 +173,27 @@ public class BattleBox extends JFrame
         
         add(mp, c);
         
+        emp = new JLabel((e.getMP())+"/"+(e.getmMP()));
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 3;
+        c.gridy = 3;
+        
+        add(emp, c);
+        
+        stat = new JLabel(p.getStatus());
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 0;
+        c.gridy = 4;
+        
+        add(stat, c);
+        
+        estat = new JLabel(e.getStatus());
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 3;
+        c.gridy = 4;
+        
+        add(estat, c);
+        
         enterChoice = new JTextField();
         enterChoice.setVisible(false);
          c.fill = GridBagConstraints.HORIZONTAL;
@@ -201,7 +222,7 @@ public class BattleBox extends JFrame
         flee = new JButton("FLEE");
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 3;
-        c.gridy = 4;
+        c.gridy = 5;
         add(flee, c);
         
         event e2 = new event();
@@ -217,6 +238,15 @@ public class BattleBox extends JFrame
         skillSetup1(player.getLv());
     }
     
+    public void screenreset()
+    {
+        hp.setText((player.getHP())+"/" + (player.getmHP()));
+        ehp.setText((enemy.getHP())+"/" + (enemy.getmHP()));
+        mp.setText((player.getMP())+"/"+(player.getmMP()));
+        emp.setText((enemy.getMP())+"/"+(enemy.getmMP()));
+        stat.setText(player.getStatus());
+        estat.setText(enemy.getStatus());
+    }
     public void skillSetup1(int lv)
     {
         if (player.getID() == 4){
@@ -339,6 +369,7 @@ public class BattleBox extends JFrame
                 ypunch = new ImageIcon(getClass().getResource("hit.png"));
                 enemyDefeat1 = new ImageIcon(getClass().getResource("casu2.png"));
                 econ.setIcon(ene);
+                enemy.setStatus("Charred",10);
                 break;
             case 14:
                 ene = new ImageIcon(getClass().getResource("madfrog.png"));
@@ -820,7 +851,8 @@ public class BattleBox extends JFrame
                                     }
                                     else
                                     {
-                                        enemy.setSD(enemy.getSD()-2);
+                                        enemy.setSD(enemy.getSD()+2);
+                                        enemy.setStatus("Oily",3);
                                     }
                                         break;   
                                     case 16:
@@ -828,7 +860,7 @@ public class BattleBox extends JFrame
                                         //this is permanent for Geruo
                                         player.setSD(player.getSD()-rd.nextInt(1));
                                         player.heal(-1*rd.nextInt(2));
-                                        
+                                        break;
                                     //Dleg
                                     case 30:
                                         p2 = new Player(70,0,4,3,1,70,1,1,0,2,3);
@@ -1345,8 +1377,8 @@ public class BattleBox extends JFrame
     public void enemyTurn()
     {
         playerRepeats--;
-        ehp.setText((enemy.getHP())+"/" + (enemy.getmHP()));
-        mp.setText((player.getMP())+"/"+(player.getmMP()));
+       
+        screenreset();
         if (playerRepeats > 0)
         {
             
@@ -1700,6 +1732,25 @@ public class BattleBox extends JFrame
                 defend.setText("GUARD");
             }
         }
+        if (!(player.getStatus().equals("Normal")))
+        {
+            player.statusFX();
+            player.durDown();
+            if (player.getDur()<= 0)
+            {
+                player.setStatus("Normal",0);
+            }
+        }
+        if (!(enemy.getStatus().equals("Normal")))
+        {
+            enemy.statusFX();
+            enemy.durDown();
+            if (enemy.getDur()<= 0)
+            {
+                enemy.setStatus("Normal",0);
+            }
+        }
+        screenreset();
     }
     else
     {
@@ -1862,6 +1913,10 @@ public class BattleBox extends JFrame
         case 13:
             econ.setIcon(enemyDefeat1);
             defeatMsg = new DialogueB(0,"...",0,items,player,d);
+            break;
+        case 14:
+            econ.setIcon(enemyDefeat1);
+            defeatMsg = new DialogueB(0,"CROOOOOOOAAAAAAAK",0,items,player,d);
             break;
     }
     defeatMsg.pack();

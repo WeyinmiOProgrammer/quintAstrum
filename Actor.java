@@ -9,6 +9,8 @@ public class Actor
 {
     //both player and enemy extend the actor class
     int HP, MP, ATK, DEF, SPD, maxHP, maxMP;
+    String status = "Normal";
+    int statusDur = 0;
     public Actor(int h, int m, int a, int d, int s, int mh, int mm)
     {
         HP = h;
@@ -146,4 +148,44 @@ public class Actor
             setMP(0);
         }
     }
+    public String getStatus()
+    {
+        return status;
+    }
+    public int getDur()
+    {
+        return statusDur;
+    }
+    public void setStatus(String s, int du)
+    {
+        status = s;
+        statusDur = du;
+    }
+    public void durDown()
+    
+    {
+        statusDur--;
+    }
+    
+    public void statusFX()
+    {
+        switch(status)
+        {
+            case "Burning":
+                HP -= 2;
+                break;
+            case "Charred":
+                HP -= 5;
+                break;
+            case "Bamboozled":
+                break;
+            case "Blessed":
+                MP = maxMP;
+                break;
+            case "Traumatised":
+                MP = 0;
+                break;
+        }
+    }
+    
 }

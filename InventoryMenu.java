@@ -21,7 +21,7 @@ public class InventoryMenu extends JFrame
     String[] itemNames = {"Empty","🍶Health potion", "🍵Magic potion", "📏Stick", "⚙Scrap metal", "⚔Sword",
                           "⛽Engine", "⚒Axe", "🔥Fire powder", "☕Coffee", "❧Bullet", "🚀Spaceship", "⛽Jetpack","🛢Oil","🔑Key","🔑Key piece",
                         "🐡Porcpuff","❥Boomerang","💔Broken boomerang","🗡Dark sword","🗡Jetsword",
-                    "💵Imperial Currency","💵Delgg","","","",
+                    "💵Imperial Currency","💵Delgg","Water bottle","Towel","Soupapousoup",
                 "","","","",
             "👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg",
             "👽Geruo","👽Geruo","👽Geruo","👽Geruo","👽Geruo","👽Geruo","👽Geruo","👽Geruo","👽Geruo","👽Geruo",
