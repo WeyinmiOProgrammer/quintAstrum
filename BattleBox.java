@@ -350,6 +350,7 @@ public class BattleBox extends JFrame
                 ene = new ImageIcon(getClass().getResource("DBoss.png"));
                 ypunch = new ImageIcon(getClass().getResource("hugepuff.png"));
                 enemyDefeat1 = new ImageIcon(getClass().getResource("DBossDown.png"));
+                enemy.setStatus("Reborn",1);
                 econ.setIcon(ene);
                 break;
             case 11:
@@ -598,6 +599,7 @@ public class BattleBox extends JFrame
                     player.recover(1);
                     pcon.setIcon(playerDefeat);
                     mp.setText((player.getMP())+"/"+(player.getmMP()));
+                    player.setStatus("Oily",3);
                     turn = 2;
                     enemyTurn();
                 }
@@ -852,7 +854,12 @@ public class BattleBox extends JFrame
                                     else
                                     {
                                         enemy.setSD(enemy.getSD()+2);
+                                        if (!(enemy.getStatus().equals("Burning"))){
                                         enemy.setStatus("Oily",3);
+                                    }else
+                                    {
+                                        enemy.heal(-10);
+                                    }
                                     }
                                         break;   
                                     case 16:
@@ -1421,6 +1428,7 @@ public class BattleBox extends JFrame
                 {
                     //temporary attack boost
                     enemy.setAT(7);
+                    enemy.setStatus("Oily",3);
                     econ.setIcon(anger);
                     enemyCharged = 1;
                     blank2.setIcon(null);
@@ -1435,6 +1443,18 @@ public class BattleBox extends JFrame
                    blank2.setIcon(blueFire);
                    hp.setText((player.getHP())+"/" + (player.getmHP()));
                    enemy.setAT(3);
+                   if (player.getStatus().equals("Oily"))
+                   {
+                       player.heal(-2);
+                    }
+                    if (player.getStatus().equals("Wet"))
+                   {
+                       player.heal(rd.nextInt(2));
+                    }
+                    if (rd.nextInt(3)==2)
+                    {
+                        player.setStatus("Burning",3);
+                    }
                    if (enemyCharged == 1)
                    {
                    enemyCharged = 0;
@@ -1656,6 +1676,7 @@ public class BattleBox extends JFrame
                     enemy.nextTurn();
                     if (turns >= 10)
                     {
+                        player.setStatus("Charred",10);
                         d.editArea(9);
                         d.editArea(10);
                         dispose();
@@ -1669,8 +1690,19 @@ public class BattleBox extends JFrame
                    enemy.attack(player);
                    blank2.setIcon(ypunch);
                    hp.setText((player.getHP())+"/" + (player.getmHP()));
-                   
-                   if (enemyCharged == 1)
+                   if (player.getStatus().equals("Oily"))
+                   {
+                       player.heal(-2);
+                    }
+                    if (player.getStatus().equals("Wet"))
+                   {
+                       player.heal(rd.nextInt(2));
+                    }
+                    if (rd.nextInt(2)==1)
+                    {
+                        player.setStatus("Burning",3);
+                    }
+                   if (enemyCharged == 3)
                    {
                    enemyCharged = 0;
                    enemy.setAT(enemy.getAT()-3);
