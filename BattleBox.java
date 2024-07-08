@@ -599,7 +599,11 @@ public class BattleBox extends JFrame
                     player.recover(1);
                     pcon.setIcon(playerDefeat);
                     mp.setText((player.getMP())+"/"+(player.getmMP()));
+                    if (!(player.getStatus().equals("Oily")))
+                    {
                     player.setStatus("Oily",3);
+                    player.setSD(player.getSD()+2);
+                }
                     turn = 2;
                     enemyTurn();
                 }
@@ -854,11 +858,13 @@ public class BattleBox extends JFrame
                                     else
                                     {
                                         enemy.setSD(enemy.getSD()+2);
-                                        if (!(enemy.getStatus().equals("Burning"))){
+                                        if (!(enemy.getStatus().equals("Burning"))&&!(enemy.getStatus().equals("Oily"))){
                                         enemy.setStatus("Oily",3);
                                     }else
                                     {
+                                        if ((enemy.getStatus().equals("Burning"))){
                                         enemy.heal(-10);
+                                    }
                                     }
                                     }
                                         break;   
@@ -1428,7 +1434,11 @@ public class BattleBox extends JFrame
                 {
                     //temporary attack boost
                     enemy.setAT(7);
+                    if (!enemy.getStatus().equals("Oily"))
+                    {
                     enemy.setStatus("Oily",3);
+                    enemy.setSD(enemy.getSD()+2);
+                    }
                     econ.setIcon(anger);
                     enemyCharged = 1;
                     blank2.setIcon(null);
@@ -1451,7 +1461,7 @@ public class BattleBox extends JFrame
                    {
                        player.heal(rd.nextInt(2));
                     }
-                    if (rd.nextInt(3)==2)
+                    if (rd.nextInt(3)==2 && !(player.getStatus().equals("Wet")))
                     {
                         player.setStatus("Burning",3);
                     }
@@ -1698,7 +1708,7 @@ public class BattleBox extends JFrame
                    {
                        player.heal(rd.nextInt(2));
                     }
-                    if (rd.nextInt(2)==1)
+                    if (rd.nextInt(2)==1 && !(player.getStatus().equals("Wet")))
                     {
                         player.setStatus("Burning",3);
                     }
@@ -1770,6 +1780,24 @@ public class BattleBox extends JFrame
             player.durDown();
             if (player.getDur()<= 0)
             {
+                if (player.getStatus().equals("Oily"))
+                {
+                    player.setSD(player.getSD()-2);
+                }
+                 if (player.getStatus().equals("Wet"))
+                {
+                    player.setSD(player.getSD()+2);
+                }
+                if (player.getStatus().equals("Buff"))
+                {
+                    player.setAT(player.getAT()-4);
+                }
+                if (player.getStatus().equals("Stricken"))
+                {
+                    player.setSD(player.getSD()+2);
+                     player.setDF(player.getDF()+2);
+                }
+                
                 player.setStatus("Normal",0);
             }
         }
@@ -1779,6 +1807,23 @@ public class BattleBox extends JFrame
             enemy.durDown();
             if (enemy.getDur()<= 0)
             {
+                if (enemy.getStatus().equals("Oily"))
+                {
+                    enemy.setSD(enemy.getSD()-2);
+                }
+                 if (enemy.getStatus().equals("Wet"))
+                {
+                    enemy.setSD(enemy.getSD()+2);
+                }
+                if (enemy.getStatus().equals("Buff"))
+                {
+                    enemy.setAT(enemy.getAT()-4);
+                }
+                if (enemy.getStatus().equals("Stricken"))
+                {
+                    enemy.setSD(enemy.getSD()+2);
+                     enemy.setDF(enemy.getDF()+2);
+                }
                 enemy.setStatus("Normal",0);
             }
         }
