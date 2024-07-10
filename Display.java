@@ -1070,19 +1070,38 @@ public static int[][] xviii = {{17,19},
                     }
                     else if (currentSection == 1)
                     {
-                        DialogueA d1 = new DialogueA(1,"Should I fight this guy?", 1, I, myChar, this);
-                        d1.setVisible(true);
-                        d1.pack();
-                        d1.setLocationRelativeTo(null);
+                        DialogueB d = new DialogueB(99,"<HTML>important to behave approapriately <BR>"+
+                                                              "when at another planet. Many inhab<BR>"+
+                                                              "-itants communicate in ways that may<BR>"+
+                                                              "be dangerous to your species. It is<BR>"+
+                                                              "best to respond in kind and ATTACK.<BR>"+
+                                                              "Be wary, not all species are able to<BR>"+
+                                                              "survive such rough interactions and<BR>"+
+                                                              "it is perfectly respectable to avoid<BR>"+
+                                                              "combat altogether and FLEE, should they<BR>"+
+                                                              "allow it.<BR>"+
+                                                              "Moving on, it is always important to carry</HTML>",0,I,myChar,this); 
+                        d.setVisible(true);
+                        d.pack();
+                        d.setLocationRelativeTo(null);
+                        
                     }
                     else if (currentSection == 7)
                     {
-                        Enemy ed = new Enemy(45,7,7,3,4,45,7, 3);
-                        ed.diffSpike(Dif);
-                             BattleBox b = new BattleBox(myChar, ed, I, this);
-                             b.setVisible(true);
-                             b.setSize(900,720);
-                             b.setLocationRelativeTo(null);
+                        DialogueB d = new DialogueB(99,"<HTML>that you shouldn't hold onto all souvenirs<BR>"+
+                                                              "but there are limits to what you can take<BR>"+
+                                                              "home with you. Wouldn't a picture be better?<BR>"+
+                                                              "<BR>"+
+                                                              "On local customs:<BR>"+
+                                                              "Some species seem to partake of some actions<BR>"+
+                                                              "or ''arts'' that can be quite harmful, even for <BR>"+
+                                                              "their own species. Don't join them. They've dug<BR>"+
+                                                              "their own hole. There may be some benefits to <BR>"+
+                                                              "their practices. But *I* would never be found<BR>"+
+                                                              "partaking of something so clearly detrimental to</HTML>",0,I,myChar,this); 
+                        d.setVisible(true);
+                        d.pack();
+                        d.setLocationRelativeTo(null);
                     }
                     else if (currentSection == 4)
                     {

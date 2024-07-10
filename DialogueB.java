@@ -85,6 +85,12 @@ public class DialogueB extends JFrame
                 charIcon = new ImageIcon(getClass().getResource("DBoss.png"));
                 name.setText("Uandar");
                 iconLabel.setIcon(charIcon);
+                break;
+            case 99:
+                charIcon = new ImageIcon(getClass().getResource("tutorialguy.png"));
+                name.setText("excerpt from Extraterrestial Travel");
+                iconLabel.setIcon(charIcon);
+                break;
         }
     }
     public class event implements ActionListener

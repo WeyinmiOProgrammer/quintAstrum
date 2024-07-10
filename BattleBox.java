@@ -601,8 +601,11 @@ public class BattleBox extends JFrame
                     mp.setText((player.getMP())+"/"+(player.getmMP()));
                     if (!(player.getStatus().equals("Oily")))
                     {
+                    statReset(player);
                     player.setStatus("Oily",3);
-                    player.setSD(player.getSD()+2);
+                    player.setSD(player.getSD()+3);
+                    playerRepeats = Math.round(player.getSD()/enemy.getSD()) - 1;
+                    enemyRepeats =  Math.round(enemy.getSD()/player.getSD());
                 }
                     turn = 2;
                     enemyTurn();
@@ -857,9 +860,13 @@ public class BattleBox extends JFrame
                                     }
                                     else
                                     {
-                                        enemy.setSD(enemy.getSD()+2);
+                                        
                                         if (!(enemy.getStatus().equals("Burning"))&&!(enemy.getStatus().equals("Oily"))){
-                                        enemy.setStatus("Oily",3);
+                                            statReset(enemy);
+                                            enemy.setStatus("Oily",3);
+                                            enemy.setSD(enemy.getSD()+3);
+                                            
+                                            enemyRepeats =  Math.round(enemy.getSD()/player.getSD());
                                     }else
                                     {
                                         if ((enemy.getStatus().equals("Burning"))){
@@ -1387,6 +1394,27 @@ public class BattleBox extends JFrame
         }
     }
     
+    public void statReset(Actor a)
+    {
+        if (a.getStatus().equals("Oily"))
+                {
+                    a.setSD(player.getSD()-3);
+                }
+                 if (a.getStatus().equals("Wet"))
+                {
+                    a.setSD(player.getSD()+3);
+                }
+                if (a.getStatus().equals("Buff"))
+                {
+                    a.setAT(player.getAT()-4);
+                }
+                if (a.getStatus().equals("Stricken"))
+                {
+                   a.setSD(player.getSD()+2);
+                     a.setDF(player.getDF()+2);
+                }
+    }
+    
     public void enemyTurn()
     {
         playerRepeats--;
@@ -1437,7 +1465,9 @@ public class BattleBox extends JFrame
                     if (!enemy.getStatus().equals("Oily"))
                     {
                     enemy.setStatus("Oily",3);
-                    enemy.setSD(enemy.getSD()+2);
+                    enemy.setSD(enemy.getSD()+3);
+                    
+                    enemyRepeats =  Math.round(enemy.getSD()/player.getSD());
                     }
                     econ.setIcon(anger);
                     enemyCharged = 1;
@@ -1457,12 +1487,10 @@ public class BattleBox extends JFrame
                    {
                        player.heal(-2);
                     }
-                    if (player.getStatus().equals("Wet"))
-                   {
-                       player.heal(rd.nextInt(2));
-                    }
+                    
                     if (rd.nextInt(3)==2 && !(player.getStatus().equals("Wet")))
                     {
+                        statReset(player);
                         player.setStatus("Burning",3);
                     }
                    if (enemyCharged == 1)
@@ -1686,6 +1714,7 @@ public class BattleBox extends JFrame
                     enemy.nextTurn();
                     if (turns >= 10)
                     {
+                        statReset(player);
                         player.setStatus("Charred",10);
                         d.editArea(9);
                         d.editArea(10);
@@ -1704,12 +1733,10 @@ public class BattleBox extends JFrame
                    {
                        player.heal(-2);
                     }
-                    if (player.getStatus().equals("Wet"))
-                   {
-                       player.heal(rd.nextInt(2));
-                    }
+                    
                     if (rd.nextInt(2)==1 && !(player.getStatus().equals("Wet")))
                     {
+                        statReset(player);
                         player.setStatus("Burning",3);
                     }
                    if (enemyCharged == 3)
@@ -1761,6 +1788,27 @@ public class BattleBox extends JFrame
             enemyRepeats--;
             if (enemyRepeats <= 0)
             {
+                if (!(player.getStatus().equals("Normal")))
+        {
+            player.statusFX();
+            player.durDown();
+            if (player.getDur()<= 0)
+            {
+                
+                statReset(player);
+                player.setStatus("Normal",0);
+            }
+        }
+        if (!(enemy.getStatus().equals("Normal")))
+        {
+            enemy.statusFX();
+            enemy.durDown();
+            if (enemy.getDur()<= 0)
+            {
+                statReset(enemy);
+                enemy.setStatus("Normal",0);
+            }
+        }
         turn = 1;
         playerRepeats = Math.round(player.getSD()/enemy.getSD());
         enemyRepeats =  Math.round(enemy.getSD()/player.getSD());
@@ -1774,59 +1822,7 @@ public class BattleBox extends JFrame
                 defend.setText("GUARD");
             }
         }
-        if (!(player.getStatus().equals("Normal")))
-        {
-            player.statusFX();
-            player.durDown();
-            if (player.getDur()<= 0)
-            {
-                if (player.getStatus().equals("Oily"))
-                {
-                    player.setSD(player.getSD()-2);
-                }
-                 if (player.getStatus().equals("Wet"))
-                {
-                    player.setSD(player.getSD()+2);
-                }
-                if (player.getStatus().equals("Buff"))
-                {
-                    player.setAT(player.getAT()-4);
-                }
-                if (player.getStatus().equals("Stricken"))
-                {
-                    player.setSD(player.getSD()+2);
-                     player.setDF(player.getDF()+2);
-                }
-                
-                player.setStatus("Normal",0);
-            }
-        }
-        if (!(enemy.getStatus().equals("Normal")))
-        {
-            enemy.statusFX();
-            enemy.durDown();
-            if (enemy.getDur()<= 0)
-            {
-                if (enemy.getStatus().equals("Oily"))
-                {
-                    enemy.setSD(enemy.getSD()-2);
-                }
-                 if (enemy.getStatus().equals("Wet"))
-                {
-                    enemy.setSD(enemy.getSD()+2);
-                }
-                if (enemy.getStatus().equals("Buff"))
-                {
-                    enemy.setAT(enemy.getAT()-4);
-                }
-                if (enemy.getStatus().equals("Stricken"))
-                {
-                    enemy.setSD(enemy.getSD()+2);
-                     enemy.setDF(enemy.getDF()+2);
-                }
-                enemy.setStatus("Normal",0);
-            }
-        }
+        
         screenreset();
     }
     else
