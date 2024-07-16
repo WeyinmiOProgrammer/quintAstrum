@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
+import java.util.Random;
 public class InventoryMenu extends JFrame
 {
     JPanel p;
@@ -243,6 +244,56 @@ public class InventoryMenu extends JFrame
         
         displayItems();
         return itemInList;
+    }
+    
+    public void dropItemsOnDef(int diff)
+    {
+        if (diff < 2)
+        {
+            boolean check = false;
+            Random r1 = new Random();
+            
+            for (int i = 0; i < (5 + diff);i++)
+            {
+            
+            while (!check)
+            {
+                check = removeFromInv(r1.nextInt(29) + 1);
+            }
+            check = false;
+        }
+        }
+        else if (diff == 2)
+        {
+             boolean check = false;
+            Random r1 = new Random();
+            
+            for (int i = 0; i < 12;i++)
+            {
+            
+            while (!check)
+            {
+                check = removeFromInv(r1.nextInt(29) + 1);
+            }
+            check = false;
+        }
+        removeFromInv(r1.nextInt(50)+30);
+        }
+        else if (diff > 2)
+        {
+            boolean check = false;
+            Random r1 = new Random();
+            
+            for (int i = 0; i < 20;i++)
+            {
+            
+           
+                check = removeFromInv(peekItem(i));
+            
+            
+        }
+        }
+        
     }
    
    

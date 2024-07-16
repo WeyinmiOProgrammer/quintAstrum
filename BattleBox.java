@@ -35,7 +35,7 @@ public class BattleBox extends JFrame
     ImageIcon empty = new ImageIcon(getClass().getResource("blankitem.png"));
     ImageIcon range = new ImageIcon(getClass().getResource("outOfRange.png"));
     ImageIcon notInt = new ImageIcon(getClass().getResource("notNum.png"));
-    ImageIcon gameOver = new ImageIcon(getClass().getResource("newerGOscreen.png"));
+    ImageIcon gameOver = new ImageIcon(getClass().getResource("youdiescreen.png"));
     ImageIcon enemyDefeat1 = new ImageIcon(getClass().getResource("Ydefeat.png"));
     ImageIcon playerDefeat = new ImageIcon(getClass().getResource("Rdefeat.png"));
 
@@ -389,6 +389,7 @@ public class BattleBox extends JFrame
             {
                 case "leave":
                     d.revivePlayer();
+                    items.dropItemsOnDef(d.getDif());
                     dispose();
                     break;
                 case "exit":
