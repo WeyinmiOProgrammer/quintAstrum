@@ -85,6 +85,10 @@ public class BattleBox extends JFrame
     //needed to make speed an important stat
     int playerRepeats;
     int enemyRepeats;
+    
+    //needed to make the title
+    String[] charNames = {"","","","Dleg","Geruo","Keldoc","Uandar"};
+    String [] eneNames = {"","Dleg","Froddoger","Podhog","Enroga","Lipsauge","Keldoc","General Fodriquod","Fallen General Fodriquod","Supreme General Uandar","Reborn General Uandar","Death Cannon","Survivor","Casualty","The Colossal CROAKER"};
     public BattleBox(Player p, Enemy e, InventoryMenu i, Display di)
     {
         player = p;
@@ -236,6 +240,7 @@ public class BattleBox extends JFrame
         
         enemyIconSetup();
         skillSetup1(player.getLv());
+        this.setTitle(charNames[p.getID()]+" ====== vs ====== "+eneNames[e.getID()]);
     }
     
     public void screenreset()
