@@ -1226,6 +1226,8 @@ public static int[][] xviii = {{17,19},
         int xLen;
         int excessX;
         int excessY;
+        ImageIcon block = new ImageIcon(getClass().getResource("MAPbg.png"));
+        int type = 0;
         
            
             yLen = findMap(currentSection).length ;
@@ -1240,6 +1242,7 @@ public static int[][] xviii = {{17,19},
                     switch(findMap(currentSection)[y][x])
                     {
                         case 0:
+                            type = 0;
                             if (currentSection < 6)
                             {
                             g.setColor(Color.GREEN);
@@ -1260,13 +1263,16 @@ public static int[][] xviii = {{17,19},
                             }
                             break;
                         case 1:
+                            type = 0;
                             if (currentSection < 6)
                             {
                             g.setColor(Color.DARK_GRAY);
                             }
                             if (currentSection == 6 || currentSection == 17)
                             {
-                            g.setColor(Color.BLACK);
+                            //g.setColor(Color.BLACK);
+                            type = 1;
+                            block = new ImageIcon(getClass().getResource("MAPbg.png"));
                             }
                             if ((currentSection > 6 && currentSection < 17) || currentSection == -1)
                             {
@@ -1279,9 +1285,12 @@ public static int[][] xviii = {{17,19},
                             break;
                         case 2:
                             //changed block colour
-                            g.setColor(WOOD);
+                            //g.setColor(WOOD);
+                            type = 1;
+                            block = new ImageIcon(getClass().getResource("MAPstick.png"));
                             break;
                         case 8:
+                            type = 0;
                             if (currentSection < 6)
                             {
                             g.setColor(Color.GREEN.darker());
@@ -1309,6 +1318,7 @@ public static int[][] xviii = {{17,19},
 
                             break;
                         case 4:
+                            type = 0;
                              if (currentSection < 6)
                             {
                             g.setColor(Color.GREEN.darker());
@@ -1327,7 +1337,8 @@ public static int[][] xviii = {{17,19},
                             }
                             if (currentSection == 5 || currentSection == 16 || currentSection == -1)
                             {
-                                g.setColor(Color.WHITE);
+                                type = 1;
+                               block = new ImageIcon(getClass().getResource("MAPship.png"));
                             }
                              if (currentSection > 17 && currentSection < 25)
                             {
@@ -1337,6 +1348,7 @@ public static int[][] xviii = {{17,19},
                             break;
                         
                         case 5:
+                            type = 0;
                              if (currentSection < 6)
                             {
                             g.setColor(Color.GREEN.darker());
@@ -1362,9 +1374,12 @@ public static int[][] xviii = {{17,19},
                             }
                             break;
                         case 9:
-                            g.setColor(Color.LIGHT_GRAY);
+                            //g.setColor(Color.LIGHT_GRAY);
+                            type = 1;
+                            block = new ImageIcon(getClass().getResource("MAPscrap.png"));
                             break;
                         case 6:
+                            type = 0;
                             if (currentSection == 0)
                             {
                             g.setColor(Color.ORANGE.darker().darker());
@@ -1404,33 +1419,54 @@ public static int[][] xviii = {{17,19},
                         
                             break;
                         case 12:
-                            g.setColor(Color.ORANGE.darker().darker().darker().darker());
+                            //g.setColor(Color.ORANGE.darker().darker().darker().darker());
+                            type = 1;
+                            block = new ImageIcon(getClass().getResource("MAPoil.png"));
                             break;
                         case 11:
-                            g.setColor(Color.BLACK);
+                            //g.setColor(Color.BLACK);
+                            type = 1;
+                            block = new ImageIcon(getClass().getResource("MAPbg.png"));
                             break;
                          case 13:
-                            g.setColor(Color.DARK_GRAY.darker());
+                            //g.setColor(Color.DARK_GRAY.darker());
+                            type = 1;
+                            block = new ImageIcon(getClass().getResource("MAPshipspot.png"));
                             break;
                         case 14:
-                            g.setColor(Color.YELLOW);
+                            //g.setColor(Color.YELLOW);
+                            type = 1;
+                            block = new ImageIcon(getClass().getResource("MAPkey.png"));
                             break;
                         case 15:
-                            g.setColor(Color.GRAY);
+                            //g.setColor(Color.GRAY);
+                            type = 1;
+                            block = new ImageIcon(getClass().getResource("MAPkeyhole.png"));
                             break;
                         case 16:
-                            g.setColor(Color.YELLOW.darker());
+                            //g.setColor(Color.YELLOW.darker());
+                            type = 1;
+                            block = new ImageIcon(getClass().getResource("MAPkeyshard.png"));
                             break;
                         case 10:
                             
-                            g.setColor(HKIT);
+                            //g.setColor(HKIT);
+                            type = 1;
+                            block = new ImageIcon(getClass().getResource("MAPbox.png"));
                             break;
                    
                        
                        
                     }
+                    if (type == 0)
+                    {
                     g.drawRect(((x+ excessX) * 30),((y-1+excessY)*30), 30, 30);
                     g.fillRect(((x+ excessX) * 30),((y-1+excessY)*30), 30, 30);
+                }
+                else
+                {
+                    block.paintIcon(this,g,((x+ excessX) * 30),((y-1+excessY)*30));
+                }
                     
                 }
             }
