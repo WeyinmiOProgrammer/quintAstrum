@@ -1379,42 +1379,43 @@ public static int[][] xviii = {{17,19},
                             block = new ImageIcon(getClass().getResource("MAPscrap.png"));
                             break;
                         case 6:
-                            type = 0;
+                            type = 1;
+                            block = new ImageIcon(getClass().getResource("MAPbg.png"));
                             if (currentSection == 0)
                             {
-                            g.setColor(Color.ORANGE.darker().darker());
+                            block = new ImageIcon(getClass().getResource("MAPora.png"));
                             }
                             if (currentSection == 1)
                             {
-                            g.setColor(Color.BLUE);
+                            block = new ImageIcon(getClass().getResource("MAPpage.png"));
                             }
                             if (currentSection == 5)
                             {
-                            g.setColor(Color.YELLOW);
+                            block = new ImageIcon(getClass().getResource("MAPdle.png"));
                             }
                             if (currentSection == 4)
                             {
-                            g.setColor(Color.RED.darker().darker());
+                            block = new ImageIcon(getClass().getResource("MAPbrid.png"));
                             }
                             if (currentSection == 7)
                             {
-                            g.setColor(Color.GREEN.darker());
+                            block = new ImageIcon(getClass().getResource("MAPpage.png"));
                             }
                             if (currentSection == 11)
                             {
-                            g.setColor(Color.MAGENTA);
+                            block = new ImageIcon(getClass().getResource("MAPkel.png"));
                             }
                             if (currentSection == 13)
                             {
-                            g.setColor(Color.CYAN.darker().darker().darker());
+                            block = new ImageIcon(getClass().getResource("MAPbos.png"));
                             }
                             if (currentSection == 16)
                             {
-                            g.setColor(Color.GREEN.brighter().brighter().brighter());
+                            block = new ImageIcon(getClass().getResource("MAPuua.png"));
                             }
                             if (currentSection == 17)
                             {
-                            g.setColor(Color.CYAN.darker());
+                            
                             }
                         
                             break;
