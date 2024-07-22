@@ -322,7 +322,7 @@ public static int[][] xviii = {{17,19},
     
     //player
     Player myChar = new Player(50,10,7,2,2,50,10,1,0,4,4);
-               
+     int playerD = 1;          
     int currentSection = 1;
     //relating to random encounter
     int stepsLeft = 30;
@@ -818,22 +818,24 @@ public static int[][] xviii = {{17,19},
         if (z == KeyEvent.VK_RIGHT)
         {
             charX++;
+            playerD = 1;
            
            
         }
         else if (z == KeyEvent.VK_LEFT)
         {
             charX--;
-           
+            playerD = 2;
         }
         else if (z == KeyEvent.VK_UP)
         {
             charY--;
-           
+            playerD = 3;
         }
         else if (z == KeyEvent.VK_DOWN)
         {
             charY++;
+            playerD = 4;
         }
        
         movementCheck(findMap(currentSection), tempX, tempY);
@@ -1367,10 +1369,43 @@ public static int[][] xviii = {{17,19},
                             }
                             break;
                         case 7:
-                            g.setColor(Color.RED);
+                            type =1;
+                            
                             if (currentSection == 6 || currentSection == 17)
                             {
-                                g.setColor(Color.WHITE);
+                                switch(playerD)
+                                {
+                                    case 1:
+                                        block = new ImageIcon(getClass().getResource("MAPshiR.png"));
+                                        break;
+                                     case 2:
+                                        block = new ImageIcon(getClass().getResource("MAPshiL.png"));
+                                        break;   
+                                    case 3:
+                                        block = new ImageIcon(getClass().getResource("MAPshiU.png"));
+                                        break;
+                                    case 4:
+                                        block = new ImageIcon(getClass().getResource("MAPshiD.png"));
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                switch(playerD)
+                                {
+                                    case 1:
+                                        block = new ImageIcon(getClass().getResource("MAPgerR.png"));
+                                        break;
+                                     case 2:
+                                        block = new ImageIcon(getClass().getResource("MAPgerL.png"));
+                                        break;   
+                                    case 3:
+                                        block = new ImageIcon(getClass().getResource("MAPgerU.png"));
+                                        break;
+                                    case 4:
+                                        block = new ImageIcon(getClass().getResource("MAPgerD.png"));
+                                        break;
+                                }
                             }
                             break;
                         case 9:
@@ -1415,7 +1450,7 @@ public static int[][] xviii = {{17,19},
                             }
                             if (currentSection == 17)
                             {
-                            
+                            block = new ImageIcon(getClass().getResource("MAPwep.png"));
                             }
                         
                             break;

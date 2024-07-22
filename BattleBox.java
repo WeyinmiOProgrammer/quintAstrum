@@ -422,6 +422,10 @@ public class BattleBox extends JFrame
                               collect = items.addToInv(3);
                     
                         }
+                        if (rd.nextInt(2)== 1)
+                        {
+                            collect = items.addToInv(8);
+                        }
                         player.setXP(player.getXP()+2);
                         break;
                          case 3:
@@ -848,6 +852,11 @@ public class BattleBox extends JFrame
                                         break;
                                     case 8:
                                         enemy.heal(-2);
+                                        if (enemy.getStatus().equals("Oily"))
+                                        {
+                                            enemy.heal(-10);
+                                        }
+                                        enemy.setStatus("Burning",3);
                                         ehp.setText((enemy.getHP())+"/"+(enemy.getmHP()));
                                         break;
                                     case 11:
