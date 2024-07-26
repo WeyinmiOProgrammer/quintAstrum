@@ -12,7 +12,7 @@ import java.awt.event.*;
 import javax.swing.event.*;
 
 
-public class MainMenu extends JFrame
+public class Main extends JFrame
 {
     JButton start, setDifficulty, quit;
    
@@ -20,7 +20,7 @@ public class MainMenu extends JFrame
     int difficulty = 0;
     ImageIcon titleImage;
    
-    public MainMenu()
+    public Main()
     {
        
         setLayout(new GridLayout(4,1,5,1));
@@ -112,7 +112,7 @@ public class MainMenu extends JFrame
    
     public static void main (String [] args)
     {
-        MainMenu a = new MainMenu();
+        Main a = new Main();
         a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         a.setVisible(true);
        
