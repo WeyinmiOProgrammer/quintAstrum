@@ -256,11 +256,10 @@ public class InventoryMenu extends JFrame
             for (int i = 0; i < (5 + diff);i++)
             {
             
-            while (!check)
-            {
+            
                 check = removeFromInv(r1.nextInt(29) + 1);
-            }
-            check = false;
+            
+            
         }
         }
         else if (diff == 2)
@@ -271,11 +270,10 @@ public class InventoryMenu extends JFrame
             for (int i = 0; i < 12;i++)
             {
             
-            while (!check)
-            {
+            
                 check = removeFromInv(r1.nextInt(29) + 1);
-            }
-            check = false;
+            
+            
         }
         removeFromInv(r1.nextInt(50)+30);
         }
@@ -292,6 +290,17 @@ public class InventoryMenu extends JFrame
             
             
         }
+        }
+        for (int i = 0; i < 20;i++)
+            {
+            
+           
+              if (peekItem(i)==0)
+              {
+                 items[i][1] = 0;
+                }
+            
+            
         }
         
     }
