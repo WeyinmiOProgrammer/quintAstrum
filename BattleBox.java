@@ -88,7 +88,7 @@ public class BattleBox extends JFrame
     
     //needed to make the title
     String[] charNames = {"","","","Dleg","Geruo","Keldoc","Uandar"};
-    String [] eneNames = {"","Dleg","Froddoger","Podhog","Enroga","Lipsauge","Keldoc","General Fodriquod","Fallen General Fodriquod","Supreme General Uandar","Reborn General Uandar","Death Cannon","Survivor","Casualty","The Colossal CROAKER"};
+    String [] eneNames = {"","Dleg","Froddoger","Podhog","Enroga","Lipsauge","Keldoc","General Fodriquod","Fallen General Fodriquod","Supreme General Uandar","Reborn General Uandar","Death Cannon","Survivor","Casualty","The Colossal CROAKER","Treech"};
     public BattleBox(Player p, Enemy e, InventoryMenu i, Display di)
     {
         player = p;
@@ -355,7 +355,7 @@ public class BattleBox extends JFrame
                 ene = new ImageIcon(getClass().getResource("DBoss.png"));
                 ypunch = new ImageIcon(getClass().getResource("hugepuff.png"));
                 enemyDefeat1 = new ImageIcon(getClass().getResource("DBossDown.png"));
-                enemy.setStatus("Reborn",1);
+                //enemy.setStatus("Reborn",1);
                 econ.setIcon(ene);
                 break;
             case 11:
@@ -381,6 +381,12 @@ public class BattleBox extends JFrame
                 ene = new ImageIcon(getClass().getResource("madfrog.png"));
                 ypunch = new ImageIcon(getClass().getResource("hellfire.png"));
                 enemyDefeat1 = new ImageIcon(getClass().getResource("madfrog2.png"));
+                econ.setIcon(ene);
+                break;
+            case 15:
+                ene = new ImageIcon(getClass().getResource("treech.png"));
+                ypunch = gHit;
+                enemyDefeat1 = gHit;
                 econ.setIcon(ene);
                 break;
         }
@@ -422,10 +428,10 @@ public class BattleBox extends JFrame
                               collect = items.addToInv(3);
                     
                         }
-                        if (rd.nextInt(2)== 1)
-                        {
+                        
+                        
                             collect = items.addToInv(8);
-                        }
+                        
                         player.setXP(player.getXP()+2);
                         break;
                          case 3:
@@ -466,6 +472,7 @@ public class BattleBox extends JFrame
                         
                         case 7:
                             bossEnemy ph = new bossEnemy(30,4,8,2,5,60,10, 8,player,items,d);
+                            ph.setStatus("Grounded",3);
                             b2 = new BattleBox(player,ph,items,d);
                             b2.setVisible(true);
                             b2.setSize(900,720);
@@ -479,6 +486,7 @@ public class BattleBox extends JFrame
                             break;
                         case 9:
                             bossEnemy d2 = new bossEnemy(120,17,12,4,6,120,17,10,player,items,d);
+                            d2.setStatus("Reborn",2);
                             b2 = new BattleBox(player,d2,items,d);
                             b2.setVisible(true);
                             b2.setSize(900,720);
@@ -503,6 +511,54 @@ public class BattleBox extends JFrame
                             //that took guts...aliens have those, right?
                             player.setXP(player.getXP()+80);
                             break;
+                        case 12:
+                            for (int j = 0; j < 2; j++)
+                            {
+                              collect = items.addToInv(8);
+                    
+                        }
+                        
+                        
+                            
+                        
+                        player.setXP(player.getXP()+20);
+                        break;
+                        case 13:
+                            for (int j = 0; j < 1; j++)
+                            {
+                              collect = items.addToInv(3);
+                    
+                        }
+                        
+                        
+                           
+                        
+                        player.setXP(player.getXP()+2);
+                        break;
+                        case 14:
+                            for (int j = 0; j < 5; j++)
+                            {
+                              collect = items.addToInv(8);
+                    
+                        }
+                        
+                        
+                            collect = items.addToInv(8);
+                        
+                        player.setXP(player.getXP()+100);
+                        break;
+                        case 15:
+                            for (int j = 0; j < 3; j++)
+                            {
+                              collect = items.addToInv(3);
+                    
+                        }
+                        
+                        
+                            
+                        
+                        player.setXP(player.getXP()+2);
+                        break;
 
                 }
                 
@@ -1955,6 +2011,7 @@ public class BattleBox extends JFrame
     }
     else
     {
+        defeatMsg = new DialogueB(0,"...",0,items, player,d);
         switch(enemy.getID())
         { case 1:
             econ.setIcon(enemyDefeat1);
@@ -1966,7 +2023,7 @@ public class BattleBox extends JFrame
             break;
         case 3:
             econ.setIcon(dolphDef);
-            defeatMsg = new DialogueB(0,"I aint do nuttin",0,items, player,d);
+            defeatMsg = new DialogueB(0,"I'm outta here.",0,items, player,d);
             break;
         case 4:
             econ.setIcon(new ImageIcon(getClass().getResource("Odefeat.png")));
@@ -2006,6 +2063,10 @@ public class BattleBox extends JFrame
         case 14:
             econ.setIcon(enemyDefeat1);
             defeatMsg = new DialogueB(0,"CROOOOOOOAAAAAAAK",0,items,player,d);
+            break;
+        case 15:
+            econ.setIcon(enemyDefeat1);
+            defeatMsg = new DialogueB(0,"This isn't the last you'll see of me",0,items,player,d);
             break;
     }
     defeatMsg.pack();

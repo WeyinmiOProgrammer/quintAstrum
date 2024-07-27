@@ -300,7 +300,7 @@ public static int[][] xvii = {{16,18},
 public static int[][] xviii = {{17,19},
             {01,01,01,01,01,01,01,01},
             {01,00,00,07,8,01,01,01},
-            {01,00,00,00,00,01,01,01},
+            {01,17,00,00,00,01,01,01},
             {01,00,00,00,00,00,00,01},
             {01,01,01,01,01,01,00,01},
             {01,04,00,00,00,00,00,01},
@@ -896,6 +896,16 @@ public static int[][] xviii = {{17,19},
                         int BattleNow = R.nextInt(19);
                         if (BattleNow % 3 == 0)
                         {
+                            if (currentSection == 2)
+                            {
+                             Enemy e1 = new Enemy(20,0,6,2,1,20,0, 15);
+                             e1.diffSpike(Dif);
+                             BattleBox b = new BattleBox(myChar, e1, I, this);
+                             b.setVisible(true);
+                             b.setSize(900,720);
+                             b.setLocationRelativeTo(null);
+                             stepsLeft = R.nextInt(10)+30;
+                            }
                             if (currentSection == 3)
                             {
                              Enemy e1 = new Enemy(30,0,3,1,1,30,0, 2);
