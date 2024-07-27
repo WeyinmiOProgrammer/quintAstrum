@@ -1637,12 +1637,12 @@ public class BattleBox extends JFrame
                 break;  
                 //General Fodriquod
                 case 7:
-                    enemy.nextTurn();
+                    //enemy.nextTurn();
                     player.heal(-move);
                     hp.setText((player.getHP())+"/" + (player.getmHP()));
                     break;
                 case 8:
-                    enemy.nextTurn();
+                    //enemy.nextTurn();
                     if (move < 3)
                     {
                         if (enemy.getHP() < (enemy.getmHP()/2))
@@ -1671,7 +1671,7 @@ public class BattleBox extends JFrame
                     break;
                     //General Uandar
                 case 9:
-                    enemy.nextTurn();
+                    //enemy.nextTurn();
                     if (move < 2)
                     {
                         blank2.setIcon(null);
@@ -1698,7 +1698,7 @@ public class BattleBox extends JFrame
                     }
                     break;
                 case 10:
-                    enemy.nextTurn();
+                    //enemy.nextTurn();
                     if (move < 3 && enemy.getMP() > 1)
                     {
                         enemy.attack(player);
@@ -1726,7 +1726,7 @@ public class BattleBox extends JFrame
                     //death cannon
                 case 11:
                     enemy.setSD(player.getSD());
-                    enemy.nextTurn();
+                    //enemy.nextTurn();
                     if (turns >= 10)
                     {
                         statReset(player);
@@ -1803,6 +1803,7 @@ public class BattleBox extends JFrame
             enemyRepeats--;
             if (enemyRepeats <= 0)
             {
+                enemy.nextTurn();
                 if (!(player.getStatus().equals("Normal")))
         {
             player.statusFX();

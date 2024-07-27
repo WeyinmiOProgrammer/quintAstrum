@@ -40,14 +40,14 @@ public class Display extends JPanel implements KeyListener
     // 6 - boss enemy (optional)
     // 7 - player start position
     // 9 - scrap metal - becomes free space after interaction
-    // 10 - chest? becomes free space after interaction - contains potions
+    // 10 - chest - becomes free space after interaction - contains potions
     // 11 - more background
     // 12 - oil
     // 13 - spaceship place
     // 14 - key - becomes free space after interaction
     // 15 - key door - becomes free space after interaction
     // 16 - key shard - becomes free space after interaction - can be crafted into key
-   
+    // 17 - craft spot - craft more complex weapons
     /*
      The maximum size of any map should be 30x30
      */
@@ -294,13 +294,16 @@ public static int[][] xvii = {{16,18},
               {01,01,01,01,01,01,01,01},
               {01,00,00,00,00,00,06,01},
               {01,04,00,07,8,00,00,01},
-              {01,04,00,00,00,00,00,01},
+              {01,04,04,00,00,00,00,01},
               {01,01,01,01,01,01,01,01}};
               
 public static int[][] xviii = {{17,19},
             {01,01,01,01,01,01,01,01},
             {01,00,00,07,8,01,01,01},
             {01,00,00,00,00,01,01,01},
+            {01,00,00,00,00,00,00,01},
+            {01,01,01,01,01,01,00,01},
+            {01,04,00,00,00,00,00,01},
             {01,01,01,01,01,01,01,01}};
     //variables relating to movement
     int charX = 7;
@@ -1311,7 +1314,8 @@ public static int[][] xviii = {{17,19},
                             }
                             if (currentSection == 7 || currentSection == 18)
                             {
-                                g.setColor(Color.WHITE);
+                                type = 1;
+                               block = new ImageIcon(getClass().getResource("MAPship.png"));
                             }
                             if (currentSection > 18 && currentSection < 25)
                             {
