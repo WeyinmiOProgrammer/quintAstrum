@@ -20,7 +20,7 @@ public class quickCraft extends JFrame
     public quickCraft(InventoryMenu i)
     {
         setLayout(new GridLayout(4,1, 2, 1));
-        recipes = new JLabel("<HTML>sword = 1 wood + 2 metal<BR>axe = 1 wood + 1 metal<BR>engine = 2 wood + 1 oil<BR>spaceship = 1 engine + 5 metal<BR>jetpack = 1 engine + 1 magic potion<BR>key = 3 key shard</HTML>");
+        recipes = new JLabel("<HTML>sword = 1 wood + 2 metal<BR>axe = 1 wood + 1 metal<BR>engine = 2 wood + 1 oil<BR>key = 3 key shard</HTML>");
         add(recipes);
         im = i;
         enter = new JTextField(20);
@@ -115,56 +115,7 @@ case "engine":
       enter.setText("Not enough oil");
    }
 break;
-case "spaceship":
-   x  = im.howMuch(6);
-   if (x >= 1)
-   {
-      x = im.howMuch(4);
-      if (x >= 5)
-      {
-         
-         im.removeFromInv(6);
-         im.removeFromInv(4);
-         im.removeFromInv(4);
-         im.removeFromInv(4);
-         im.removeFromInv(4);
-         im.addToInv(11);
-         dispose();
-      }
-      else
-      {
-         enter.setText("Not enough scrap metal");
-      }
-   }
-   else
-   {
-      enter.setText("No engine");
-   }
-break;
-case "jetpack":
-   x  = im.howMuch(6);
-   if (x >= 1)
-   {
-      x = im.howMuch(2);
-      if (x >= 2)
-      {
-         
-         im.removeFromInv(6);
-         im.removeFromInv(2);
-         im.removeFromInv(2);
-         im.addToInv(12);
-         dispose();
-      }
-      else
-      {
-         enter.setText("Not enough magic potion");
-      }
-   }
-   else
-   {
-      enter.setText("No engine");
-   }
-break;
+
 case "key":
    x  = im.howMuch(15);
    if (x >= 3)

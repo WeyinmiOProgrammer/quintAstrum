@@ -64,7 +64,7 @@ public class Display extends JPanel implements KeyListener
                  {1,1,1,2,0,0,0,0,0,0,0,2,1,1,1},
                  {1,1,0,0,0,0,0,9,0,0,0,0,0,1,1},
                  {1,1,0,0,0,0,0,0,0,0,0,0,0,1,1},
-                 {1,1,0,0,0,6,0,7,0,0,0,0,0,1,1},
+                 {1,1,0,0,0,6,0,7,0,0,17,0,0,1,1},
                  {1,1,0,0,0,0,0,0,0,0,0,0,0,1,1},
                  {1,1,1,2,0,0,0,0,0,0,0,2,1,1,1},
                  {1,1,1,1,1,1,4,4,4,1,1,1,1,1,1}
@@ -782,7 +782,7 @@ public static int[][] xviii = {{17,19},
             //{
                 //inventoryOpen = 1;
                 I.openInvMenu();
-                I.setSize(1020,1020);
+                I.setSize(900,720);
                 I.setLocationRelativeTo(null);
             //}
             //else
@@ -798,7 +798,7 @@ public static int[][] xviii = {{17,19},
             quickCraft Q = new quickCraft(I);
        
             Q.setVisible(true);
-            Q.setSize(1020,1020);
+            Q.setSize(900,720);
             Q.setLocationRelativeTo(null);
         }
         else if (z == KeyEvent.VK_E)
@@ -1043,6 +1043,18 @@ public static int[][] xviii = {{17,19},
                           charY = tY;
                            arr[charY][charX] = 7;
                     }
+                }
+                //interacting with craft spot
+                else if (arr[charY][charX] == 17)
+                {
+                    complexCraft Q = new complexCraft(I);
+       
+                    Q.setVisible(true);
+                    Q.setSize(900,720);
+                     Q.setLocationRelativeTo(null);
+                     charX = tX;
+                          charY = tY;
+                           arr[charY][charX] = 7;
                 }
                 //interacting with health kit
                 else if (arr[charY][charX] == 10)
@@ -1497,6 +1509,11 @@ public static int[][] xviii = {{17,19},
                             //g.setColor(Color.YELLOW.darker());
                             type = 1;
                             block = new ImageIcon(getClass().getResource("MAPkeyshard.png"));
+                            break;
+                        case 17:
+                            
+                            type = 1;
+                            block = new ImageIcon(getClass().getResource("MAPcraf.png"));
                             break;
                         case 10:
                             

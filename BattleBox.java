@@ -89,6 +89,9 @@ public class BattleBox extends JFrame
     //needed to make the title
     String[] charNames = {"","","","Dleg","Geruo","Keldoc","Uandar"};
     String [] eneNames = {"","Dleg","Froddoger","Podhog","Enroga","Lipsauge","Keldoc","General Fodriquod","Fallen General Fodriquod","Supreme General Uandar","Reborn General Uandar","Death Cannon","Survivor","Casualty","The Colossal CROAKER","Treech"};
+    
+    //needed for weapon sprites
+    ImageIcon wepspr;
     public BattleBox(Player p, Enemy e, InventoryMenu i, Display di)
     {
         player = p;
@@ -1121,6 +1124,26 @@ public class BattleBox extends JFrame
                                                 temp = temp - skillsList[availableSkills.get(i)][3];
                                                 enemy.setHP(temp);
                                                 ehp.setText((enemy.getHP())+"/" + (enemy.getmHP()));
+                                                if (skillNo < 6)
+                                                {
+                                                    wepspr = new ImageIcon(getClass().getResource("ppunch.png"));
+                                                    blank.setIcon(wepspr);
+                                                }
+                                                else if (skillNo == 11)
+                                                {
+                                                    wepspr = new ImageIcon(getClass().getResource("sword.png"));
+                                                    blank.setIcon(wepspr);
+                                                }
+                                                else if (skillNo == 10)
+                                                {
+                                                    wepspr = new ImageIcon(getClass().getResource("axe.png"));
+                                                    blank.setIcon(wepspr);
+                                                }
+                                                else if (skillNo == 13)
+                                                {
+                                                    wepspr = new ImageIcon(getClass().getResource("jet.png"));
+                                                    blank.setIcon(wepspr);
+                                                }
                                                 break;
                                             
                                                 //healing skills
@@ -1180,6 +1203,8 @@ public class BattleBox extends JFrame
                                                 break;
                                                 //parrying attacks
                                             case 5:
+                                                wepspr = new ImageIcon(getClass().getResource("sword.png"));
+                                                blank.setIcon(wepspr);
                                                 playerRepeats = 0;
                                                 enemyRepeats = enemyRepeats - 1;
                                                 enemy.attack(enemy);
@@ -1188,6 +1213,7 @@ public class BattleBox extends JFrame
                                                 break;
                                             //random damage/gamble
                                             case 6:
+                                                blank.setIcon(gHit);
                                                 enemy.setHP(enemy.getHP()- rd.nextInt(skillsList[availableSkills.get(i)][3]));
                                                 player.setHP(player.getHP()-((rd.nextInt(skillsList[availableSkills.get(i)][3]))/2));
                                                 ehp.setText((enemy.getHP())+"/" + (enemy.getmHP()));
