@@ -22,15 +22,17 @@ public class InventoryMenu extends JFrame
     String[] itemNames = {"Empty","🍶Health potion", "🍵Magic potion", "📏Stick", "⚙Scrap metal", "⚔Sword",
                           "⛽Engine", "⚒Axe", "🔥Fire powder", "☕Coffee", "❧Bullet", "🚀Spaceship", "⛽Jetpack","🛢Oil","🔑Key","🔑Key piece",
                         "🐡Porcpuff","❥Boomerang","💔Broken boomerang","🗡Dark sword","🗡Jetsword",
-                    "💵Imperial Currency","💵Delgg","Water bottle","Towel","Soupapousoup",
-                "","","","",
+                    "💵Imperial Currency","➰String","💦Water bucket","🔨Possessed Axe","🍜Soupapousoup",
+                "🏹Bow","🎸Guitar","","",
             "👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg",
             "👽Geruo","👽Geruo","👽Geruo","👽Geruo","👽Geruo","👽Geruo","👽Geruo","👽Geruo","👽Geruo","👽Geruo",
             "👽Koldec","👽Koldec","👽Koldec","👽Koldec","👽Koldec","👽Koldec","👽Koldec","👽Koldec","👽Koldec","👽Koldec",
             "👽Uandar","👽Uandar","👽Uandar","👽Uandar","👽Uandar","👽Uandar","👽Uandar","👽Uandar","👽Uandar","👽Uandar",
             "Oriinmi","Oriinmi","Oriinmi","Oriinmi","Oriinmi","Oriinmi","Oriinmi","Oriinmi","Oriinmi","Oriinmi",
             "🌹Parmesian","🥀?Permas","🥀Permasi","🌹Permasio","🌷Permasionne","🌸Permanne","💮Permanen","💮Permanente","🏵️Impermanente","⚜️Impare",
-            "👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg"
+            
+            "👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg",
+            "🏺Life jar"
         };
    
     //5 labels will be used to display 5 items at a time

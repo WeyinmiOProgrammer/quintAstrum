@@ -57,6 +57,7 @@ public class Main extends JFrame
             {
                 //opens the game and closes the menu
                 //changed to make a new instance of mapDisplay
+               
                 mainGame z = new mainGame(difficulty);
                 z.setVisible(true);
                
