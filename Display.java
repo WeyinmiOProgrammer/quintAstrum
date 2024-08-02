@@ -48,6 +48,7 @@ public class Display extends JPanel implements KeyListener
     // 15 - key door - becomes free space after interaction
     // 16 - key shard - becomes free space after interaction - can be crafted into key
     // 17 - craft spot - craft more complex weapons
+    // 18 - cinematic character you aren't meant to interact with
     /*
      The maximum size of any map should be 30x30
      */
@@ -58,9 +59,9 @@ public class Display extends JPanel implements KeyListener
    
    
    
-    //map one - 15x8
-   public static int[][] i = {{0,2},
-                 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+    //map one - 15x8 - using the entrance as a quick test door to wherever
+   public static int[][] i = {{17,2},
+                 {1,1,1,1,1,1,1,8,1,1,1,1,1,1,1},
                  {1,1,1,2,0,0,0,0,0,0,0,2,1,1,1},
                  {1,1,0,0,0,0,0,9,0,0,0,0,0,1,1},
                  {1,1,0,0,0,0,0,0,0,0,0,0,0,1,1},
@@ -278,7 +279,7 @@ public static int[][] minusone = {{15,17},
                {01,00,00,00,00,00,00,00,01},
                {01,00,00,00,13,00,00,00,01},
                {01,00,00,00,00,00,00,00,01},
-               {01,01,01,01,8,01,01,01,01}};
+               {01,01,01,01,01,01,01,01,01}};
                 
 public static int[][] xvi = {{15,17},
                {01,01,01,01,01,01,01,01,01},
@@ -305,6 +306,26 @@ public static int[][] xviii = {{17,19},
             {01,01,01,01,01,01,00,01},
             {01,04,00,00,00,00,00,01},
             {01,01,01,01,01,01,01,01}};
+            
+public static int[][] xix = {{18,20},
+{01,01,01,01,01,01,01,01,01,01},
+{01,01,00,00,00,00,00,07,8,01},
+{01,01,00,01,01,01,01,01,01,01},
+{01,00,00,00,00,00,01,01,01,01},
+{01,00,00,00,00,00,01,01,01,01},
+{01,01,00,01,01,01,01,01,01,01},
+{01,01,04,01,01,01,01,01,01,01}};
+
+public static int[][] xx = {{19,21},
+{01,8,01,01,01,01,01,01,01,01,01},
+{01,07,01,01,01,01,01,01,01,01,01},
+{01,00,01,01,00,00,00,01,01,01,01},
+{01,00,01,01,00,00,00,00,01,01,01},
+{01,00,01,01,00,06,18,00,04,01,01},
+{01,00,11,00,00,00,00,00,01,01,01},
+{01,01,01,01,01,01,01,01,01,01,01}};
+
+
     //variables relating to movement
     int charX = 7;
     int charY = 5;
@@ -404,6 +425,7 @@ public static int[][] xviii = {{17,19},
                 return i;
                 
             case 2:
+                //I.addToInv(62);
                 return ii;
                 
             case 3:
@@ -449,6 +471,10 @@ public static int[][] xviii = {{17,19},
                 return xvii;
             case 18:
                 return xviii;
+            case 19:
+                return xix;
+            case 20:
+                return xx;
             
         }
         return zero;
@@ -711,6 +737,23 @@ public static int[][] xviii = {{17,19},
                 }}
             }
             
+            else if (g == 11)
+            {
+                gx = xx[1].length;
+            gy = xx.length;
+            for (int y = 1; y < gy ; y++)
+           
+            {
+                for (int x = 0; x < gx; x++)
+                {
+
+                    if (xx[y][x] == 11 || xx[y][x] == 6 || xx[y][x] == 18)
+                    {
+                       xx[y][x] = 0;
+                    }
+                }}
+            }
+            
         }
     
    
@@ -737,6 +780,39 @@ public static int[][] xviii = {{17,19},
         if (c == 18 && laserCheck == 0)
         {
             editArea(9);
+        }
+        if (c == 18 && uanCheckOne == 0) 
+        {
+            boolean x = false;
+            int z = 0;
+            for (int w = 60; w < 70; w++)
+            {
+                if (I.searchInvFor(w))
+                {
+                x = true;
+                z= w;
+            }
+                
+            }
+            if (x)
+            {
+                I.removeFromInv(z);
+                uanCheckOne = z;
+                DialogueB leaving = new DialogueB(8,"You shouldn't have saved me. I'm not staying.",0,I,myChar,this);
+                leaving.setVisible(true);
+                leaving.setLocationRelativeTo(null);
+                leaving.pack();
+                
+            }
+            else
+            {
+                uanCheckOne = 1;
+            }
+        }
+        if (c == 20 && uanCheckOne == 1)
+        {
+            uanCheckTwo = 5;
+            editArea(11);
         }
     
 
@@ -1478,6 +1554,17 @@ public static int[][] xviii = {{17,19},
                             {
                             block = new ImageIcon(getClass().getResource("MAPwep.png"));
                             }
+                            if (currentSection == 20)
+                            {
+                            block = new ImageIcon(getClass().getResource("MAPdrama1.png"));
+                            }
+                        
+                            break;
+                        case 18:
+                            if (currentSection == 20)
+                            {
+                            block = new ImageIcon(getClass().getResource("MAPclow.png"));
+                            }
                         
                             break;
                         case 12:
@@ -1521,6 +1608,7 @@ public static int[][] xviii = {{17,19},
                             type = 1;
                             block = new ImageIcon(getClass().getResource("MAPbox.png"));
                             break;
+                            
                    
                        
                        
