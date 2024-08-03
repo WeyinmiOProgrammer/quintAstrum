@@ -392,6 +392,12 @@ public class BattleBox extends JFrame
                 enemyDefeat1 = gHit;
                 econ.setIcon(ene);
                 break;
+            case 16:
+                ene = new ImageIcon(getClass().getResource("Govic.png"));
+                ypunch = new ImageIcon(getClass().getResource("hit.png"));
+                enemyDefeat1 = new ImageIcon(getClass().getResource("Govic.png"));
+                econ.setIcon(ene);
+                break;
         }
     }
     public class event implements ActionListener

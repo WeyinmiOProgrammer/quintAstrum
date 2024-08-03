@@ -15,18 +15,14 @@ import java.awt.event.KeyListener;
 
 public class Display extends JPanel implements KeyListener
 {
-    //MOVED MAP CLASS DATA TO DISPLAY CLASS
+    
     /*
      first sub-array is meant to store all possible exits for reference
      in the order [entrance, exit 1, exit 2]
      
      the other sub-arrays will be loaded to form a map
      
-     I highly doiubt this will work
-     
-     chests will probably contain random items, not preset (makes it easi8er)
-     
-     might mix chests with the resources like wood and metal
+    
      */
    
    
@@ -401,7 +397,11 @@ public static int[][] xx = {{19,21},
     {
         return myChar;
     }
-    
+    public void uanScene(int state)
+    {
+        uanCheckTwo = state;
+        repaint();
+    }
     public int[][] findMap(int curr)
     {
         switch(curr)
@@ -961,6 +961,13 @@ public static int[][] xx = {{19,21},
                     charX = tX;
                     charY = tY;
                     arr[charY][charX] = 7;
+                    if (arr[charY][charX] ==11 && currentSection == 20)
+                    {
+                         DialogueB d4 = new DialogueB(9,"You had strict instructions ", 20,I,myChar,this);
+                         d4.setVisible(true);
+                         d4.pack();
+                         d4.setLocationRelativeTo(null);
+                    }
                 }
                 //moves the player to a free space
                 else if (arr[charY][charX] == 0)
@@ -1556,7 +1563,18 @@ public static int[][] xx = {{19,21},
                             }
                             if (currentSection == 20)
                             {
+                                if (uanCheckTwo == 0)
+                                {
                             block = new ImageIcon(getClass().getResource("MAPdrama1.png"));
+                        }
+                        else if (uanCheckTwo == 2)
+                                {
+                            block = new ImageIcon(getClass().getResource("MAPdrama2.png"));
+                        }
+                        else if (uanCheckTwo == 3)
+                                {
+                            block = new ImageIcon(getClass().getResource("MAPdrama3.png"));
+                        }
                             }
                         
                             break;
