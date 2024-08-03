@@ -568,6 +568,11 @@ public class BattleBox extends JFrame
                         
                         player.setXP(player.getXP()+2);
                         break;
+                        
+                        case 16:
+                            d.uanFinal();
+                            player.setXP(player.getXP()+50);
+                        break;
 
                 }
                 
@@ -697,6 +702,10 @@ public class BattleBox extends JFrame
                                 d.editArea(9);
                                 d.editArea(10);
                            }
+                           if (enemy.getID() == 16)
+                           {
+                            d.uanFinal();
+                        }
                             dispose();
                             
                         }
@@ -707,6 +716,10 @@ public class BattleBox extends JFrame
                                 d.editArea(9);
                                 d.editArea(10);
                            }
+                           if (enemy.getID() == 16)
+                           {
+                            d.uanFinal();
+                        }
                             dispose();
                         }
                         else
@@ -718,6 +731,10 @@ public class BattleBox extends JFrame
                                 d.editArea(9);
                                 d.editArea(10);
                            }
+                           if (enemy.getID() == 16)
+                           {
+                            d.uanFinal();
+                        }
                                 dispose();
                             }
                             else
@@ -1694,6 +1711,7 @@ public class BattleBox extends JFrame
                     enemy.recover(1);
                     enemy.setSD(player.getSD());
                     econ.setIcon(ene);
+                    blank2.setIcon(null);
                     if (enemy.getMP()>= 3)
                     {
                         econ.setIcon(anger);
@@ -1885,6 +1903,32 @@ public class BattleBox extends JFrame
                         blank2.setIcon(null);
                     }
                     break;
+                //croaker
+                case 14:
+                    break;
+                //treech
+                case 15:
+                    if (move > 2)
+                    {
+                        enemy.attack(player);
+                       econ.setIcon(ene);
+                       blank2.setIcon(ypunch);
+                       hp.setText((player.getHP())+"/" + (player.getmHP()));
+                    }
+                    else
+                    {
+                        blank2.setIcon(null);
+                    }
+                    break;
+                //Govic
+                case 16:
+                    if (move > 2)
+                    {
+                        enemy.attack(player);
+                       econ.setIcon(ene);
+                       blank2.setIcon(ypunch);
+                       hp.setText((player.getHP())+"/" + (player.getmHP()));
+                    }
         }
         if (player.getHP() > 0)
         {
@@ -2099,6 +2143,10 @@ public class BattleBox extends JFrame
         case 15:
             econ.setIcon(enemyDefeat1);
             defeatMsg = new DialogueB(0,"This isn't the last you'll see of me",0,items,player,d);
+            break;
+        case 16:
+            econ.setIcon(enemyDefeat1);
+            defeatMsg = new DialogueB(0,"Forget this, I'm outta here",0,items,player,d);
             break;
     }
     defeatMsg.pack();

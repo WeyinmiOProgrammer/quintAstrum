@@ -752,11 +752,35 @@ public static int[][] xx = {{19,21},
                        xx[y][x] = 0;
                     }
                 }}
+                repaint();
             }
             
         }
     
-   
+    public void uanFinal()
+    {
+        DialogueB part = new DialogueB(8,"<HTML>You've saved me twice now...<BR>I'm...grateful that you did. Thank you.</HTML>",0,I,myChar,this);
+        switch(uanCheckTwo)
+        {
+            
+            case 0:
+                I.addToInv(uanCheckOne+1);
+                break;
+            case 2:
+                I.addToInv(uanCheckOne);
+                break;
+            case 3:
+                part = new DialogueB(8,"...it's too late for me. Get out of this place while you can.",0,I,myChar,this);
+                break;
+            case 4:
+                part = new DialogueB(3,"I should've acted faster...NO! He made his choices.",0,I,myChar,this);
+                break;
+                
+        }
+        part.setVisible(true);
+        part.pack();
+        part.setLocationRelativeTo(null);
+    }
     public void calculatePosition(int c)
     {
         findPlayerPos((findMap(c)));
@@ -800,9 +824,9 @@ public static int[][] xx = {{19,21},
                 uanCheckOne = z;
                 DialogueB leaving = new DialogueB(8,"You shouldn't have saved me. I'm not staying.",0,I,myChar,this);
                 leaving.setVisible(true);
-                leaving.setLocationRelativeTo(null);
-                leaving.pack();
                 
+                leaving.pack();
+                leaving.setLocationRelativeTo(null);
             }
             else
             {
