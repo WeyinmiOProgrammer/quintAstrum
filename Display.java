@@ -425,7 +425,7 @@ public static int[][] xx = {{19,21},
                 return i;
                 
             case 2:
-                //I.addToInv(62);
+                I.addToInv(62);
                 return ii;
                 
             case 3:
@@ -958,9 +958,6 @@ public static int[][] xx = {{19,21},
                 //keeps the player in position when interacting with a wall 
                 else if (arr[charY][charX] == 1 || arr[charY][charX] == 11)
                 {
-                    charX = tX;
-                    charY = tY;
-                    arr[charY][charX] = 7;
                     if (arr[charY][charX] ==11 && currentSection == 20)
                     {
                          DialogueB d4 = new DialogueB(9,"You had strict instructions ", 20,I,myChar,this);
@@ -968,6 +965,10 @@ public static int[][] xx = {{19,21},
                          d4.pack();
                          d4.setLocationRelativeTo(null);
                     }
+                    charX = tX;
+                    charY = tY;
+                    arr[charY][charX] = 7;
+                    
                 }
                 //moves the player to a free space
                 else if (arr[charY][charX] == 0)

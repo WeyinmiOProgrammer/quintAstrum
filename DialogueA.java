@@ -181,6 +181,31 @@ public class DialogueA extends JFrame
                          d4.setLocationRelativeTo(null);
                          in.addToInv(21);
                              break;
+                             
+                             case 29:
+                            d.editArea(11);
+                            Enemy bs4 = new Enemy(80,20,10,4,3,80,20, 16);
+                             bs4.diffSpike(d.getDif());
+                             BattleBox b7 = new BattleBox(p, bs4, in, d);
+                             b7.setVisible(true);
+                             b7.setSize(900,720);
+                             b7.setLocationRelativeTo(null);
+                            
+                            
+                            break;
+                             
+                            case 31:
+                             case 33:
+                            d.editArea(11);
+                            Enemy bs5 = new Enemy(80,20,10,4,3,80,20, 16);
+                             bs5.diffSpike(d.getDif());
+                             BattleBox b6 = new BattleBox(p, bs5, in, d);
+                             b6.setVisible(true);
+                             b6.setSize(900,720);
+                             b6.setLocationRelativeTo(null);
+                            
+                            
+                            break;
                     }
                     dispose();
                     

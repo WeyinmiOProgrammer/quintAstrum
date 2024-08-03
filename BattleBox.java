@@ -88,7 +88,7 @@ public class BattleBox extends JFrame
     
     //needed to make the title
     String[] charNames = {"","","","Dleg","Geruo","Keldoc","Uandar"};
-    String [] eneNames = {"","Dleg","Froddoger","Podhog","Enroga","Lipsauge","Keldoc","General Fodriquod","Fallen General Fodriquod","Supreme General Uandar","Reborn General Uandar","Death Cannon","Survivor","Casualty","The Colossal CROAKER","Treech"};
+    String [] eneNames = {"","Dleg","Froddoger","Podhog","Enroga","Lipsauge","Keldoc","General Fodriquod","Fallen General Fodriquod","Supreme General Uandar","Reborn General Uandar","Death Cannon","Survivor","Casualty","The Colossal CROAKER","Treech","Govic"};
     
     //needed for weapon sprites
     ImageIcon wepspr;
