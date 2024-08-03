@@ -245,7 +245,7 @@ public class DialogueA extends JFrame
                             ser8.setLocationRelativeTo(null);
                             break;
                         case 31:
-                             
+                             d.uanScene(4);
                              DialogueB ser9 = new DialogueB(9,"Right, let's get out of here.", 32,in,p,d);
                             ser9.setVisible(true);
                             ser9.pack();
@@ -253,7 +253,7 @@ public class DialogueA extends JFrame
                             break;
                         case 33:
                             d.editArea(11);
-                            d.uanScene(4);
+                            d.uanScene(6);
                             
                             break;
                     }

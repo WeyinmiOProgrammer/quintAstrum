@@ -57,7 +57,7 @@ public class Display extends JPanel implements KeyListener
    
     //map one - 15x8 - using the entrance as a quick test door to wherever
    public static int[][] i = {{17,2},
-                 {1,1,1,1,1,1,1,8,1,1,1,1,1,1,1},
+                 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                  {1,1,1,2,0,0,0,0,0,0,0,2,1,1,1},
                  {1,1,0,0,0,0,0,9,0,0,0,0,0,1,1},
                  {1,1,0,0,0,0,0,0,0,0,0,0,0,1,1},
@@ -425,7 +425,7 @@ public static int[][] xx = {{19,21},
                 return i;
                 
             case 2:
-                I.addToInv(62);
+                //I.addToInv(62);
                 return ii;
                 
             case 3:
@@ -767,7 +767,7 @@ public static int[][] xx = {{19,21},
                 I.addToInv(uanCheckOne+1);
                 break;
             case 2:
-                I.addToInv(uanCheckOne);
+                I.addToInv(uanCheckOne+1);
                 break;
             case 3:
                 part = new DialogueB(8,"...it's too late for me. Get out of this place while you can.",0,I,myChar,this);
@@ -1600,6 +1600,10 @@ public static int[][] xx = {{19,21},
                                 {
                             block = new ImageIcon(getClass().getResource("MAPdrama3.png"));
                         }
+                        else if (uanCheckTwo == 4)
+                                {
+                            block = new ImageIcon(getClass().getResource("MAPdrama3.png"));
+                        }
                             }
                         
                             break;
@@ -1607,6 +1611,10 @@ public static int[][] xx = {{19,21},
                             if (currentSection == 20)
                             {
                             block = new ImageIcon(getClass().getResource("MAPclow.png"));
+                            if (uanCheckTwo == 4)
+                                {
+                            block = new ImageIcon(getClass().getResource("MAPclowGEN.png"));
+                        }
                             }
                         
                             break;

@@ -2082,6 +2082,10 @@ public class BattleBox extends JFrame
             defeatMsg.setLocationRelativeTo(null);
             defeatMsg.setVisible(true);
         }
+        if (enemy.getID() == 16)
+                           {
+                            d.uanFinal();
+                        }
     }
        }
     }
