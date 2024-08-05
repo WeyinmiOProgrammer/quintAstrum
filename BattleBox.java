@@ -88,7 +88,7 @@ public class BattleBox extends JFrame
     
     //needed to make the title
     String[] charNames = {"","","","Dleg","Geruo","Keldoc","Uandar"};
-    String [] eneNames = {"","Dleg","Froddoger","Podhog","Enroga","Lipsauge","Keldoc","General Fodriquod","Fallen General Fodriquod","Supreme General Uandar","Reborn General Uandar","Death Cannon","Survivor","Casualty","The Colossal CROAKER","Treech","Govic"};
+    String [] eneNames = {"","Dleg","Froddoger","Podhog","Enroga","Lipsauge","Keldoc","General Fodriquod","Fallen General Fodriquod","Supreme General Uandar","Reborn General Uandar","Death Cannon","Survivor","Casualty","The Colossal CROAKER","Treech","Govic","Oeleh","Uadevah","Limesloy"};
     
     //needed for weapon sprites
     ImageIcon wepspr;
@@ -396,6 +396,22 @@ public class BattleBox extends JFrame
                 ene = new ImageIcon(getClass().getResource("Govic.png"));
                 ypunch = new ImageIcon(getClass().getResource("hit.png"));
                 enemyDefeat1 = new ImageIcon(getClass().getResource("Govic.png"));
+                econ.setIcon(ene);
+                break;
+            case 17:
+                ene = new ImageIcon(getClass().getResource("hippie.png"));
+                ypunch = new ImageIcon(getClass().getResource("hit.png"));
+                econ.setIcon(ene);
+                break;
+            case 18:
+                ene = new ImageIcon(getClass().getResource("awww.png"));
+                anger = new ImageIcon(getClass().getResource("arghhh.png"));
+                ypunch = new ImageIcon(getClass().getResource("hit.png"));
+                econ.setIcon(ene);
+                break;
+            case 19:
+                ene = new ImageIcon(getClass().getResource("slimeguy.png"));
+                ypunch = new ImageIcon(getClass().getResource("hit.png"));
                 econ.setIcon(ene);
                 break;
         }

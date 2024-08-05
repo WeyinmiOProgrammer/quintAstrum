@@ -321,6 +321,20 @@ public static int[][] xx = {{19,21},
 {01,00,11,00,00,00,00,00,01,01,01},
 {01,01,01,01,01,01,01,01,01,01,01}};
 
+public static int[][] xxi = {{20,22},
+{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+{1,8,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,1},
+{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
+
+public static int[][] xxii = {{21,23},
+{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+{1,8,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,1},
+{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
+
+public static int[][] xxiii = {{22,24},
+{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+{1,8,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,1},
+{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
 
     //variables relating to movement
     int charX = 7;
@@ -332,7 +346,7 @@ public static int[][] xx = {{19,21},
     int laserCheck = 0; //checks if the death cannon has been fired
     int uanCheckOne = 0; //checks if uandar is in the party --> he leaves
     int uanCheckTwo = 0; //checks if the player has seen him captured - interaction
-    int warCheck = 0; //checks if the player has encountered the warrior
+    int warCheck = 0; //checks if the player has encountered the warrior- who?
     int xpConst = 0; //used to check if player has resorted to violence
      
     //extra color constants
@@ -400,6 +414,7 @@ public static int[][] xx = {{19,21},
     public void uanScene(int state)
     {
         uanCheckTwo = state;
+        myChar.setStatus("Traumatised",state);
         repaint();
     }
     public int[][] findMap(int curr)
@@ -475,6 +490,12 @@ public static int[][] xx = {{19,21},
                 return xix;
             case 20:
                 return xx;
+            case 21:
+                return xxi;
+            case 22:
+                return xxii;
+            case 23:
+                return xxiii;
             
         }
         return zero;
@@ -1072,6 +1093,32 @@ public static int[][] xx = {{19,21},
                             else
                             {
                                 e1 = new Enemy(87,10,15,3,5,87,10, 12);
+                            }
+                             e1.diffSpike(Dif);
+                             BattleBox b = new BattleBox(myChar, e1, I, this);
+                             b.setVisible(true);
+                             b.setSize(900,720);
+                             b.setLocationRelativeTo(null);
+                             stepsLeft = R.nextInt(15)+30;
+                            }
+                            if (currentSection > 20 && currentSection < 23)
+                            {
+                                Enemy e1;
+                                if (R.nextInt(4) == 1)
+                                {
+                             e1 = new Enemy(20,0,6,2,1,20,0, 15);
+                            }
+                            else if (R.nextInt(3) == 2)
+                                {
+                             e1 = new Enemy(55,0,5,7,11,55,0, 17);
+                            }
+                            else if (R.nextInt(2) == 1)
+                                {
+                             e1 = new Enemy(42,0,12,4,10,42,0, 18);
+                            }
+                            else
+                            {
+                                e1 = new Enemy(67,3,8,4,4,67,3, 19);
                             }
                              e1.diffSpike(Dif);
                              BattleBox b = new BattleBox(myChar, e1, I, this);
