@@ -594,6 +594,46 @@ public class BattleBox extends JFrame
                             d.uanFinal();
                             player.setXP(player.getXP()+50);
                         break;
+                        
+                        case 17:
+                            for (int j = 0; j < 2; j++)
+                            {
+                              collect = items.addToInv(22);
+                    
+                        }
+                
+                        player.setXP(player.getXP()+35);
+                        break;
+                        
+                        case 18:
+                            for (int j = 0; j < 1; j++)
+                            {
+                              collect = items.addToInv(7);
+                    
+                        }
+                
+                        player.setXP(player.getXP()+50);
+                        break;
+                        
+                        case 19:
+                            for (int j = 0; j < 2; j++)
+                            {
+                              collect = items.addToInv(23);
+                    
+                        }
+                
+                        player.setXP(player.getXP()+32);
+                        break;
+                        
+                        case 20:
+                            for (int j = 0; j < 2; j++)
+                            {
+                              collect = items.addToInv(13);
+                    
+                        }
+                
+                        player.setXP(player.getXP()+30);
+                        break;
 
                 }
                 
@@ -633,7 +673,7 @@ public class BattleBox extends JFrame
                 
                 //handles player attack
                 case "ATTACK":
-                  if (turn == 1 && choosing == 0)
+                  if (turn == 1 && choosing == 0 && !enemy.getStatus().equals("Flying"))
                   {
                       if (player.getID()== 3)
                       {
@@ -668,7 +708,7 @@ public class BattleBox extends JFrame
                   break;
                 
                 case "HIT - 2MP":
-                     if (turn == 1 && choosing == 0 && player.getMP() > 1)
+                     if (turn == 1 && choosing == 0 && player.getMP() > 1 && !enemy.getStatus().equals("Flying"))
                   {
                       
                   player.attack(enemy);
@@ -773,7 +813,7 @@ public class BattleBox extends JFrame
                 //handles skill attacks - uses MP
                 case "SKILLS":
                 case "TECHNIQUE":   
-                   if (turn == 1 && choosing == 0 && availableSkills.size() != 0)
+                   if (turn == 1 && choosing == 0 && availableSkills.size() != 0 && !enemy.getStatus().equals("Flying"))
                    {
                        //add weapon specific skills
                        if (items.searchInvFor(7))
@@ -1943,13 +1983,28 @@ public class BattleBox extends JFrame
                     break;
                 //Govic
                 case 16:
-                    if (move > 2)
+                    if (move > 1 || enemy.getStatus().equals("Flying"))
                     {
                         enemy.attack(player);
                        econ.setIcon(ene);
                        blank2.setIcon(ypunch);
                        hp.setText((player.getHP())+"/" + (player.getmHP()));
                     }
+                    else
+                    {
+                        blank2.setIcon(null);
+                        enemy.setStatus("Flying",2);
+                    }
+                    break;
+                //Oeleh
+                case 17:
+                    break;
+                case 18:
+                    break;
+                case 19:
+                    break;
+                case 20:
+                    break;
         }
         if (player.getHP() > 0)
         {

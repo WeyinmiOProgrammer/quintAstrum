@@ -1114,7 +1114,7 @@ public static int[][] xxiii = {{22,24},
                             }
                             else if (R.nextInt(2) == 1)
                                 {
-                             e1 = new Enemy(42,0,12,4,10,42,0, 18);
+                             e1 = new Enemy(42,0,12,4,10,42,0, 20);
                             }
                             else
                             {

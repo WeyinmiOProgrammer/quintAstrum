@@ -23,7 +23,7 @@ public class InventoryMenu extends JFrame
                           "⛽Engine", "⚒Axe", "🔥Fire powder", "☕Coffee", "❧Bullet", "🚀Spaceship", "⛽Jetpack","🛢Oil","🔑Key","🔑Key piece",
                         "🐡Porcpuff","❥Boomerang","💔Broken boomerang","🗡Dark sword","🗡Jetsword",
                     "💵Imperial Currency","➰String","💦Water bucket","🔨Possessed Axe","🍜Soupapousoup",
-                "🏹Bow","🎸Guitar","💥TNT","",
+                "🏹Bow","🎸Guitar","🕯Dynamite","",
             "👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg",
             "👽Geruo","👽Geruo","👽Geruo","👽Geruo","👽Geruo","👽Geruo","👽Geruo","👽Geruo","👽Geruo","👽Geruo",
             "👽Koldec","👽Koldec","👽Koldec","👽Koldec","👽Koldec","👽Koldec","👽Koldec","👽Koldec","👽Koldec","👽Koldec",
