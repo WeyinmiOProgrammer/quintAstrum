@@ -88,7 +88,7 @@ public class BattleBox extends JFrame
     
     //needed to make the title
     String[] charNames = {"","","","Dleg","Geruo","Keldoc","Uandar"};
-    String [] eneNames = {"","Dleg","Froddoger","Podhog","Enroga","Lipsauge","Keldoc","General Fodriquod","Fallen General Fodriquod","Supreme General Uandar","Reborn General Uandar","Death Cannon","Survivor","Casualty","The Colossal CROAKER","Treech","Govic","Oeleh","Uadevah","Limesloy"};
+    String [] eneNames = {"","Dleg","Froddoger","Podhog","Enroga","Lipsauge","Keldoc","General Fodriquod","Fallen General Fodriquod","Supreme General Uandar","Reborn General Uandar","Death Cannon","Survivor","Casualty","The Colossal CROAKER","Treech","Govic","Oeleh","Uadevah","Limesloy","Strilnoz"};
     
     //needed for weapon sprites
     ImageIcon wepspr;
@@ -412,6 +412,11 @@ public class BattleBox extends JFrame
             case 19:
                 ene = new ImageIcon(getClass().getResource("slimeguy.png"));
                 ypunch = new ImageIcon(getClass().getResource("hit.png"));
+                econ.setIcon(ene);
+                break;
+             case 20:
+                ene = new ImageIcon(getClass().getResource("nuz.png"));
+                ypunch = new ImageIcon(getClass().getResource("acid.png"));
                 econ.setIcon(ene);
                 break;
         }
