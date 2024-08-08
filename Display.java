@@ -1114,11 +1114,13 @@ public static int[][] xxiii = {{22,24},
                             }
                             else if (R.nextInt(2) == 1)
                                 {
-                             e1 = new Enemy(42,0,12,4,10,42,0, 20);
+                             e1 = new Enemy(42,10,12,4,10,42,10, 20);
+                             e1.setStatus("Sick",10);
                             }
                             else
                             {
                                 e1 = new Enemy(67,3,8,4,4,67,3, 19);
+                                e1.setStatus("Wet",3);
                             }
                              e1.diffSpike(Dif);
                              BattleBox b = new BattleBox(myChar, e1, I, this);

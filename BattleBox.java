@@ -1993,17 +1993,82 @@ public class BattleBox extends JFrame
                     else
                     {
                         blank2.setIcon(null);
-                        enemy.setStatus("Flying",2);
+                        statReset(enemy);
+                        enemy.setStatus("Flying",1);
                     }
                     break;
                 //Oeleh
                 case 17:
+                    if (move > 2)
+                    {
+                        enemy.attack(player);
+                        blank2.setIcon(gHit);
+                        hp.setText((player.getHP())+"/" + (player.getmHP()));
+                    }
+                    else
+                    {
+                        player.recover(-3);
+                        blank2.setIcon(null);
+                        if (!player.getStatus().equals("Wet"))
+                        {
+                            statReset(player);
+                            player.setStatus("Charred",5);
+                        }
+                    }
                     break;
                 case 18:
+                    
                     break;
                 case 19:
+                    if (enemy.getStatus().equals("Wet"))
+                    {
+                        enemy.attack(player);
+                        econ.setIcon(ene);
+                        blank2.setIcon(gHit);
+                        hp.setText((player.getHP())+"/" + (player.getmHP()));
+                        enemy.recover(-1);
+                    }
+                    else
+                    {
+                        econ.setIcon(anger);
+                        enemy.recover(1);
+                        if (enemy.getMP()>=3)
+                        {
+                            statReset(enemy);
+                            enemy.setStatus("Wet",3);
+                            econ.setIcon(ene);
+                        }
+                        
+                    }
                     break;
                 case 20:
+                    if (enemy.getMP() > 0)
+                    {
+                        if (move > 2)
+                        {
+                            enemy.attack(player);
+                        
+                            blank2.setIcon(ypunch);
+                            if (rd.nextInt(3)==1)
+                            {
+                                statReset(player);
+                                player.setStatus("Sick",10);
+                                
+                            }
+                            
+                        }
+                        else
+                            {
+                                blank2.setIcon(null);
+                                enemy.recover(rd.nextInt(3));
+                            }
+                    }
+                    else
+                    {
+                        player.heal(-10);
+                        player.setStatus("Sick",10);
+                        this.dispose();
+                    }
                     break;
         }
         if (player.getHP() > 0)

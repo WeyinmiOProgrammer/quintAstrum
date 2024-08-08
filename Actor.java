@@ -177,7 +177,7 @@ public class Actor
             case "Charred":
                 HP -= 5;
                 break;
-            case "Space flu":
+            case "Sick":
                 MP -= 3;
                 break;
             case "Bamboozled":
