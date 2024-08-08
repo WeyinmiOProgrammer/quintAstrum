@@ -411,7 +411,8 @@ public class BattleBox extends JFrame
                 break;
             case 19:
                 ene = new ImageIcon(getClass().getResource("slimeguy.png"));
-                ypunch = new ImageIcon(getClass().getResource("hit.png"));
+                ypunch = new ImageIcon(getClass().getResource("wet.png"));
+                anger = new ImageIcon(getClass().getResource("slimedry.png"));
                 econ.setIcon(ene);
                 break;
              case 20:
@@ -994,13 +995,30 @@ public class BattleBox extends JFrame
                                         ehp.setText((enemy.getHP())+"/"+(enemy.getmHP()));
                                         break;
                                     case 8:
+                                        if (!(enemy.getID()==17))
+                                        {
                                         enemy.heal(-2);
                                         if (enemy.getStatus().equals("Oily"))
                                         {
                                             enemy.heal(-10);
                                         }
+                                        if (enemy.getID()==15)
+                                        {
+                                            enemy.setHP(1);
+                                        }
                                         enemy.setStatus("Burning",3);
                                         ehp.setText((enemy.getHP())+"/"+(enemy.getmHP()));
+                                    }
+                                    else
+                                    {
+                                        enemy.heal(5);
+                                        ehp.setText((enemy.getHP())+"/"+(enemy.getmHP()));
+                                        DialogueB chi = new DialogueB (0,"This battle was missin some spice",0,items,player,d);
+                                            chi.setVisible(true);
+                                            chi.pack();
+                                            chi.setLocationRelativeTo(null);
+                                    }
+                                    
                                         break;
                                     case 11:
                                         enemy.heal(-80);
@@ -1035,9 +1053,36 @@ public class BattleBox extends JFrame
                                         break;   
                                     case 16:
                                         player.setMP(player.getmMP());
-                                        //this is permanent for Geruo
-                                        player.setSD(player.getSD()-rd.nextInt(1));
+                                        //this is permanent for Geruo - shouldn't have played around
+                                        player.setSD(player.getSD()-rd.nextInt(2));
                                         player.heal(-1*rd.nextInt(2));
+                                        //can be used to tame dolphs and lions
+                                        if (enemy.getID()==3 || enemy.getID()==17)
+                                        {
+                                            DialogueB chi = new DialogueB (0,"Far out, dude. Far. Out.",0,items,player,d);
+                                            chi.setVisible(true);
+                                            chi.pack();
+                                            chi.setLocationRelativeTo(null);
+                                            dispose();
+                                        }
+                                        break;
+                                    case 23:
+                                        if (!enemy.getStatus().equals("Wet"))
+                                        {
+                                        statReset(enemy);
+                                            enemy.setStatus("Wet",3);
+                                            enemy.setSD(enemy.getSD()-3);
+                                            if (enemy.getID()==19)
+                                            {
+                                                DialogueB chi2 = new DialogueB (0,"That's the nicest thing anyone's done for me",0,items,player,d);
+                                            chi2.setVisible(true);
+                                            chi2.pack();
+                                            chi2.setLocationRelativeTo(null);
+                                            dispose();
+                                            }
+                                            
+                                            enemyRepeats =  Math.round(enemy.getSD()/player.getSD());
+                                        }
                                         break;
                                     //Dleg
                                     case 30:
@@ -1645,6 +1690,7 @@ public class BattleBox extends JFrame
                     enemy.setAT(7);
                     if (!enemy.getStatus().equals("Oily"))
                     {
+                    statReset(enemy);
                     enemy.setStatus("Oily",3);
                     enemy.setSD(enemy.getSD()+3);
                     
@@ -1968,14 +2014,98 @@ public class BattleBox extends JFrame
                 case 14:
                     if (enemy.getHP() > 750)
                     {
-                        if (move == 1)
+                        if (move < 2)
                         {
-                            econ.setIcon(gHit);
+                            blank2.setIcon(gHit);
                             enemy.setAT(enemy.getAT()/2);
                             enemy.attack(player);
                             enemy.setAT(enemy.getAT()*2);
+                            hp.setText((player.getHP())+"/" + (player.getmHP()));
+                        }
+                        else
+                        {
+                            blank2.setIcon(null);
+                            if (!enemy.getStatus().equals("Burning") && !enemy.getStatus().equals("Oily"))
+                            {
+                                statReset(enemy);
+                                enemy.setStatus("Oily",3);
+                                enemy.setSD(enemy.getSD()+3);
+                            }
+                            enemy.recover(1);
                         }
                         
+                    }
+                    else if (enemy.getHP() > 500)
+                    {
+                        if (enemy.getMP()>= 10)
+                        {
+                            enemy.attack(player);
+                            if (!player.getStatus().equals("Wet"))
+                            {
+                                statReset(player);
+                                player.setStatus("Burning",3);
+                            }
+                            blank2.setIcon(ypunch);
+                            enemy.recover(-10);
+                        }
+                        else if (move > 2)
+                        {
+                            blank2.setIcon(gHit);
+                            enemy.setAT(enemy.getAT()/2);
+                            enemy.attack(player);
+                            enemy.setAT(enemy.getAT()*2);
+                            hp.setText((player.getHP())+"/" + (player.getmHP()));
+                            enemy.recover(1);
+                        }
+                        else
+                        {
+                            blank2.setIcon(null);
+                            enemy.recover(4);
+                            statReset(enemy);
+                            enemy.setStatus("Burning",3);
+                        }
+                    }
+                    else if (enemy.getHP() > 250)
+                    {
+                        if (enemy.getMP()>= 10)
+                        {
+                            enemy.attack(player);
+                            if (!player.getStatus().equals("Wet"))
+                            {
+                                statReset(player);
+                                player.setStatus("Burning",3);
+                            }
+                            blank2.setIcon(ypunch);
+                            enemy.recover(-10);
+                        }
+                        else if (move > 2)
+                        {
+                            blank2.setIcon(gHit);
+                            enemy.setAT(enemy.getAT()/2);
+                            enemy.attack(player);
+                            enemy.setAT(enemy.getAT()*2);
+                            hp.setText((player.getHP())+"/" + (player.getmHP()));
+                            enemy.recover(1);
+                        }
+                        else
+                        {
+                            blank2.setIcon(null);
+                            enemy.recover(8);
+                            statReset(enemy);
+                            enemy.setAT(enemy.getAT()+rd.nextInt(2));
+                            enemy.setStatus("Charred",5);
+                        }
+                        
+                    }
+                    else
+                    {
+                        enemy.setAT(enemy.getAT()-1);
+                        blank2.setIcon(gHit);
+                            enemy.setAT(enemy.getAT()/2);
+                            enemy.attack(player);
+                            enemy.setAT(enemy.getAT()*2);
+                            hp.setText((player.getHP())+"/" + (player.getmHP()));
+                            enemy.recover(1);
                     }
                     break;
                 //treech
@@ -2037,7 +2167,13 @@ public class BattleBox extends JFrame
                     {
                         enemy.attack(player);
                         econ.setIcon(ene);
-                        blank2.setIcon(gHit);
+                        blank2.setIcon(ypunch);
+                        if (rd.nextInt(3)==1)
+                        {
+                            statReset(player);
+                            player.setStatus("Wet",3);
+                            player.setSD(player.getSD()-3);
+                        }
                         hp.setText((player.getHP())+"/" + (player.getmHP()));
                         enemy.recover(-1);
                     }
@@ -2049,6 +2185,7 @@ public class BattleBox extends JFrame
                         {
                             statReset(enemy);
                             enemy.setStatus("Wet",3);
+                            enemy.setSD(enemy.getSD()-3);
                             econ.setIcon(ene);
                         }
                         
@@ -2058,7 +2195,7 @@ public class BattleBox extends JFrame
                 case 20:
                     if (enemy.getMP() > 0)
                     {
-                        if (move > 2)
+                        if (move >= 2)
                         {
                             enemy.attack(player);
                         
@@ -2247,6 +2384,7 @@ public class BattleBox extends JFrame
     else
     {
         defeatMsg = new DialogueB(0,"...",0,items, player,d);
+        econ.setIcon(gHit);
         switch(enemy.getID())
         { case 1:
             econ.setIcon(enemyDefeat1);
@@ -2297,7 +2435,7 @@ public class BattleBox extends JFrame
             break;
         case 14:
             econ.setIcon(enemyDefeat1);
-            defeatMsg = new DialogueB(0,"CROOOOOOOAAAAAAAK",0,items,player,d);
+            defeatMsg = new DialogueB(0,"The glory of the longest burning flame becomes nothing, hidden beneath bushel",0,items,player,d);
             break;
         case 15:
             econ.setIcon(enemyDefeat1);
