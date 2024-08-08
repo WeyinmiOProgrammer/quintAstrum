@@ -1966,6 +1966,17 @@ public class BattleBox extends JFrame
                     break;
                 //croaker
                 case 14:
+                    if (enemy.getHP() > 750)
+                    {
+                        if (move == 1)
+                        {
+                            econ.setIcon(gHit);
+                            enemy.setAT(enemy.getAT()/2);
+                            enemy.attack(player);
+                            enemy.setAT(enemy.getAT()*2);
+                        }
+                        
+                    }
                     break;
                 //treech
                 case 15:
@@ -2016,9 +2027,11 @@ public class BattleBox extends JFrame
                         }
                     }
                     break;
+                //Uadevah
                 case 18:
                     
                     break;
+                //Limesloy
                 case 19:
                     if (enemy.getStatus().equals("Wet"))
                     {
@@ -2041,6 +2054,7 @@ public class BattleBox extends JFrame
                         
                     }
                     break;
+                //Strilnoz
                 case 20:
                     if (enemy.getMP() > 0)
                     {
