@@ -11,6 +11,8 @@ import java.awt.event.*;
 import javax.swing.event.*;
 import java.util.Random;
 import java.util.ArrayList;
+import java.util.concurrent.*;
+import javafx.concurrent.*;
 public class BattleBox extends JFrame
 {
     Player player;
@@ -92,6 +94,39 @@ public class BattleBox extends JFrame
     
     //needed for weapon sprites
     ImageIcon wepspr;
+    
+    //needed for animations
+    ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+    Task <Void> ask = new Task<Void>()
+    {
+        @Override protected Void call() throws Exception {
+            endAnim(1);
+            blank.setIcon(null);
+            return null;
+    }
+    };
+    Task <Void> ask2 = new Task<Void>()
+    {
+        @Override protected Void call() throws Exception {
+            endAnim(2);
+            blank2.setIcon(null);
+            return null;
+    }
+    };
+    Task <Void> ask3 = new Task<Void>()
+    {
+        @Override protected Void call() throws Exception {
+            endAnim(3);
+            return null;
+    }
+    };
+    Task <Void> ask4 = new Task<Void>()
+    {
+        @Override protected Void call() throws Exception {
+            endAnim(4);
+            return null;
+    }
+    };
     public BattleBox(Player p, Enemy e, InventoryMenu i, Display di)
     {
         player = p;
@@ -422,6 +457,31 @@ public class BattleBox extends JFrame
                 break;
         }
     }
+    
+    
+    public void endAnim(int o)
+    {
+        switch(o)
+        {
+            //for physical attacks
+            case 1:
+                blank.setIcon(null);
+                break;
+            case 2:
+                blank2.setIcon(null);
+                break;
+            //for projectile attacks
+            case 3:
+                blank.setIcon(blank2.getIcon());
+                blank2.setIcon(null);
+                break;
+            case 4:
+                blank2.setIcon(blank.getIcon());
+                blank.setIcon(null);
+                break;
+        }
+        
+    }
     public class event implements ActionListener
     {
         public void actionPerformed(ActionEvent e1)
@@ -690,17 +750,9 @@ public class BattleBox extends JFrame
                   ehp.setText((enemy.getHP())+"/" + (enemy.getmHP()));
                   mp.setText((player.getMP())+"/"+(player.getmMP()));
                  
-                try{
+                
                    blank.setIcon(hit);
-                  Thread.sleep(500);
-                  
-                  
-                }
-                catch(Exception e)
-                {
-                    System.out.println("error");
-                    
-                }
+                   executorService.schedule(ask, 2, TimeUnit.SECONDS);
                 //switches to enemy turn
                 turn = 2;
                 enemyTurn();
@@ -717,17 +769,9 @@ public class BattleBox extends JFrame
                   ehp.setText((enemy.getHP())+"/" + (enemy.getmHP()));
                   mp.setText((player.getMP())+"/"+(player.getmMP()));
                  
-                try{
+                
                    blank.setIcon(hit);
-                  Thread.sleep(500);
-                  
-                  
-                }
-                catch(Exception e)
-                {
-                    System.out.println("error");
-                    
-                }
+                  executorService.schedule(ask, 2, TimeUnit.SECONDS);
                 //switches to enemy turn
                 turn = 2;
                 enemyTurn();
@@ -1273,6 +1317,7 @@ public class BattleBox extends JFrame
                                                     wepspr = new ImageIcon(getClass().getResource("jet.png"));
                                                     blank.setIcon(wepspr);
                                                 }
+                                                executorService.schedule(ask, 2, TimeUnit.SECONDS);
                                                 break;
                                             
                                                 //healing skills
@@ -1682,6 +1727,7 @@ public class BattleBox extends JFrame
                    enemyCharged = 0;
                 }
                    econ.setIcon(ene);
+                   executorService.schedule(ask2, 2, TimeUnit.SECONDS);
                     
                 }
                 else if(move >= 3 && enemyCharged != 1)
@@ -1725,6 +1771,7 @@ public class BattleBox extends JFrame
                    enemyCharged = 0;
                 }
                    econ.setIcon(blueEnemy);
+                   executorService.schedule(ask2, 2, TimeUnit.SECONDS);
                     
                 }
                 else if(move >= 3 && enemyCharged != 1)
@@ -1751,6 +1798,7 @@ public class BattleBox extends JFrame
                    enemyCharged = 0;
                    econ.setIcon(dolphDef);
                 }
+                executorService.schedule(ask2, 2, TimeUnit.SECONDS);
                 }
                    
                     
