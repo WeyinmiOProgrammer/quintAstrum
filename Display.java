@@ -57,7 +57,7 @@ public class Display extends JPanel implements KeyListener
    
     //map one - 15x8 - using the entrance as a quick test door to wherever
    public static int[][] i = {{17,2},
-                 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                 {1,1,1,1,1,1,1,8,1,1,1,1,1,1,1},
                  {1,1,1,2,0,0,0,0,0,0,0,2,1,1,1},
                  {1,1,0,0,0,0,0,9,0,0,0,0,0,1,1},
                  {1,1,0,0,0,0,0,0,0,0,0,0,0,1,1},
@@ -841,7 +841,17 @@ public static int[][] xxxii = {{31,33},
             }
             
         }
-    
+    public void moralityTesting(int z)
+    {
+        switch(z)
+        {
+            case 1:
+                xpConst = myChar.getXP();
+                break;
+            
+        }
+        
+    }
     public void uanFinal()
     {
         DialogueB part = new DialogueB(8,"<HTML>You've saved me twice now...<BR>I'm...grateful that you did. Thank you.</HTML>",0,I,myChar,this);
@@ -954,7 +964,7 @@ public static int[][] xxxii = {{31,33},
         //added for testing
        // System.out.println("END");
     }
-   
+    
     public void keyPressed(KeyEvent e) 
     {
         
@@ -1165,7 +1175,7 @@ public static int[][] xxxii = {{31,33},
                              b.setLocationRelativeTo(null);
                              stepsLeft = R.nextInt(15)+30;
                             }
-                            if (currentSection > 20 && currentSection < 23)
+                            if ((currentSection > 20 && currentSection < 24)||(currentSection > 24 && currentSection < 28)||(currentSection > 28 && currentSection < 32))
                             {
                                 Enemy e1;
                                 if (R.nextInt(4) == 1)
@@ -1422,6 +1432,26 @@ public static int[][] xxxii = {{31,33},
                         b.setSize(900,720);
                         b.setLocationRelativeTo(null);
                     }
+                    else if (currentSection == 24)
+                    {
+                        DialogueB d1 = new DialogueB(10,"<HTML>You men are so brutish!<BR>Why don't you solve your problems<BR>without violence?</HTML>", 5, I, myChar, this);
+                        d1.setVisible(true);
+                        d1.pack();
+                        d1.setLocationRelativeTo(null);
+                    }
+                    else if (currentSection == 28)
+                    {
+                        DialogueB d1 = new DialogueB(12,"<HTML>Ah, a fellow hero!<BR>Keep at it, vanquish your enemies!</HTML>", 0, I, myChar, this);
+                        if (xpConst == myChar.getXP())
+                        {
+                            d1 = new DialogueB(12,"<HTML>What are you doing listening to that hippie?<BR>You're a hero, fight your enemies and learn from your battles!</HTML>", 0, I, myChar, this);
+                            
+                        }
+                        d1.setVisible(true);
+                        d1.pack();
+                        d1.setLocationRelativeTo(null);
+                        editArea(10);
+                    }
                 }
                 else if (arr[charY][charX] == 13)
                 {
@@ -1526,7 +1556,7 @@ public static int[][] xxxii = {{31,33},
                             {
                             g.setColor(Color.BLUE);
                             }
-                            if (currentSection > 17 && currentSection < 25)
+                            if (currentSection > 17 && currentSection < 40)
                             {
                             g.setColor(Color.MAGENTA.darker());
                             }
@@ -1560,7 +1590,7 @@ public static int[][] xxxii = {{31,33},
                                 type = 1;
                                block = new ImageIcon(getClass().getResource("MAPship.png"));
                             }
-                            if (currentSection > 18 && currentSection < 25)
+                            if (currentSection > 18 && currentSection < 40)
                             {
                             g.setColor(Color.PINK.darker());
                             }
@@ -1589,7 +1619,7 @@ public static int[][] xxxii = {{31,33},
                                 type = 1;
                                block = new ImageIcon(getClass().getResource("MAPship.png"));
                             }
-                             if (currentSection > 17 && currentSection < 25)
+                             if (currentSection > 17 && currentSection < 40)
                             {
                             g.setColor(Color.PINK.darker());
                             }
@@ -1610,7 +1640,7 @@ public static int[][] xxxii = {{31,33},
                             {
                             g.setColor(Color.CYAN.darker());
                             }
-                            if (currentSection > 17 && currentSection < 25)
+                            if (currentSection > 17 && currentSection < 40)
                             {
                             g.setColor(Color.PINK.darker());
                             }

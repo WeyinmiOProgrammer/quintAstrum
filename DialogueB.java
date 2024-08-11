@@ -91,6 +91,21 @@ public class DialogueB extends JFrame
                 name.setText("oOo");
                 iconLabel.setIcon(charIcon);
                 break;
+            case 10:
+                charIcon = new ImageIcon(getClass().getResource("plant2.png"));
+                name.setText("Par");
+                iconLabel.setIcon(charIcon);
+                break;
+            case 11:
+                charIcon = new ImageIcon(getClass().getResource("plantshock.png"));
+                name.setText("Par");
+                iconLabel.setIcon(charIcon);
+                break;
+            case 12:
+                charIcon = new ImageIcon(getClass().getResource("THEROOK.png"));
+                name.setText("Nameless");
+                iconLabel.setIcon(charIcon);
+                break;
             case 99:
                 charIcon = new ImageIcon(getClass().getResource("tutorialguy.png"));
                 name.setText("excerpt from Extraterrestial Travel");
@@ -141,6 +156,27 @@ public class DialogueB extends JFrame
                          b3.setLocationRelativeTo(null);
                          
                          break;
+                         
+                    case 5:
+                        DialogueB sab = new DialogueB(3,"I'm a girl.", 6,in,p,d);
+                         sab.setVisible(true);
+                         sab.pack();
+                         sab.setLocationRelativeTo(null);
+                        break;
+                    case 6:
+                        DialogueB sac = new DialogueB(11,"-", 7,in,p,d);
+                         sac.setVisible(true);
+                         sac.pack();
+                         sac.setLocationRelativeTo(null);
+                        break;
+                    case 7:
+                        DialogueB sad = new DialogueB(10,"<HTML>Look, just try to deal with your<BR>opponents more peacefully.<BR>Find out what they really want<BR>Or falling short of that, just run away.<BR>I'll be watching you very closely.</HTML>", 0,in,p,d);
+                         sad.setVisible(true);
+                         sad.pack();
+                         sad.setLocationRelativeTo(null);
+                         d.editArea(10);
+                         d.moralityTesting(1);
+                        break;
                     
                     case 20:
                          DialogueB ser1 = new DialogueB(9,"Instead you abandoned the mission, hah.", 21,in,p,d);
