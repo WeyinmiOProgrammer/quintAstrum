@@ -669,7 +669,7 @@ public class BattleBox extends JFrame
                         case 18:
                             for (int j = 0; j < 1; j++)
                             {
-                              collect = items.addToInv(7);
+                              collect = items.addToInv(5);
                     
                         }
                 

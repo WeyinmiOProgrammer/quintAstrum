@@ -376,7 +376,13 @@ public static int[][] xxxi = {{30,32},
 {1,8,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,1},
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
 
-public static int[][] xxxii = {{31,33},
+public static int[][] xxxii={{31,33},
+{1,1,1,1,1,1,1,1,1,1,1},
+{1,8,7,0,0,0,0,0,0,0,1},
+{1,1,1,0,0,6,0,0,0,4,1},
+{1,1,1,1,1,1,1,1,1,1,1}};
+
+public static int[][] xxxiii = {{32,34},
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 {1,8,7,0,0,0,0,6,0,0,0,0,4,1},
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
@@ -560,6 +566,8 @@ public static int[][] xxxii = {{31,33},
                 return xxxi;
             case 32:
                 return xxxii;
+            case 33:
+                return xxxiii;
             
         }
         return zero;
@@ -1452,6 +1460,22 @@ public static int[][] xxxii = {{31,33},
                         d1.setLocationRelativeTo(null);
                         editArea(10);
                     }
+                    else if (currentSection == 32)
+                    {
+                        DialogueB d1 = new DialogueB(0,"<HTML>DANGER!<BR>INSANE MONSTER BLOCKING PATH!</HTML>", 0, I, myChar, this);
+                        d1.setVisible(true);
+                        d1.pack();
+                        d1.setLocationRelativeTo(null);
+                    }
+                    else if (currentSection == 33)
+                    {
+                        bossEnemy ed = new bossEnemy(30,0,2,10,4,30,0, 18,myChar,I,this);
+                        ed.diffSpike(Dif);
+                        BattleBox b = new BattleBox(myChar, ed, I, this);
+                        b.setVisible(true);
+                        b.setSize(900,720);
+                        b.setLocationRelativeTo(null);
+                    }
                 }
                 else if (arr[charY][charX] == 13)
                 {
@@ -1535,7 +1559,7 @@ public static int[][] xxxii = {{31,33},
                             {
                             g.setColor(Color.CYAN);
                             }
-                            if (currentSection > 17 && currentSection < 25)
+                            if ((currentSection > 17 && currentSection < 25) || (currentSection > 31) )
                             {
                             g.setColor(Color.PINK);
                             }
@@ -1693,11 +1717,15 @@ public static int[][] xxxii = {{31,33},
                         case 6:
                             type = 1;
                             block = new ImageIcon(getClass().getResource("MAPbg.png"));
+                            if (currentSection == -4)
+                            {
+                            block = new ImageIcon(getClass().getResource("MAPsecret.png"));
+                            }
                             if (currentSection == 0)
                             {
                             block = new ImageIcon(getClass().getResource("MAPora.png"));
                             }
-                            if (currentSection == 1)
+                            if (currentSection == 1 || currentSection == 32)
                             {
                             block = new ImageIcon(getClass().getResource("MAPpage.png"));
                             }
@@ -1737,7 +1765,7 @@ public static int[][] xxxii = {{31,33},
                             {
                             block = new ImageIcon(getClass().getResource("MAPwer.png"));
                             }
-                            if (currentSection == 32)
+                            if (currentSection == 33)
                             {
                             block = new ImageIcon(getClass().getResource("MAPmini.png"));
                             }
