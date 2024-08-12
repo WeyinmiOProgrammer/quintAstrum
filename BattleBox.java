@@ -441,7 +441,7 @@ public class BattleBox extends JFrame
             case 18:
                 ene = new ImageIcon(getClass().getResource("awww.png"));
                 anger = new ImageIcon(getClass().getResource("arghhh.png"));
-                ypunch = new ImageIcon(getClass().getResource("hit.png"));
+                ypunch = new ImageIcon(getClass().getResource("swThr.png"));
                 econ.setIcon(ene);
                 break;
             case 19:
@@ -1111,6 +1111,12 @@ public class BattleBox extends JFrame
                                         }
                                         break;
                                     case 23:
+                                        if (!player.getStatus().equals("Wet"))
+                                        {
+                                           statReset(player);
+                                            player.setStatus("Wet",3);
+                                            player.setSD(enemy.getSD()-3);
+                                        }
                                         if (!enemy.getStatus().equals("Wet"))
                                         {
                                         statReset(enemy);
@@ -2207,7 +2213,10 @@ public class BattleBox extends JFrame
                     break;
                 //Uadevah
                 case 18:
-                    
+                    econ.setIcon(anger);
+                    player.heal(-15);
+                    blank2.setIcon(ypunch);
+                    hp.setText((player.getHP())+"/" + (player.getmHP()));
                     break;
                 //Limesloy
                 case 19:
@@ -2216,7 +2225,7 @@ public class BattleBox extends JFrame
                         enemy.attack(player);
                         econ.setIcon(ene);
                         blank2.setIcon(ypunch);
-                        if (rd.nextInt(3)==1)
+                        if (rd.nextInt(3)==1 && !player.getStatus().equals("Wet"))
                         {
                             statReset(player);
                             player.setStatus("Wet",3);
