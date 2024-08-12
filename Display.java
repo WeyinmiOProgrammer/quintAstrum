@@ -1469,12 +1469,25 @@ public static int[][] xxxiii = {{32,34},
                     }
                     else if (currentSection == 33)
                     {
+                        if (myChar.getXP()==xpConst)
+                        {
+                            DialogueB d1 = new DialogueB(10,"<HTML>Great job.<BR>Now, let's continue spreading peace together</HTML>", 0, I, myChar, this);
+                        d1.setVisible(true);
+                        d1.pack();
+                        d1.setLocationRelativeTo(null);
+                         editArea(10);
+                         I.addToInv(80);
+
+                        }
+                        else
+                        {
                         bossEnemy ed = new bossEnemy(30,0,2,10,4,30,0, 18,myChar,I,this);
                         ed.diffSpike(Dif);
                         BattleBox b = new BattleBox(myChar, ed, I, this);
                         b.setVisible(true);
                         b.setSize(900,720);
                         b.setLocationRelativeTo(null);
+                    }
                     }
                 }
                 else if (arr[charY][charX] == 13)
@@ -1768,6 +1781,10 @@ public static int[][] xxxiii = {{32,34},
                             if (currentSection == 33)
                             {
                             block = new ImageIcon(getClass().getResource("MAPmini.png"));
+                            if (myChar.getXP()==xpConst)
+                            {
+                                block = new ImageIcon(getClass().getResource("MAPper.png"));
+                            }
                             }
                             if (currentSection == 20)
                             {

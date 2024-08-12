@@ -672,7 +672,7 @@ public class BattleBox extends JFrame
                               collect = items.addToInv(5);
                     
                         }
-                
+                        d.editArea(10);
                         player.setXP(player.getXP()+50);
                         break;
                         
@@ -812,7 +812,16 @@ public class BattleBox extends JFrame
                            {
                             d.uanFinal();
                         }
+                        if (player.getID() != 4)
+                {
+                    items.addToInv((player.getID()*10)+(player.getLv()-1));
+                    for (int w = 40; w < 50; w++)
+                    {
+                    items.removeFromInv(w);
+                }
+                }
                             dispose();
+                            
                             
                         }
                         else if (enemy.getHP()< enemy.getmHP()/4)
@@ -826,6 +835,14 @@ public class BattleBox extends JFrame
                            {
                             d.uanFinal();
                         }
+                        if (player.getID() != 4)
+                {
+                    items.addToInv((player.getID()*10)+(player.getLv()-1));
+                    for (int w = 40; w < 50; w++)
+                    {
+                    items.removeFromInv(w);
+                }
+                }
                             dispose();
                         }
                         else
@@ -841,6 +858,14 @@ public class BattleBox extends JFrame
                            {
                             d.uanFinal();
                         }
+                        if (player.getID() != 4)
+                {
+                    items.addToInv((player.getID()*10)+(player.getLv()-1));
+                    for (int w = 40; w < 50; w++)
+                    {
+                    items.removeFromInv(w);
+                }
+                }
                                 dispose();
                             }
                             else
@@ -2275,6 +2300,14 @@ public class BattleBox extends JFrame
                     {
                         player.heal(-10);
                         player.setStatus("Sick",10);
+                        if (player.getID() != 4)
+                {
+                    items.addToInv((player.getID()*10)+(player.getLv()-1));
+                    for (int w = 40; w < 50; w++)
+                    {
+                    items.removeFromInv(w);
+                }
+                }
                         this.dispose();
                     }
                     break;

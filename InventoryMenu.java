@@ -34,7 +34,7 @@ public class InventoryMenu extends JFrame
             "👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg",
             "🏺Life jar"
         };
-   
+    //I think any other new stuff will be weapon variants and hired warriors who don't level up
     //5 labels will be used to display 5 items at a time
     JLabel one;
     JLabel two;
