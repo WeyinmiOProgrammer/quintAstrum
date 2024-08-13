@@ -379,13 +379,21 @@ public static int[][] xxxi = {{30,32},
 public static int[][] xxxii={{31,33},
 {1,1,1,1,1,1,1,1,1,1,1},
 {1,8,7,0,0,0,0,0,0,0,1},
-{1,1,1,0,0,6,0,0,0,4,1},
+{1,1,1,0,0,6,0,0,0,0,4},
 {1,1,1,1,1,1,1,1,1,1,1}};
 
-public static int[][] xxxiii = {{32,34},
+public static int[][] xxxiii = {{32,1000},
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 {1,8,7,0,0,0,0,6,0,0,0,0,4,1},
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
+
+public static int[][] m = {{33,1001},
+{1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+{1,8,7,0,0,0,0,6,0,0,0,0,4,1},
+{1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
+
+public static int[][] mi = {{1000},
+{6}};
 
 
     //variables relating to movement
@@ -414,6 +422,8 @@ public static int[][] xxxiii = {{32,34},
     int stepsLeft = 30;
     Random R = new Random();
     int Dif;
+    //hope this works
+    int cutsceneSpawner = 0;
     public Display(int diff)
     {
         //changed background to black
@@ -448,6 +458,7 @@ public static int[][] xxxiii = {{32,34},
        w.pack();
        w.setLocationRelativeTo(this);
        w.setVisible(true);
+       w.requestFocus();
     }
     public void revivePlayer()
     {
@@ -568,6 +579,11 @@ public static int[][] xxxiii = {{32,34},
                 return xxxii;
             case 33:
                 return xxxiii;
+            case 1000:
+                return m;
+            case 1001:
+                
+                return mi;
             
         }
         return zero;
@@ -1467,6 +1483,13 @@ public static int[][] xxxiii = {{32,34},
                         d1.pack();
                         d1.setLocationRelativeTo(null);
                     }
+                    else if (currentSection == 1000)
+                    {
+                        DialogueA d1 = new DialogueA(0,"Roadworks ahead. I advise you turn back.", 100, I, myChar, this);
+                        d1.setVisible(true);
+                        d1.pack();
+                        d1.setLocationRelativeTo(null);
+                    }
                     else if (currentSection == 33)
                     {
                         if (myChar.getXP()==xpConst)
@@ -1536,7 +1559,7 @@ public static int[][] xxxiii = {{32,34},
      public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
-       
+        
         int yLen;
         int xLen;
         int excessX;
@@ -1804,6 +1827,22 @@ public static int[][] xxxiii = {{32,34},
                                 {
                             block = new ImageIcon(getClass().getResource("MAPdrama3.png"));
                         }
+                            }
+                            if (currentSection == 1000)
+                            {
+                                block = new ImageIcon(getClass().getResource("MAPstop.png"));
+                            }
+                            if (currentSection == 1001)
+                            {
+                                block = new ImageIcon(getClass().getResource("nicetry.gif"));
+                                if (cutsceneSpawner == 0)
+                                {
+                                    cutscene stop = new cutscene();
+                stop.setVisible(true);
+                stop.pack();
+                stop.setLocationRelativeTo(null);
+                cutsceneSpawner++;
+                                }
                             }
                         
                             break;

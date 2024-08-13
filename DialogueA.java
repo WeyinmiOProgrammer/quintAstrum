@@ -256,6 +256,13 @@ public class DialogueA extends JFrame
                             d.uanScene(6);
                             
                             break;
+                        case 100:
+                            DialogueB nah = new DialogueB(0,"Don't say I didn't warn you.", 0,in,p,d);
+                            nah.setVisible(true);
+                            nah.pack();
+                            nah.setLocationRelativeTo(null);
+                            d.editArea(10);
+                            break;
                     }
                     
                     dispose();
