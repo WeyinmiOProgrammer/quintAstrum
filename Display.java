@@ -57,7 +57,7 @@ public class Display extends JPanel implements KeyListener
    
     //map one - 15x8 - using the entrance as a quick test door to wherever
    public static int[][] i = {{17,2},
-                 {1,1,1,1,1,1,1,8,1,1,1,1,1,1,1},
+                 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                  {1,1,1,2,0,0,0,0,0,0,0,2,1,1,1},
                  {1,1,0,0,0,0,0,9,0,0,0,0,0,1,1},
                  {1,1,0,0,0,0,0,0,0,0,0,0,0,1,1},

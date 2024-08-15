@@ -171,6 +171,7 @@ public class Actor
     {
         switch(status)
         {
+            //I'll leave HP status effects as unregulated, they can get you down to negative HP
             case "Burning":
                 HP -= 2;
                 break;
@@ -179,6 +180,10 @@ public class Actor
                 break;
             case "Sick":
                 MP -= 3;
+                if (MP < 0)
+               {
+            setMP(0);
+               }
                 break;
             case "Bamboozled":
                 break;

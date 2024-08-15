@@ -60,7 +60,7 @@ public class BattleBox extends JFrame
     //represents skills numerically - for normal party members (Geruo, Parmesian,Keldoc)
     //(id of skill, MP cost, type of skill [offensive?, healing? etc.], numerical data)
    int[][] skillsList = {{1,5,1,14},{2,2,2,8},{3,8,1,20},{4,0,3,8},{5,5,4,4},{6},{7},{8},{9},{10,8,1,24},
-   {11,10,1,40},{12,2,5,0},{13,5,1,40},
+   {11,10,1,40},{12,2,5,0},{13,13,1,34},
    {14,4,4,1},{15,4,4,2},{16,2,4,3},{17,2,4,4},{18,10,6,80},
    {19,0,6,20},{20,0,6,30},{21,0,5,1},{22,0,8,1}};
    String[] skillNames = {"","Forceful thrust","Self-care","Ten-tackle","Energy drain","Weaken",
@@ -658,7 +658,7 @@ public class BattleBox extends JFrame
                         
                         
                             collect = items.addToInv(8);
-                        
+                        d.editArea(10);
                         player.setXP(player.getXP()+100);
                         break;
                         case 15:
@@ -741,7 +741,10 @@ public class BattleBox extends JFrame
                     player.setSD(player.getSD()+player.getLv());
                     player.setHP(player.getmHP());
                     player.setMP(player.getmMP());
+                    if (player.getLv() < 10)
+                    {
                     player.setLv(player.getLv()+ 1);
+                }
                     
                 }
                 if (player.getID() != 4 && nextPhase == 0)
@@ -777,6 +780,11 @@ public class BattleBox extends JFrame
                    blank.setIcon(hit);
                    executorService.schedule(ask, 2, TimeUnit.SECONDS);
                 //switches to enemy turn
+                if (enemy.getHP()< 1)
+                
+                {
+                    playerRepeats = 0;
+                }
                 turn = 2;
                 enemyTurn();
                 
@@ -820,7 +828,16 @@ public class BattleBox extends JFrame
                     enemyTurn();
                 }
                     break;
-                    
+                case "HUG":
+                    if (turn == 1 & choosing  == 0)
+                    {
+                        enemy.heal(rd.nextInt(3));
+                        player.recover(rd.nextInt(5));
+                        turn = 2;
+                        enemyTurn();
+                        pcon.setIcon(playerDefeat);
+                    }
+                    break;
                 case "FLEE":
                     if (turn == 1 && choosing == 0)
                     {
@@ -914,12 +931,12 @@ public class BattleBox extends JFrame
                        {
                            availableSkills.add(9);
                         }
-                        if (items.searchInvFor(5) )
+                        if (items.searchInvFor(5)  && player.getID() == 4)
                        {
                            availableSkills.add(10);
                            availableSkills.add(11);
                         }
-                        if (items.searchInvFor(12))
+                        if (items.searchInvFor(12)  && player.getID() == 4)
                        {
                            availableSkills.add(12);
                         }
@@ -1414,6 +1431,10 @@ public class BattleBox extends JFrame
                                                 {
                                                     enemy.setAT(1);
                                                 }
+                                                if (player.getID()==8)
+                                                {
+                                                    pcon.setIcon(playerDefeat);
+                                                }
                                             }
                                             if (skillsList[availableSkills.get(i)][3] == 3)
                                                 {
@@ -1431,6 +1452,10 @@ public class BattleBox extends JFrame
                                                 {
                                                     enemy.setMP(1);
                                                 }
+                                                 if (player.getID()==8)
+                                                {
+                                                    pcon.setIcon(hit);
+                                                }
                                             }
                                             if (skillsList[availableSkills.get(i)][3] == 1)
                                                 {
@@ -1438,6 +1463,10 @@ public class BattleBox extends JFrame
                                                 if (enemy.getSD() < 1)
                                                 {
                                                     enemy.setSD(1);
+                                                }
+                                                 if (player.getID()==8)
+                                                {
+                                                    pcon.setIcon(pla);
                                                 }
                                             }
                                             
@@ -2571,7 +2600,7 @@ public class BattleBox extends JFrame
             break;
         case 14:
             econ.setIcon(enemyDefeat1);
-            defeatMsg = new DialogueB(0,"The glory of the longest burning flame becomes nothing, hidden beneath bushel",0,items,player,d);
+            defeatMsg = new DialogueB(0,"<HTML>The glory of the longest burning flame<BR> becomes nothing, hidden beneath bushel</HTML>",0,items,player,d);
             break;
         case 15:
             econ.setIcon(enemyDefeat1);
