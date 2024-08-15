@@ -61,11 +61,11 @@ public class BattleBox extends JFrame
     //(id of skill, MP cost, type of skill [offensive?, healing? etc.], numerical data)
    int[][] skillsList = {{1,5,1,14},{2,2,2,8},{3,8,1,20},{4,0,3,8},{5,5,4,4},{6},{7},{8},{9},{10,8,1,24},
    {11,10,1,40},{12,2,5,0},{13,5,1,40},
-   {},{},{},{},{18,10,6,80},
+   {14,4,4,1},{15,4,4,2},{16,2,4,3},{17,2,4,4},{18,10,6,80},
    {19,0,6,20},{20,0,6,30},{21,0,5,1},{22,0,8,1}};
    String[] skillNames = {"","Forceful thrust","Self-care","Ten-tackle","Energy drain","Weaken",
     "","","","","Lethal chop","Sword song","Parry","Exhaust flame","Talk it out","Demoralise",
-    "Tough love","Encourage","Teleportation Madness","Half a Mobius Strip","Throw of Fate ",
+    "Tough love","Comfort","Teleportation Madness","Half a Mobius Strip","Throw of Fate ",
     "Karma toss","Taunt"};
     ArrayList <Integer> availableSkills = new ArrayList<Integer>();
     //for party members with item based skills, there is a different list (Secreco,Uuander)
@@ -89,13 +89,13 @@ public class BattleBox extends JFrame
     int enemyRepeats;
     
     //needed to make the title
-    String[] charNames = {"","","","Dleg","Geruo","Keldoc","Uandar"};
+    String[] charNames = {"","","","Dleg","Geruo","Keldoc","Uandar","Some dork","Par","..."};
     String [] eneNames = {"","Dleg","Froddoger","Podhog","Enroga","Lipsauge","Keldoc","General Fodriquod","Fallen General Fodriquod","Supreme General Uandar","Reborn General Uandar","Death Cannon","Survivor","Casualty","The Colossal CROAKER","Treech","Govic","Oeleh","Uadevah","Limesloy","Strilnoz"};
     
     //needed for weapon sprites
     ImageIcon wepspr;
     
-    //needed for animations
+    //needed for animations - not that they work
     ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
     Task <Void> ask = new Task<Void>()
     {
@@ -341,6 +341,29 @@ public class BattleBox extends JFrame
         hit = new ImageIcon(getClass().getResource("hit.png"));
         availableSkills.add(0);
         availableSkills.add(1);
+    }
+    if (player.getID() == 8)
+    {
+        skills.setText("LOVE");
+        attack.setText("HUG");
+        pla = new ImageIcon(getClass().getResource("plant2.png"));
+        shield = new ImageIcon(getClass().getResource("hide.png"));
+        playerDefeat = new ImageIcon(getClass().getResource("plantwoo.png"));
+        pcon.setIcon(pla);
+        hit = new ImageIcon(getClass().getResource("plant.png"));
+         availableSkills.add(13);
+          availableSkills.add(16);
+          if (lv >= 2)
+        {
+            availableSkills.add(17);
+            
+        }
+         if (lv >= 4)
+        {
+            availableSkills.add(14);
+            
+            availableSkills.add(15);
+        }
     }
     }
     
@@ -883,14 +906,15 @@ public class BattleBox extends JFrame
                 //handles skill attacks - uses MP
                 case "SKILLS":
                 case "TECHNIQUE":   
+                case "LOVE":
                    if (turn == 1 && choosing == 0 && availableSkills.size() != 0 && !enemy.getStatus().equals("Flying"))
                    {
                        //add weapon specific skills
-                       if (items.searchInvFor(7))
+                       if (items.searchInvFor(7) && player.getID() == 4)
                        {
                            availableSkills.add(9);
                         }
-                        if (items.searchInvFor(5))
+                        if (items.searchInvFor(5) )
                        {
                            availableSkills.add(10);
                            availableSkills.add(11);
@@ -1217,6 +1241,16 @@ public class BattleBox extends JFrame
                                         p2 = new Player(100,12,14,4,4,100,12,3,0,128,6);
                                         break;
                                         //needs to be at the end of this set
+                                    //Parmas
+                                    case 80:
+                                        p2 = new Player(60,20,3,5,9,60,20,1,0,100,8);
+                                        break;
+                                    case 81:
+                                        p2 = new Player(62,22,3,3,6,62,22,2,0,20,8);
+                                        break;
+                                    case 82:
+                                        p2 = new Player(64,24,3,3,7,64,24,2,0,20,8);
+                                        break;
                                     default:
                                         items.addToInv(itemToUse);
                                         break;
@@ -1347,6 +1381,8 @@ public class BattleBox extends JFrame
                                                 {
                                                     wepspr = new ImageIcon(getClass().getResource("jet.png"));
                                                     blank.setIcon(wepspr);
+                                                    statReset(enemy);
+                                                    enemy.setStatus("Burning",3);
                                                 }
                                                 executorService.schedule(ask, 2, TimeUnit.SECONDS);
                                                 break;
@@ -2309,6 +2345,7 @@ public class BattleBox extends JFrame
                 }
                 }
                         this.dispose();
+                        enemyRepeats = 0;
                     }
                     break;
         }
@@ -2431,6 +2468,15 @@ public class BattleBox extends JFrame
                                     // Low lvl Uandar will not help you if the rest of your team dies
                                     case 62:
                                         p2 = new Player(100,12,14,4,4,100,12,3,0,128,6);
+                                        break;
+                                    case 80:
+                                        p2 = new Player(60,20,3,5,9,60,20,1,0,100,8);
+                                        break;
+                                    case 81:
+                                        p2 = new Player(62,22,3,3,6,62,22,2,0,20,8);
+                                        break;
+                                    case 82:
+                                        p2 = new Player(64,24,3,3,7,64,24,2,0,20,8);
                                         break;
                 }
                 //needs to be at the end of this set

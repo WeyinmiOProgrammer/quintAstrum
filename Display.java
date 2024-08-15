@@ -458,7 +458,7 @@ public static int[][] mi = {{1000},
        w.pack();
        w.setLocationRelativeTo(this);
        w.setVisible(true);
-       w.requestFocus();
+       
     }
     public void revivePlayer()
     {
@@ -1449,7 +1449,7 @@ public static int[][] mi = {{1000},
                     }
                     else if (currentSection == -4)
                     {
-                        bossEnemy ed = new bossEnemy(1000,0,30,4,4,1000,4, 14,myChar,I,this);
+                        bossEnemy ed = new bossEnemy(1000,0,30,4,4,1000,15, 14,myChar,I,this);
                         ed.diffSpike(Dif);
                         BattleBox b = new BattleBox(myChar, ed, I, this);
                         b.setVisible(true);
