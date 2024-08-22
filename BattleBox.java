@@ -11,8 +11,8 @@ import java.awt.event.*;
 import javax.swing.event.*;
 import java.util.Random;
 import java.util.ArrayList;
-import java.util.concurrent.*;
-import javafx.concurrent.*;
+//import java.util.concurrent.*;
+//import javafx.concurrent.*;
 public class BattleBox extends JFrame
 {
     Player player;
@@ -96,6 +96,7 @@ public class BattleBox extends JFrame
     ImageIcon wepspr;
     
     //needed for animations - not that they work
+    /*
     ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
     Task <Void> ask = new Task<Void>()
     {
@@ -127,6 +128,7 @@ public class BattleBox extends JFrame
             return null;
     }
     };
+    */
     public BattleBox(Player p, Enemy e, InventoryMenu i, Display di)
     {
         player = p;
@@ -778,7 +780,7 @@ public class BattleBox extends JFrame
                  
                 
                    blank.setIcon(hit);
-                   executorService.schedule(ask, 2, TimeUnit.SECONDS);
+                   //executorService.schedule(ask, 2, TimeUnit.SECONDS);
                 //switches to enemy turn
                 if (enemy.getHP()< 1)
                 
@@ -802,7 +804,7 @@ public class BattleBox extends JFrame
                  
                 
                    blank.setIcon(hit);
-                  executorService.schedule(ask, 2, TimeUnit.SECONDS);
+                  //executorService.schedule(ask, 2, TimeUnit.SECONDS);
                 //switches to enemy turn
                 turn = 2;
                 enemyTurn();
@@ -1401,7 +1403,7 @@ public class BattleBox extends JFrame
                                                     statReset(enemy);
                                                     enemy.setStatus("Burning",3);
                                                 }
-                                                executorService.schedule(ask, 2, TimeUnit.SECONDS);
+                                                //executorService.schedule(ask, 2, TimeUnit.SECONDS);
                                                 break;
                                             
                                                 //healing skills
@@ -1800,13 +1802,7 @@ public class BattleBox extends JFrame
         int id = enemy.getID();
         int move = rd.nextInt(5);
         
-        try{
-                  Thread.sleep(500);
-                }
-                catch(Exception e)
-                {
-                    System.out.println("error");
-                }
+        
         switch(id)
         {
             //Dleg
@@ -1823,7 +1819,7 @@ public class BattleBox extends JFrame
                    enemyCharged = 0;
                 }
                    econ.setIcon(ene);
-                   executorService.schedule(ask2, 2, TimeUnit.SECONDS);
+                   //executorService.schedule(ask2, 2, TimeUnit.SECONDS);
                     
                 }
                 else if(move >= 3 && enemyCharged != 1)
@@ -1867,7 +1863,7 @@ public class BattleBox extends JFrame
                    enemyCharged = 0;
                 }
                    econ.setIcon(blueEnemy);
-                   executorService.schedule(ask2, 2, TimeUnit.SECONDS);
+                   //executorService.schedule(ask2, 2, TimeUnit.SECONDS);
                     
                 }
                 else if(move >= 3 && enemyCharged != 1)
@@ -1894,7 +1890,7 @@ public class BattleBox extends JFrame
                    enemyCharged = 0;
                    econ.setIcon(dolphDef);
                 }
-                executorService.schedule(ask2, 2, TimeUnit.SECONDS);
+                //executorService.schedule(ask2, 2, TimeUnit.SECONDS);
                 }
                    
                     
