@@ -1115,6 +1115,14 @@ public class BattleBox extends JFrame
                                     case 3:
                                         enemy.heal(-2);
                                         ehp.setText((enemy.getHP())+"/"+(enemy.getmHP()));
+                                        if (enemy.getID()==17)
+                                        {
+                                            DialogueB chi = new DialogueB (0,"<HTML>Dude, do I look like a dog. Nah this ain't funny.<BR>I'm taking my XP and leaving.</HTML>",0,items,player,d);
+                                            chi.setVisible(true);
+                                            chi.pack();
+                                            chi.setLocationRelativeTo(null);
+                                            dispose();
+                                        }
                                         break;
                                     case 4:
                                         enemy.heal(-4);
