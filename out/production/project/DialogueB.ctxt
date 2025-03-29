@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=DialogueB
+comment1.params=i\ txt\ ID\ inv\ pl\ di
+comment1.target=DialogueB(int,\ java.lang.String,\ int,\ InventoryMenu,\ Player,\ Display)
+comment2.params=
+comment2.target=int\ getResult()
+comment3.params=
+comment3.target=void\ charSpec()
+comment4.params=
+comment4.target=int\ sendResult()
+numComments=5

@@ -11,8 +11,6 @@ import java.awt.event.*;
 import javax.swing.event.*;
 import java.util.Random;
 import java.util.ArrayList;
-//import java.util.concurrent.*;
-//import javafx.concurrent.*;
 public class BattleBox extends JFrame
 {
     Player player;
@@ -90,6 +88,7 @@ public class BattleBox extends JFrame
     
     //needed to make the title
     String[] charNames = {"","","","Dleg","Geruo","Keldoc","Uandar","Some dork","Par","..."};
+    String[] lvlUpQuotes = {"","","","This is the real power!","Huh, that's new","I AM THE STRONG. IT'S ME.", "This doesn't feel like improvement.","can't improve perfection...or can you","What is this...this feeling?","Needs more gun"};
     String [] eneNames = {"","Dleg","Froddoger","Podhog","Enroga","Lipsauge","Keldoc","General Fodriquod","Fallen General Fodriquod","Supreme General Uandar","Reborn General Uandar","Death Cannon","Survivor","Casualty","The Colossal CROAKER","Treech","Govic","Oeleh","Uadevah","Limesloy","Strilnoz"};
     
     //needed for weapon sprites
@@ -746,7 +745,34 @@ public class BattleBox extends JFrame
                     if (player.getLv() < 10)
                     {
                     player.setLv(player.getLv()+ 1);
-                }
+                    int charID;
+                    switch(player.getID())
+                    {
+                        case 3:
+                            charID = 1;
+                            break;
+                        case 4:
+                            charID = 3;
+                            break;
+                        case 5:
+                            charID = 5;
+                            break;
+                        case 6:
+                            charID = 13;
+                            break;
+                        case 8:
+                            charID = 11;
+                            break;
+                        default:
+                            charID = 0;
+                            break;
+                    }
+                    lvlUpMsg = new DialogueB(charID,lvlUpQuotes[player.getID()],0,items,player,d);
+                    lvlUpMsg.setVisible(true);
+                    lvlUpMsg.pack();
+                    lvlUpMsg.setLocationRelativeTo(null);
+
+                    }
                     
                 }
                 if (player.getID() != 4 && nextPhase == 0)

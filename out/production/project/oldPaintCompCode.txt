@@ -1,0 +1,219 @@
+public void paintComponent(Graphics g)
+    {
+        super.paintComponent(g);
+       
+        int yLen;
+        int xLen;
+        int excessX;
+        int excessY;
+        
+           
+            yLen = findMap(currentSection).length ;
+            xLen = findMap(currentSection)[1].length;
+            excessX = (30 - xLen)/2;
+            excessY = (24 - yLen)/2;
+            for (int y = 1; y < yLen ; y++)
+           
+            {
+                for (int x = 0; x < xLen; x++)
+                {
+                    switch(findMap(currentSection)[y][x])
+                    {
+                        case 0:
+                            if (currentSection < 6)
+                            {
+                            g.setColor(Color.GREEN);
+                            if (currentSection <-1)
+                            {g.setColor(Color.GREEN.darker().darker());}
+                            }
+                            if (currentSection == 6 || currentSection == 17)
+                            {
+                            g.setColor(Color.BLACK);
+                            }
+                            if ((currentSection > 6 && currentSection < 17) || currentSection == -1)
+                            {
+                            g.setColor(Color.CYAN);
+                            }
+                            if (currentSection > 17 && currentSection < 25)
+                            {
+                            g.setColor(Color.PINK);
+                            }
+                            break;
+                        case 1:
+                            if (currentSection < 6)
+                            {
+                            g.setColor(Color.DARK_GRAY);
+                            }
+                            if (currentSection == 6 || currentSection == 17)
+                            {
+                            g.setColor(Color.BLACK);
+                            }
+                            if ((currentSection > 6 && currentSection < 17) || currentSection == -1)
+                            {
+                            g.setColor(Color.BLUE);
+                            }
+                            if (currentSection > 17 && currentSection < 25)
+                            {
+                            g.setColor(Color.MAGENTA.darker());
+                            }
+                            break;
+                        case 2:
+                            //changed block colour
+                            g.setColor(WOOD);
+                            break;
+                        case 8:
+                            if (currentSection < 6)
+                            {
+                            g.setColor(Color.GREEN.darker());
+                            }
+                             if (currentSection == 6)
+                            {
+                            g.setColor(Color.GREEN);
+                            }
+                             if ((currentSection > 6 && currentSection < 17)||currentSection == -1)
+                            {
+                            g.setColor(Color.CYAN.darker());
+                            }
+                             if (currentSection == 17)
+                            {
+                            g.setColor(Color.BLUE);
+                            }
+                            if (currentSection == 7 || currentSection == 18)
+                            {
+                                g.setColor(Color.WHITE);
+                            }
+                            if (currentSection > 18 && currentSection < 25)
+                            {
+                            g.setColor(Color.PINK.darker());
+                            }
+
+                            break;
+                        case 4:
+                             if (currentSection < 6)
+                            {
+                            g.setColor(Color.GREEN.darker());
+                            }
+                             if (currentSection == 6)
+                            {
+                            g.setColor(Color.BLUE);
+                            }
+                             if (currentSection > 6 && currentSection < 17)
+                            {
+                            g.setColor(Color.CYAN.darker());
+                            }
+                            if (currentSection == 17)
+                            {
+                            g.setColor(Color.PINK);
+                            }
+                            if (currentSection == 5 || currentSection == 16 || currentSection == -1)
+                            {
+                                g.setColor(Color.WHITE);
+                            }
+                             if (currentSection > 17 && currentSection < 25)
+                            {
+                            g.setColor(Color.PINK.darker());
+                            }
+
+                            break;
+                        
+                        case 5:
+                             if (currentSection < 6)
+                            {
+                            g.setColor(Color.GREEN.darker());
+                            }
+                             if (currentSection == 6)
+                            {
+                            g.setColor(Color.GREEN);
+                            }
+                             if (currentSection > 6 && currentSection < 17)
+                            {
+                            g.setColor(Color.CYAN.darker());
+                            }
+                            if (currentSection > 17 && currentSection < 25)
+                            {
+                            g.setColor(Color.PINK.darker());
+                            }
+                            break;
+                        case 7:
+                            g.setColor(Color.RED);
+                            if (currentSection == 6 || currentSection == 17)
+                            {
+                                g.setColor(Color.WHITE);
+                            }
+                            break;
+                        case 9:
+                            g.setColor(Color.LIGHT_GRAY);
+                            break;
+                        case 6:
+                            if (currentSection == 0)
+                            {
+                            g.setColor(Color.ORANGE.darker().darker());
+                            }
+                            if (currentSection == 1)
+                            {
+                            g.setColor(Color.BLUE);
+                            }
+                            if (currentSection == 5)
+                            {
+                            g.setColor(Color.YELLOW);
+                            }
+                            if (currentSection == 4)
+                            {
+                            g.setColor(Color.RED.darker().darker());
+                            }
+                            if (currentSection == 7)
+                            {
+                            g.setColor(Color.GREEN.darker());
+                            }
+                            if (currentSection == 11)
+                            {
+                            g.setColor(Color.MAGENTA);
+                            }
+                            if (currentSection == 13)
+                            {
+                            g.setColor(Color.CYAN.darker().darker().darker());
+                            }
+                            if (currentSection == 16)
+                            {
+                            g.setColor(Color.GREEN.brighter().brighter().brighter());
+                            }
+                            if (currentSection == 17)
+                            {
+                            g.setColor(Color.CYAN.darker());
+                            }
+                        
+                            break;
+                        case 12:
+                            g.setColor(Color.ORANGE.darker().darker().darker().darker());
+                            break;
+                        case 11:
+                            g.setColor(Color.BLACK);
+                            break;
+                         case 13:
+                            g.setColor(Color.DARK_GRAY.darker());
+                            break;
+                        case 14:
+                            g.setColor(Color.YELLOW);
+                            break;
+                        case 15:
+                            g.setColor(Color.GRAY);
+                            break;
+                        case 16:
+                            g.setColor(Color.YELLOW.darker());
+                            break;
+                        case 10:
+                            
+                            g.setColor(HKIT);
+                            break;
+                   
+                       
+                       
+                    }
+                    g.drawRect(((x+ excessX) * 30),((y-1+excessY)*30), 30, 30);
+                    g.fillRect(((x+ excessX) * 30),((y-1+excessY)*30), 30, 30);
+                    
+                }
+            }
+            
+            
+    }

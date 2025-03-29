@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=BattleBox
+comment1.params=p\ e\ i\ di
+comment1.target=BattleBox(Player,\ Enemy,\ InventoryMenu,\ Display)
+comment1.text=\r\n\ \ \ \ ScheduledExecutorService\ executorService\ \=\ Executors.newSingleThreadScheduledExecutor();\r\n\ \ \ \ Task\ <Void>\ ask\ \=\ new\ Task<Void>()\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ @Override\ protected\ Void\ call()\ throws\ Exception\ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ endAnim(1);\r\n\ \ \ \ \ \ \ \ \ \ \ \ blank.setIcon(null);\r\n\ \ \ \ \ \ \ \ \ \ \ \ return\ null;\r\n\ \ \ \ }\r\n\ \ \ \ };\r\n\ \ \ \ Task\ <Void>\ ask2\ \=\ new\ Task<Void>()\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ @Override\ protected\ Void\ call()\ throws\ Exception\ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ endAnim(2);\r\n\ \ \ \ \ \ \ \ \ \ \ \ blank2.setIcon(null);\r\n\ \ \ \ \ \ \ \ \ \ \ \ return\ null;\r\n\ \ \ \ }\r\n\ \ \ \ };\r\n\ \ \ \ Task\ <Void>\ ask3\ \=\ new\ Task<Void>()\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ @Override\ protected\ Void\ call()\ throws\ Exception\ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ endAnim(3);\r\n\ \ \ \ \ \ \ \ \ \ \ \ return\ null;\r\n\ \ \ \ }\r\n\ \ \ \ };\r\n\ \ \ \ Task\ <Void>\ ask4\ \=\ new\ Task<Void>()\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ @Override\ protected\ Void\ call()\ throws\ Exception\ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ endAnim(4);\r\n\ \ \ \ \ \ \ \ \ \ \ \ return\ null;\r\n\ \ \ \ }\r\n\ \ \ \ };\r\n
+comment2.params=
+comment2.target=void\ screenreset()
+comment3.params=lv
+comment3.target=void\ skillSetup1(int)
+comment4.params=
+comment4.target=void\ enemyIconSetup()
+comment5.params=o
+comment5.target=void\ endAnim(int)
+comment6.params=a
+comment6.target=void\ statReset(Actor)
+comment7.params=
+comment7.target=void\ enemyTurn()
+numComments=8

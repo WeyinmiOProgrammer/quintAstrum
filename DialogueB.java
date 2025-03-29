@@ -106,6 +106,11 @@ public class DialogueB extends JFrame
                 name.setText("Nameless");
                 iconLabel.setIcon(charIcon);
                 break;
+            case 13:
+                charIcon = new ImageIcon(getClass().getResource("Dbossshamed.png"));
+                name.setText("Uandar");
+                iconLabel.setIcon(charIcon);
+                break;
             case 99:
                 charIcon = new ImageIcon(getClass().getResource("tutorialguy.png"));
                 name.setText("excerpt from Extraterrestial Travel");
@@ -185,7 +190,7 @@ public class DialogueB extends JFrame
                          ser1.setLocationRelativeTo(null);
                          break;
                     case 21:
-                         DialogueB ser2 = new DialogueB(8,"...", 22,in,p,d);
+                         DialogueB ser2 = new DialogueB(13,"...", 22,in,p,d);
                          ser2.setVisible(true);
                          ser2.pack();
                          ser2.setLocationRelativeTo(null);
@@ -197,7 +202,7 @@ public class DialogueB extends JFrame
                          ser3.setLocationRelativeTo(null);
                          break; 
                     case 23:
-                         DialogueB ser4 = new DialogueB(8,"...", 24,in,p,d);
+                         DialogueB ser4 = new DialogueB(13,"...", 24,in,p,d);
                          ser4.setVisible(true);
                          ser4.pack();
                          ser4.setLocationRelativeTo(null);
