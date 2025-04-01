@@ -33,7 +33,7 @@ public class Display extends JPanel implements KeyListener
     // 4 - exit 1
     // 5 - exit 2 (optional)
     // 8 - entrance
-    // 6 - boss enemy (optional)
+    // 6 - boss enemy/interactable char (optional)
     // 7 - player start position
     // 9 - scrap metal - becomes free space after interaction
     // 10 - chest - becomes free space after interaction - contains potions
@@ -382,12 +382,27 @@ public static int[][] xxxii={{31,33},
 {1,1,1,0,0,6,0,0,0,0,4},
 {1,1,1,1,1,1,1,1,1,1,1}};
 
-public static int[][] xxxiii = {{32,1000},
+public static int[][] xxxiii = {{32,34},
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 {1,8,7,0,0,0,0,6,0,0,0,0,4,1},
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
 
-public static int[][] m = {{33,1001},
+//enter the shopping ground
+public static int[][] xxxiv = {{33,35},
+        {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+        {8,7,1,10,0,0,0,0,0,0,0,0,0,0,4},
+        {1,0,1,10,0,0,0,0,0,0,0,0,1,1,1},
+        {1,0,1,1,1,1,1,1,0,0,0,0,0,6,1},
+        {1,0,0,0,0,0,0,0,0,0,0,0,1,1,1},
+        {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
+
+public static int[][] xxxv = {{34,36,37},
+        {1,1,1,1,1,4,1,1,1,1,1,1,1,1},
+        {1,0,0,0,0,0,0,0,0,0,0,0,6,1},
+        {1,0,0,0,0,0,0,0,0,0,0,1,1,1},
+        {8,7,0,0,0,0,0,0,0,0,0,0,0,1},
+        {1,1,1,1,1,1,1,1,1,5,1,1,1,1}};
+public static int[][] m = {{999,1001},
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 {1,8,7,0,0,0,0,6,0,0,0,0,4,1},
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
@@ -408,11 +423,7 @@ public static int[][] mi = {{1000},
     int uanCheckTwo = 0; //checks if the player has seen him captured - interaction
     int warCheck = 0; //checks if the player has encountered the warrior- who?
     int xpConst = 0; //used to check if player has resorted to violence
-     
-    //extra color constants
-    Color WOOD = new Color(66,41,1);
-    Color HKIT = new Color(24,242,126);
-    Color CAVE = new Color(8,79,10);
+
     
     //player
     Player myChar = new Player(50,10,7,2,2,50,10,1,0,4,4);
@@ -579,6 +590,10 @@ public static int[][] mi = {{1000},
                 return xxxii;
             case 33:
                 return xxxiii;
+            case 34:
+                return xxxiv;
+            case 35:
+                return xxxv;
             case 1000:
                 return m;
             case 1001:
@@ -1827,6 +1842,14 @@ public static int[][] mi = {{1000},
                                 {
                             block = new ImageIcon(getClass().getResource("MAPdrama3.png"));
                         }
+                            }
+                            if (currentSection == 34)
+                            {
+                                block = new ImageIcon(getClass().getResource("MAPbrid.png"));
+                            }
+                            if (currentSection == 35)
+                            {
+                                block = new ImageIcon(getClass().getResource("MAPwer.png"));
                             }
                             if (currentSection == 1000)
                             {
