@@ -16,7 +16,7 @@ public class BattleBox extends JFrame
     Player player;
     Enemy enemy;
     InventoryMenu items;
-    JButton attack, skills, useItems, defend, flee;
+    JButton attack, skills, useItems, defend, flee, stall;
     //labels for player HP and MP, enemy HP, Player and enemy icons, 2 blank labels used to visually display
     JLabel hp, mp, ehp, emp, pcon, econ, blank, blank2, stat, estat;
     ImageIcon pla, ene;
@@ -261,7 +261,12 @@ public class BattleBox extends JFrame
         c.gridy = 6;
         
         add(exit, c);
-        
+        stall = new JButton("STALL");
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 0;
+        c.gridy = 5;
+        add(stall, c);
+
         flee = new JButton("FLEE");
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 3;
@@ -276,7 +281,9 @@ public class BattleBox extends JFrame
         submit.addActionListener(e2);
         exit.addActionListener(e2);
         flee.addActionListener(e2);
-        
+        stall.addActionListener(e2);
+
+
         enemyIconSetup();
         skillSetup1(player.getLv());
         this.setTitle(charNames[p.getID()]+" ====== vs ====== "+eneNames[e.getID()]);
@@ -857,13 +864,21 @@ public class BattleBox extends JFrame
                 }
                     break;
                 case "HUG":
-                    if (turn == 1 & choosing  == 0)
+                    if (turn == 1 && choosing  == 0)
                     {
                         enemy.heal(rd.nextInt(3));
                         player.recover(rd.nextInt(5));
                         turn = 2;
                         enemyTurn();
                         pcon.setIcon(playerDefeat);
+                    }
+                    break;
+                case "STALL":
+                    if (turn == 1 && choosing == 0)
+                    {
+                        playerRepeats = 0;
+                        turn = 2;
+                        enemyTurn();
                     }
                     break;
                 case "FLEE":
