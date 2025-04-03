@@ -12,10 +12,34 @@ public class cutscene extends JFrame
 {
     ImageIcon i = new ImageIcon(getClass().getResource("nicetry.gif"));
     JLabel l;
+    int id = 0;
+    public cutscene(int id)
+    {
+        setLayout(new GridLayout(1,1,1,1));
+        this.id = id;
+        if (id != 0)
+        {
+            setImg();
+        }
+        l = new JLabel(i);
+        add(l);
+    }
+
     public cutscene()
     {
         setLayout(new GridLayout(1,1,1,1));
         l = new JLabel(i);
         add(l);
+    }
+
+    public void setImg()
+    {
+        switch(id)
+        {
+            case 1:
+                break;
+            default:
+                break;
+        }
     }
 }

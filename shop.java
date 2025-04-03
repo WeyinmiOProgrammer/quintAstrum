@@ -11,9 +11,14 @@ public class shop extends JFrame {
     JButton leave;
     InventoryMenu im;
     JLabel keeper;
-    int iReceive, uReceive;
-    public shop(ImageIcon icon,String name, InventoryMenu menu, int give, int take)
+    int iReceive, uReceive, iTimes, uTimes;
+    int charid;
+    Display di;
+    Player pl;
+    public shop(ImageIcon icon,String name, InventoryMenu menu, int give, int take, int amountToGive, int amountToTake, int cha, Player pla, Display dis)
     {
+        di = dis;
+        pl = pla;
         im = menu;
         i = icon;
         setLayout(new GridLayout(5,1,2,3));
@@ -30,7 +35,9 @@ public class shop extends JFrame {
 
         iReceive = give;
         uReceive = take;
-
+        iTimes = amountToGive;
+        uTimes = amountToTake;
+        charid = cha;
         event e = new event();
         trade.addActionListener(e);
         talk.addActionListener(e);
@@ -42,6 +49,7 @@ public class shop extends JFrame {
     {
         public void actionPerformed(ActionEvent e) {
             String option = e.getActionCommand();
+            DialogueB no;
             if (option.equals("LEAVE"))
             {
                 dispose();
@@ -50,12 +58,40 @@ public class shop extends JFrame {
             {
                 if (im.searchInvFor(iReceive))
                 {
-                    im.addToInv(uReceive);
+                    if (im.howMuch(iReceive) == iTimes) {
+                        for (int i = 0; i < uTimes; i++) {
+                            im.addToInv(uReceive);
+                        }
+                        for (int i = 0; i < iTimes; i++)
+                        {
+                            im.removeFromInv(iReceive);
+                        }
+                    }
+                    else {
+                        no = new DialogueB(charid,"You don't have enough to trade with ", 0,im,pl,di);
+                        no.setVisible(true);
+                        no.pack();
+                        no.setLocationRelativeTo(null);
+                    }
                 }
                 else
                 {
-                    //message
+                    no = new DialogueB(charid,"You don't have what I'm looking for ", 0,im,pl,di);
+                    no.setVisible(true);
+                    no.pack();
+                    no.setLocationRelativeTo(null);
                 }
             }
+            else if (option.equals("TALK"))
+            {
+                //animate talk cutscenes for shops, its high effort but I really don't mind
+                //its quicker than using other means
+                cutscene talking = new cutscene(charid);
+                talking.setVisible(true);
+                talking.pack();
+                talking.setLocationRelativeTo(null);
+
+            }
+
         }}
 }
