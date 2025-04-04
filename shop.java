@@ -58,7 +58,7 @@ public class shop extends JFrame {
             {
                 if (im.searchInvFor(iReceive))
                 {
-                    if (im.howMuch(iReceive) == iTimes) {
+                    if (im.howMuch(iReceive) >= iTimes) {
                         for (int i = 0; i < uTimes; i++) {
                             im.addToInv(uReceive);
                         }
