@@ -1498,6 +1498,34 @@ public static int[][] mi = {{1000},
                         d1.pack();
                         d1.setLocationRelativeTo(null);
                     }
+                    else if (currentSection == 34)
+                    {
+                        DialogueA d1 = new DialogueA(15,"<HTML>Ah, a new customer!<BR>Are you interested in trading?<BR> For 5 pots of oil, I can offer some of my finest soup!</HTML>",40,I,myChar,this);
+                        d1.setVisible(true);
+                        d1.pack();
+                        d1.setLocationRelativeTo(null);
+                    }
+                    else if (currentSection == 35)
+                    {
+                        DialogueA d1 = new DialogueA(16,"<HTML>Hey, I recognise you from my old planet! Another one come to reap <BR> the benefits of life on the Big Pink!<BR> Tell ya what, for some of that special fire powder, I could give you some porcpuffs for the road! </HTML>",41,I,myChar,this);
+                        d1.setVisible(true);
+                        d1.pack();
+                        d1.setLocationRelativeTo(null);
+                    }
+                    else if (currentSection == 36)
+                    {
+                        DialogueA d1 = new DialogueA(14,"<HTML>Selling coffee for treeches, by treeches, of treeches<BR> One stick is all I demand in return!<BR>You there! Want to fund a humble salesplant?</HTML>",42,I,myChar,this);
+                        d1.setVisible(true);
+                        d1.pack();
+                        d1.setLocationRelativeTo(null);
+                    }
+                    else if (currentSection == 37)
+                    {
+                        DialogueA d1 = new DialogueA(12,"<HTML>Oh, it's you...<BR> Look, I need some metal to craft some new gear. <BR> You can have my sweat-dren...I mean, SHINING, LATHERED ARMOUR if you give me some scrap </HTML>",43,I,myChar,this);
+                        d1.setVisible(true);
+                        d1.pack();
+                        d1.setLocationRelativeTo(null);
+                    }
                     else if (currentSection == 1000)
                     {
                         DialogueA d1 = new DialogueA(0,"Roadworks ahead. I advise you turn back.", 100, I, myChar, this);
@@ -1845,9 +1873,17 @@ public static int[][] mi = {{1000},
                             }
                             if (currentSection == 34)
                             {
-                                block = new ImageIcon(getClass().getResource("MAPbrid.png"));
+                                block = new ImageIcon(getClass().getResource("MAPoelu.png"));
                             }
                             if (currentSection == 35)
+                            {
+                                block = new ImageIcon(getClass().getResource("MAPpodh.png"));
+                            }
+                            if (currentSection == 36)
+                            {
+                                block = new ImageIcon(getClass().getResource("MAPtree.png"));
+                            }
+                            if (currentSection == 37)
                             {
                                 block = new ImageIcon(getClass().getResource("MAPwer.png"));
                             }

@@ -86,6 +86,31 @@ public class DialogueA extends JFrame
                 charIcon = new ImageIcon(getClass().getResource("DBoss.png"));
                 name.setText("Uandar");
                 iconLabel.setIcon(charIcon);
+            case 12:
+                charIcon = new ImageIcon(getClass().getResource("THEROOK.png"));
+                name.setText("Nameless");
+                iconLabel.setIcon(charIcon);
+                break;
+            case 13:
+                charIcon = new ImageIcon(getClass().getResource("Dbossshamed.png"));
+                name.setText("Uandar");
+                iconLabel.setIcon(charIcon);
+                break;
+            case 14:
+                charIcon = new ImageIcon(getClass().getResource("treech.png"));
+                name.setText("Treech Shopkreech");
+                iconLabel.setIcon(charIcon);
+                break;
+            case 15:
+                charIcon = new ImageIcon(getClass().getResource("hippie.png"));
+                name.setText("Pelisipyre");
+                iconLabel.setIcon(charIcon);
+                break;
+            case 16:
+                charIcon = new ImageIcon(getClass().getResource("Gic.png"));
+                name.setText("Podhog Bob");
+                iconLabel.setIcon(charIcon);
+                break;
             
         }
     }
@@ -205,6 +230,31 @@ public class DialogueA extends JFrame
                              b6.setLocationRelativeTo(null);
                             
                             
+                            break;
+
+                        case 40:
+                            shop sh1 = new shop(charIcon,name.getText(),in,13,24,5,1,chara,p,d);
+                            sh1.setVisible(true);
+                            sh1.pack();
+                            sh1.setLocationRelativeTo(null);
+                            break;
+                        case 41:
+                            shop sh2 = new shop(charIcon,name.getText(),in,8,15,1,2,chara,p,d);
+                            sh2.setVisible(true);
+                            sh2.pack();
+                            sh2.setLocationRelativeTo(null);
+                            break;
+                        case 42:
+                            shop sh3 = new shop(charIcon,name.getText(),in,3,9,1,1,chara,p,d);
+                            sh3.setVisible(true);
+                            sh3.pack();
+                            sh3.setLocationRelativeTo(null);
+                            break;
+                        case 43:
+                            shop sh4 = new shop(charIcon,name.getText(),in,4,22,1,1,chara,p,d);
+                            sh4.setVisible(true);
+                            sh4.pack();
+                            sh4.setLocationRelativeTo(null);
                             break;
                     }
                     dispose();

@@ -111,6 +111,21 @@ public class DialogueB extends JFrame
                 name.setText("Uandar");
                 iconLabel.setIcon(charIcon);
                 break;
+            case 14:
+                charIcon = new ImageIcon(getClass().getResource("treech.png"));
+                name.setText("Treech Shopkreech");
+                iconLabel.setIcon(charIcon);
+                break;
+            case 15:
+                charIcon = new ImageIcon(getClass().getResource("hippie.png"));
+                name.setText("Pelisipyre");
+                iconLabel.setIcon(charIcon);
+                break;
+            case 16:
+                charIcon = new ImageIcon(getClass().getResource("Gic.png"));
+                name.setText("Podhog Bob");
+                iconLabel.setIcon(charIcon);
+                break;
             case 99:
                 charIcon = new ImageIcon(getClass().getResource("tutorialguy.png"));
                 name.setText("excerpt from Extraterrestial Travel");
