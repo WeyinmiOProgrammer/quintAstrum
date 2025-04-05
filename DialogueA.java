@@ -233,13 +233,13 @@ public class DialogueA extends JFrame
                             break;
 
                         case 40:
-                            shop sh1 = new shop(charIcon,name.getText(),in,13,24,5,1,chara,p,d);
+                            shop sh1 = new shop(charIcon,name.getText(),in,13,25,5,1,chara,p,d);
                             sh1.setVisible(true);
                             sh1.pack();
                             sh1.setLocationRelativeTo(null);
                             break;
                         case 41:
-                            shop sh2 = new shop(charIcon,name.getText(),in,8,15,1,2,chara,p,d);
+                            shop sh2 = new shop(charIcon,name.getText(),in,8,16,1,2,chara,p,d);
                             sh2.setVisible(true);
                             sh2.pack();
                             sh2.setLocationRelativeTo(null);
@@ -251,7 +251,7 @@ public class DialogueA extends JFrame
                             sh3.setLocationRelativeTo(null);
                             break;
                         case 43:
-                            shop sh4 = new shop(charIcon,name.getText(),in,4,22,1,1,chara,p,d);
+                            shop sh4 = new shop(charIcon,name.getText(),in,4,23,1,1,chara,p,d);
                             sh4.setVisible(true);
                             sh4.pack();
                             sh4.setLocationRelativeTo(null);

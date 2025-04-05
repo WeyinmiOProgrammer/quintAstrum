@@ -20,8 +20,8 @@ public class InventoryMenu extends JFrame
     int[][] items = new int[20][2];
     //this array contains the actual item names
     String[] itemNames = {"Empty","🍶Health potion", "🍵Magic potion", "📏Stick", "⚙Scrap metal", "⚔Sword",
-                          "⛽Engine", "⚒Axe", "🔥Fire powder", "☕Coffee", "❧Bullet", "🚀Spaceship", "⛽Jetpack","🛢Oil","🔑Key","🔑Key piece",
-                        "🐡Porcpuff","❥Boomerang","💔Broken boomerang","🗡Dark sword","🗡Jetsword",
+                          "⛽Engine", "⚒Axe", "🔥Fire powder", "☕Coffee", "❧Bullet", "🚀Spaceship", "⛽Jetpack","🛢Oil","🔑Key",
+                       "🔑Key piece", "🐡Porcpuff","❥Boomerang","💔Broken boomerang","🗡Dark sword","🗡Jetsword",
                     "💵Imperial Currency","➰String","💦Water bucket","🔨Possessed Axe","🍜Soupapousoup",
                 "🏹Bow","🎸Guitar","🕯Dynamite","",
             "👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg","👽Dleg",
