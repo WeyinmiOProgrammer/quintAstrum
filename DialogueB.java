@@ -187,6 +187,9 @@ public class DialogueB extends JFrame
                         break;
                     case 6:
                         DialogueB sac = new DialogueB(11,"-", 7,in,p,d);
+                        //I'm gonna recontextualise this pause from awkwardness about being out-PC'd
+                        // to being about Par knowing about the fate of the humans in this game
+                        //the sprites have existed for ages, this isn't some grand reveal
                          sac.setVisible(true);
                          sac.pack();
                          sac.setLocationRelativeTo(null);
