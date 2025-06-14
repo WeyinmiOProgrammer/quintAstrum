@@ -178,7 +178,9 @@ public class DialogueB extends JFrame
                          break;
                          
                     case 5:
-                        DialogueB sab = new DialogueB(3,"I'm a girl.", 6,in,p,d);
+                        DialogueB sab = new DialogueB(3,"...what are men?", 6,in,p,d);
+                        //changed the dumb "Samus is a girl"-esque joke for a "Dave and the giant pickle 'what's a spaceship' "...
+                        //esque joke
                          sab.setVisible(true);
                          sab.pack();
                          sab.setLocationRelativeTo(null);
