@@ -419,7 +419,7 @@ public static int[][] xxxvii = {{35,38},
 
     public static int[][] xxxviii = {{37,39},
             {1,1,1,1,1,1,1,1},
-            {8,7,0,0,18,0,0,1},
+            {8,7,0,0,18,11,11,1},
             {1,1,1,1,1,1,1,1}};
 public static int[][] m = {{999,1001},
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -487,6 +487,7 @@ public static int[][] mi = {{1000},
                                       "</HTML>",0,I,myChar,this); 
        w.pack();
        w.setLocationRelativeTo(this);
+       w.toFront();
        w.setVisible(true);
        
     }

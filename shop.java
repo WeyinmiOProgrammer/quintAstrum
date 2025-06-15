@@ -66,6 +66,10 @@ public class shop extends JFrame {
                         {
                             im.removeFromInv(iReceive);
                         }
+                        no = new DialogueB(charid,"Good trading with you ", 0,im,pl,di);
+                        no.setVisible(true);
+                        no.pack();
+                        no.setLocationRelativeTo(null);
                     }
                     else {
                         no = new DialogueB(charid,"You don't have enough to trade with ", 0,im,pl,di);

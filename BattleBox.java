@@ -2663,6 +2663,7 @@ public class BattleBox extends JFrame
         skills.setVisible(false);
         useItems.setVisible(false);
         defend.setVisible(false);
+        stall.setVisible(false);
         flee.setVisible(false);
         exit.setVisible(true);
     }

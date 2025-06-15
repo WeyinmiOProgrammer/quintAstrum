@@ -86,6 +86,7 @@ public class DialogueA extends JFrame
                 charIcon = new ImageIcon(getClass().getResource("DBoss.png"));
                 name.setText("Uandar");
                 iconLabel.setIcon(charIcon);
+                break;
             case 12:
                 charIcon = new ImageIcon(getClass().getResource("THEROOK.png"));
                 name.setText("Nameless");
