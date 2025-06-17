@@ -36,7 +36,11 @@ public class cutscene extends JFrame
     {
         switch(id)
         {
-            case 1:
+            case 14:
+                i = new ImageIcon(getClass().getResource("treechshop.gif"));
+                break;
+            case 16:
+                i = new ImageIcon(getClass().getResource("podhogshop.gif"));
                 break;
             default:
                 break;
