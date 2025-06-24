@@ -89,7 +89,7 @@ public class BattleBox extends JFrame
     //needed to make the title
     String[] charNames = {"","","","Dleg","Geruo","Keldoc","Uandar","Some dork","Par","..."};
     String[] lvlUpQuotes = {"","","","This is the real power!","Huh, that's new","I AM THE STRONG. IT'S ME.", "This doesn't feel like improvement.","can't improve perfection...or can you","What is this...this feeling?","Needs more gun"};
-    String [] eneNames = {"","Dleg","Froddoger","Podhog","Enroga","Lipsauge","Keldoc","General Fodriquod","Fallen General Fodriquod","Supreme General Uandar","Reborn General Uandar","Death Cannon","Survivor","Casualty","The Colossal CROAKER","Treech","Govic","Oeleh","Uadevah","Limesloy","Strilnoz"};
+    String [] eneNames = {"","Dleg","Froddoger","Podhog","Enroga","Lipsauge","Keldoc","General Fodriquod","Fallen General Fodriquod","Supreme General Uandar","Reborn General Uandar","Death Cannon","Survivor","Casualty","The Colossal CROAKER","Treech","Govic","Oeleh","Uadevah","Limesloy","Strilnoz","Shadow Dweller"};
     
     //needed for weapon sprites
     ImageIcon wepspr;
@@ -484,6 +484,12 @@ public class BattleBox extends JFrame
              case 20:
                 ene = new ImageIcon(getClass().getResource("nuz.png"));
                 ypunch = new ImageIcon(getClass().getResource("acid.png"));
+                econ.setIcon(ene);
+                break;
+            case 21:
+                ene = new ImageIcon(getClass().getResource("creep2.png"));
+                anger = new ImageIcon(getClass().getResource("creep.png"));
+                ypunch = new ImageIcon(getClass().getResource("creepsword.png"));
                 econ.setIcon(ene);
                 break;
         }
@@ -2422,6 +2428,29 @@ public class BattleBox extends JFrame
                         enemyRepeats = 0;
                     }
                     break;
+
+            //Shadow dweller
+            case 21:
+                if (enemyCharged > 0)
+                {
+                    enemy.attack(player);
+                    enemy.setSD(enemyCharged);
+                    blank2.setIcon(ypunch);
+                    enemyCharged = 0;
+                }
+                else if (move == 3 && enemyCharged == 0)
+                {
+                    enemyCharged = enemy.getSD();
+                    enemy.setSD(player.getSD());
+                    econ.setIcon(anger);
+
+                }
+                else
+                {
+                    econ.setIcon(ene);
+                    blank2.setIcon(null);
+                }
+                break;
         }
         if (player.getHP() > 0)
         {
@@ -2655,6 +2684,17 @@ public class BattleBox extends JFrame
             econ.setIcon(enemyDefeat1);
             defeatMsg = new DialogueB(0,"Forget this, I'm outta here",0,items,player,d);
             break;
+        case 17:
+            defeatMsg = new DialogueB(0,"I'm not feeling too hot",0,items,player,d);
+            break;
+        case 18:
+            defeatMsg = new DialogueB(0,"You thirst for experience...",0,items,player,d);
+            break;
+
+            case 20:
+                defeatMsg = new DialogueB(0,"Why did I even go outside today",0,items,player,d);
+                break;
+
     }
     defeatMsg.pack();
     defeatMsg.setLocationRelativeTo(null);

@@ -1247,10 +1247,16 @@ public static int[][] mi = {{1000},
                                 {
                              e1 = new Enemy(20,0,6,2,1,20,0, 15);
                             }
+                                /*
                             else if (R.nextInt(3) == 2)
                                 {
                              e1 = new Enemy(55,0,5,7,11,55,0, 17);
                             }
+                            */
+                                 else if (R.nextInt(3) == 2)
+                                {
+                                    e1 = new Enemy(60,0,30,4,1,60,0,21);
+                                }
                             else if (R.nextInt(2) == 1)
                                 {
                              e1 = new Enemy(42,10,12,4,10,42,10, 20);
